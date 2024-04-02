@@ -1,0 +1,106 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100%;
+    max-width: 100vw;
+    height: 54px;
+    overflow: hidden;
+    background: rgb(0, 0, 0);
+    transition: background .333s ease, backdrop-filter .333s ease, position .333s ease; /* Add backdrop-filter transition */
+    backdrop-filter: blur(0); /* Initial blur value */
+}
+.header.scrolled {
+    position: fixed;
+    background: rgba(43, 53, 58, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* Adjust the blur value based on your preference */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* Add any other styling for the scrolled state */
+}
+  
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.imageContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+.mugshot {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    cursor: default;
+}
+.mugshotImageContainer {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    cursor: default;
+}
+.mugshotImage {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/mugshot.jpeg');
+    background-position: center;
+    background-size: cover;
+}
+.mugshotName {
+    user-select: none;
+}
+.icon {
+    width: 15px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+.right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    overflow-y: hidden;
+}
+.contactButton {
+    width: 75px;
+    height: 39px;
+    border-radius: 3px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background .333s ease;
+    color: #efeeee;
+}
+.contactButton:hover {
+    background: rgba(100, 100, 100, 0.602);
+    
+}
+
+/* .sessionTimer {
+    position: fixed;
+    font-size: 12px;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 8px 15px;
+    animation: pulse .5s infinite alternate; 
+}
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+} */

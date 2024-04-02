@@ -1,0 +1,23 @@
+
+.container {
+    display:block;
+    margin: 0 auto;
+    padding-top: 80px;
+    max-width: 1100px;
+
+}
+.title {
+    font-size: 48px;
+    text-align: center;
+    padding-bottom: 10px;
+    user-select: none;
+}
+.introParagraph {
+    max-width: 1100px;
+    text-align: left;
+    line-height: 1.75;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    padding: 0 100px 0 100px;
+}

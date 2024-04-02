@@ -1,0 +1,47 @@
+.container {
+    margin-top: 54px;
+}
+
+.bannerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvasContainer {
+    width: 100%;
+    max-width: 1200px;
+    height: 250px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.058);
+    overflow: hidden;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../assets/banner.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mugshotContainer {
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    position: absolute;
+    margin-top: 250px;
+    opacity: 1;
+}
+
+.mugshot {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: url('../../assets/ai_mugshot1.jpeg');
+    background-position: center;
+    background-size: cover;
+}
