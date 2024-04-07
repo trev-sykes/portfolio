@@ -9,15 +9,12 @@ export default function About() {
                 </h1>
                 <p className={styles.introParagraph}>
 
-                Hi, I'm Trevor Sykes. I taught myself how to code, specializing in React and Solidity. Most of my skills come from working on my own projects, where I've grown to love using tech to make a difference.
+                Hey, I'm Trevor Sykes. I've taught myself how to code, focusing on building dApps in CSS, React, and Solidity. Most of what I know comes from my own projects, where I've really come to love using tech to make a difference.
                 </p>
                 <br></br>
-                <p className={styles.introParagraph}>
-                I'm excited to join a progressive company where I can use my skills on impactful projects. I specialize in front-end development and blockchain technology, aiming to create easy-to-use interfaces and find creative solutions to tough challenges.
-                </p>
                 <br></br>
                 <p className={styles.introParagraph}>
-                I'm motivated by using tech to help others, like making things easier or more accessible. I'm all in for using what I know to make an impact. I look forward to working with a team where I can share, learn, and grow.
+                My passion lies in using my skills to enhance accessibility and streamline processes. From developing user-friendly interfaces to implementing smart contracts, I'm committed to making complex technologies more approachable
                 </p>
             </div>
     );
