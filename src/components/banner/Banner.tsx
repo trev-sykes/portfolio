@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useCallback } from 'react';
 import styles from './Banner.module.css';
-import endeavour from '../../assets/cursor-endeavour.png';
 
 interface Debris {
     x: number;

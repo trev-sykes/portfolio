@@ -21,9 +21,9 @@ const BlogComponent = () => {
             if (rect.top < windowHeight && rect.bottom >= 0) {
                 // Calculate opacity based on the position of the element
                 const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
-                blog.style.opacity = visibility;
+                blog.style.opacity = visibility.toString();
             } else {
-                blog.style.opacity = 0; // Fully transparent when out of view
+                blog.style.opacity = '0'; // Fully transparent when out of view
             }
         });
     };
