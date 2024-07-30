@@ -26,6 +26,7 @@ export default function About() {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Initial call to set opacity based on current scroll position
+        window.addEventListener('resize', handleReSize);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
