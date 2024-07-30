@@ -12,7 +12,7 @@ export default function About() {
 
             // Calculate opacity based on the element's visibility in the viewport
             const opacity = 1 - Math.max(0, (windowHeight - rect.top - 725) / windowHeight);
-            container.style.opacity = opacity;
+            container.style.opacity = opacity.toString();
         }
     };
 
