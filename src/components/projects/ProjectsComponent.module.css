@@ -105,7 +105,10 @@
       padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
       margin: 0 auto;
     }
-  
+    .projects {
+      margin-bottom: 70px;
+      margin-top: 20px;
+    }
     .projectContainer {
       flex-direction: column; /* Stack blog previews vertically */
       max-width: 300px;

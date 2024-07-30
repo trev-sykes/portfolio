@@ -1,6 +1,6 @@
 .blogs {
   text-align: center;
-  margin-top: 55px;;
+  margin-top: 55px;
   padding: 10px;
   margin-bottom: 95px;
   scale: 3;
@@ -164,7 +164,10 @@
     padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
     margin: 0 auto;
   }
-
+  .blogs {
+    margin-bottom: 70px;
+    margin-top: 20px;
+  }
   .blogContainer {
     flex-direction: column; /* Stack blog previews vertically */
     max-width: 300px;
