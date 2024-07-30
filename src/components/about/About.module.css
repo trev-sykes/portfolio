@@ -28,11 +28,11 @@
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
     .title {
-        font-size: .95rem;
+        font-size: 2rem;
         margin-bottom: 20px;
     }
     .introParagraph {
-        font-size: calc(95%);
+        font-size: .95rem;
         padding: 0 0px 0 0px;
 
     }
