@@ -19,7 +19,9 @@
     opacity: 1;
     visibility: visible;
 }
-
+.header {
+    margin-bottom: 15px;
+}
 .popup {
     background-color: rgb(255, 255, 255);
     background:
