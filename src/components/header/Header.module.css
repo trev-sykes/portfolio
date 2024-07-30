@@ -95,7 +95,10 @@
         transition: none !important; /* Disable transition effect on small screens */
     }
     .nav {
+        display: flex;
         max-width: 600px;
+        justify-content: space-between;
+        align-items: center;
     }
     .mugshotImageContainer {
         width: 20px;
@@ -107,7 +110,7 @@
     .mugshotName {
         font-size: .6rem;
     }
-    .icon {
+    .iconButton {
         display: none;
     }
 

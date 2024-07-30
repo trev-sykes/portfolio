@@ -103,6 +103,7 @@ button:disabled {
 }
 @media (max-width: 600px) {
     .close {
+        padding: 0;
         position: absolute;
         top: 5px;
         right: 5px;
