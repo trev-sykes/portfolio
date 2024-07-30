@@ -95,7 +95,7 @@
         transition: none !important; /* Disable transition effect on small screens */
     }
     .nav {
-        max-width: 300px;
+        max-width: 600px;
     }
     .mugshotImageContainer {
         width: 20px;
