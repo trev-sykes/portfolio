@@ -55,8 +55,8 @@
     .canvasContainer {
         max-width: 300px;
     }
-    .mugshot {
-        width: 100%;
-        height: 100%;
+    .mugshotContainer {
+        width: 100px;
+        height: 100px;
     }
 }
