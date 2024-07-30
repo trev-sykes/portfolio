@@ -101,3 +101,14 @@ button:disabled {
     color: #dc3545;
     font-size: 16px;
 }
+@media (max-width: 600px) {
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}

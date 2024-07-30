@@ -97,5 +97,18 @@
     .nav {
         max-width: 300px;
     }
+    .mugshotImageContainer {
+        width: 20px;
+        height: 20px;
+    }
+    .contactButton {
+        font-size: .6rem;
+    }
+    .mugshotName {
+        font-size: .6rem;
+    }
+    .icon {
+        display: none;
+    }
 
 }

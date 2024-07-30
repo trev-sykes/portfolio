@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Banner.module.css';
 
 interface Debris {
@@ -33,12 +33,15 @@ interface SpaceshipCircle {
 }
 
 const Banner: React.FC = () => {
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const debrisRef = useRef<Debris[]>([]);
     const shootingStarsRef = useRef<ShootingStar[]>([]);
     const spaceshipCirclesRef = useRef<SpaceshipCircle[]>([]);
     const animationRef = useRef<number>(0);
-    
+    const handleReSize = () => {
+        setViewportWidth(window.innerWidth);
+    }    
 
     const initializeCanvas = useCallback(() => {
         const canvas = canvasRef.current;
@@ -50,10 +53,17 @@ const Banner: React.FC = () => {
 
     const createDebris = useCallback(() => {
         const canvas = canvasRef.current;
+        let numDebris = 0;
         if (!canvas) return;
 
         const debris: Debris[] = [];
-        const numDebris = 500;
+        if(viewportWidth < 600){
+            numDebris = 100;
+            console.log('one hundred debris')
+        } else if(viewportWidth >= 600) {
+            numDebris = 500;
+            console.log('Five hundred debris')
+        }
 
         for (let i = 0; i < numDebris; i++) {
             debris.push({
@@ -66,13 +76,21 @@ const Banner: React.FC = () => {
         }
 
         debrisRef.current = debris;
-    }, []);
+    }, [viewportWidth]);
 
     const createShootingStar = useCallback((): ShootingStar | null => {
+        let shootingStarProbability = 0.01;
+        if(viewportWidth < 600){
+            shootingStarProbability = 0.005;
+            console.log('0.005 prob...');
+        } else if (viewportWidth >= 600){
+            shootingStarProbability = 0.01;
+            console.log('0.01 prob...');
+        }
         const canvas = canvasRef.current;
         if (!canvas) return null;
     
-        if (Math.random() < 0.01) { // Probability of creating a shooting star
+        if (Math.random() < shootingStarProbability) { // Probability of creating a shooting star
             return {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
@@ -85,7 +103,7 @@ const Banner: React.FC = () => {
         }
     
         return null;
-    }, []);
+    }, [viewportWidth]);
 
     const distanceBetweenPoints = (x1: number, y1: number, x2: number, y2: number): number => {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
@@ -265,11 +283,13 @@ const Banner: React.FC = () => {
         animateDebris();
 
         window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleReSize);
         return () => {
             window.removeEventListener('resize', handleResize);
+            window.addEventListener('resize', handleReSize);
             cancelAnimationFrame(animationRef.current);
         };
-    }, [initializeCanvas, createDebris, animateDebris, handleResize]);
+    }, [initializeCanvas, createDebris, animateDebris, handleResize, handleReSize]);
 
     return (
         <div className={styles.container}>
