@@ -161,6 +161,7 @@ const fullArticle: FullArticle = {
 };
 
 const article_3: Blog = {
+    titleHeader: 'DApp Tutorial - Dice Game',
     ...blogPreview,
     ...fullArticle
 }

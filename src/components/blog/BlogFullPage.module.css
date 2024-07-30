@@ -82,3 +82,16 @@
     background-size: cover;
 
 }
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 300px;
+    }
+    .header {
+        justify-content: space-between;
+    }
+    .title {
+        font-size: .95rem;
+    }
+
+}

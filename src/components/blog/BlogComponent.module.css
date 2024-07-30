@@ -157,3 +157,34 @@
   object-fit: cover;
   margin-bottom: 10px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%; /* Allow the container to use full width */
+    padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
+    margin: 0 auto;
+  }
+
+  .blogContainer {
+    flex-direction: column; /* Stack blog previews vertically */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .blogPreview {
+    flex: 1 1 auto; /* Allow items to grow and shrink as needed */
+    max-width: 100%; /* Ensure items take up full width of the container */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Keep space between items */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height calculations */
+    height: auto;
+  }
+
+  .description {
+    font-size: .9rem;
+  }
+
+  .topics {
+    font-size: .9rem;
+  }
+}

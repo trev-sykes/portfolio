@@ -3,6 +3,7 @@
     margin-top: 55px;
     padding: 10px;
     margin-bottom: 95px;
+    opacity: 1;
     /* Additional styles for projects can be added here */
   }
   
@@ -10,7 +11,6 @@
     max-width: 1100px;
     height: auto;
     margin: 0 auto;
-    display: flex;
   }
   
   .projectContainer {
@@ -28,7 +28,7 @@
     padding: 20px;
     cursor: pointer;
     box-sizing: border-box;
-    opacity: 0; /* Ensure that elements are initially invisible */
+    opacity: 1; /* Ensure that elements are initially invisible */
     transition: opacity 0.6s ease-out; /* Smooth transition for fading in */
   }
   
@@ -96,14 +96,37 @@
     margin-bottom: 10px;
     right: 0;
   }
-  
-  /* Fade-in related styles */
-  .fadeIn {
-    opacity: 0;
-    transition: opacity 0.6s ease-out;
-  }
-  
   .fadeInVisible {
-    opacity: 1;
+    opacity: 0;
+  }
+  @media (max-width: 600px) {
+    .container {
+      max-width: 100%; /* Allow the container to use full width */
+      padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
+      margin: 0 auto;
+    }
+  
+    .projectContainer {
+      flex-direction: column; /* Stack blog previews vertically */
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  
+    .projectPreview {
+      flex: 1 1 auto; /* Allow items to grow and shrink as needed */
+      max-width: 100%; /* Ensure items take up full width of the container */
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: 20px; /* Keep space between items */
+      box-sizing: border-box; /* Ensure padding and border are included in width/height calculations */
+      height: auto;
+    }
+  
+    .description {
+      font-size: .9rem;
+    }
+  
+    .topics {
+      font-size: .9rem;
+    }
   }
   

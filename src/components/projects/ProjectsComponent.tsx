@@ -7,7 +7,7 @@ const ProjectsComponent = () => {
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
-    const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false); // State to control Typewriter start
+    const [ ] = useState<boolean>(false); // State to control Typewriter start
     const projectRefs = useRef<HTMLDivElement[]>([]); // To store references to project preview elements
     const headingRef = useRef<HTMLDivElement>(null);
 
@@ -20,11 +20,10 @@ const ProjectsComponent = () => {
 
         const observerCallback: IntersectionObserverCallback = (entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
+                if (!entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add(styles.fadeInVisible);
                     }, 300);
-                    setTypewriterStarted(true); // Trigger Typewriter start
                 } else {
                     entry.target.classList.remove(styles.fadeInVisible);
                 }
@@ -48,11 +47,14 @@ const ProjectsComponent = () => {
 
     const handleReadFullDescription = (index: number) => {
         if (!expandedProjects.includes(index)) {
+            console.log(`Expanding project ${index}`);
             setExpandedProjects([...expandedProjects, index]);
         } else {
+            console.log(`Collapsing project ${index}`);
             setExpandedProjects(expandedProjects.filter((item) => item !== index));
         }
     };
+    
 
     const handleReadFullProject = (index: number) => {
         setSelectedProject(index);
@@ -66,13 +68,14 @@ const ProjectsComponent = () => {
     };
 
     const handleCloseFullView = () => {
+        console.log(`Closing full view`)
         setSelectedProject(null);
         setShowFullPage(false); // Hide full-page project
     };
 
     return (
         <>
-            <div className={`${styles.projects} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
+            <div className={`${styles.projects}`}>
                 <h1 ref={headingRef}>
                     {/* Typewriter effect can be added here if needed */}
                     Projects

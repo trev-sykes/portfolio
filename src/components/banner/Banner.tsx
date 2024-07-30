@@ -53,7 +53,7 @@ const Banner: React.FC = () => {
         if (!canvas) return;
 
         const debris: Debris[] = [];
-        const numDebris = 100;
+        const numDebris = 500;
 
         for (let i = 0; i < numDebris; i++) {
             debris.push({
@@ -104,8 +104,8 @@ const Banner: React.FC = () => {
         star2.collisionTime = currentTime;
 
         // Adjust colors to red for explosion effect
-        star1.color = 'rgba(255, 0, 0, .1)';
-        star2.color = 'rgba(255, 0, 0, .1)';
+        star1.color = 'rgba(255, 255, 255, .9)';
+        star2.color = 'rgba(255, 255, 255, .9)';
 
         // Adjust directions and velocities
         const tempAngle = star1.angle;

@@ -19,11 +19,38 @@ const BlogComponent = () => {
 
     const handleScroll = () => {
         blogRefs.current.forEach((blog) => {
-            const rect = blog.getBoundingClientRect();
+            let rect: DOMRect = {
+                x: 146,
+                y: 50,
+                width: 440,
+                height: 240,
+                top: 50,
+                right: 586,
+                bottom: 290,
+                left: 146,
+                // The following methods can be added as needed:
+                toJSON: () => ({
+                    x: 146,
+                    y: 50,
+                    width: 440,
+                    height: 240,
+                    top: 50,
+                    right: 586,
+                    bottom: 290,
+                    left: 146
+                }),
+                // Optional methods, if you need to mimic them
+
+            };
+            if(blog){ 
+                     rect = blog.getBoundingClientRect();
+                }
+     
             const windowHeight = window.innerHeight;
 
             if (viewportWidth < 600) {
                 // Set fixed opacity for small screens
+                if(blog)
                 blog.style.opacity = '1'; // or any other fixed value
             } else {
                 // Calculate opacity based on the scroll position
@@ -128,8 +155,8 @@ const BlogComponent = () => {
                                 className={`${styles.blogPreview}`}
                                 ref={(el) => (blogRefs.current[index] = el as HTMLDivElement)}
                             >
-                                <h2>{blog.title}</h2>
-                                <p>
+                                <h2 className={styles.title}>{blog.title}</h2>
+                                <p className={styles.description}> 
                                     {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
                                     {blog.description.length > 100 && (
                                         <button

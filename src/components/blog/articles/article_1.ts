@@ -157,6 +157,7 @@ const fullArticle: FullArticle = {
     ]
 };
 const article_1: Blog = {
+    titleHeader: 'Phaser3.js Tutorial',
     ...blogPreview,
     ...fullArticle
 }

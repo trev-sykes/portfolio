@@ -28,7 +28,7 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
     return (
         <div id={`blog-${selectedBlog}`} className={styles.container}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{article.title}</h1>
+                <h1 className={styles.title}>{article.titleHeader}</h1>
                 <button className={styles.closeButton} onClick={onClose}>Close</button>
             </div>
 

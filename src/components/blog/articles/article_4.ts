@@ -109,6 +109,7 @@ const fullArticle: FullArticle = {
 }
 
 const article_4: Blog = {
+    titleHeader:'Crypto News',
     ...blogPreview,
     ...fullArticle
 }

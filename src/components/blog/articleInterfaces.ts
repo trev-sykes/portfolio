@@ -23,6 +23,7 @@ export interface FullArticle{
 }
 
 export interface Blog extends BlogPreview, FullArticle{
+    titleHeader: string
 
 }
 

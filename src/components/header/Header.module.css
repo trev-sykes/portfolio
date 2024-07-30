@@ -94,4 +94,8 @@
         opacity: 1 !important; /* Override fade effect on small screens */
         transition: none !important; /* Disable transition effect on small screens */
     }
+    .nav {
+        max-width: 300px;
+    }
+
 }

@@ -158,6 +158,7 @@ const fullArticle: FullArticle = {
     ]
 };
 const article_2: Blog = {
+    titleHeader: 'CoinGecko API Tutorial',
     ...blogPreview,
     ...fullArticle
 }

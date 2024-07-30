@@ -1,20 +1,34 @@
-import React from 'react';
-import styles from './ProjectsFullPage.module.css'; // Create appropriate CSS module
+import React, { useEffect } from 'react';
+import styles from './ProjectsFullPage.module.css'; // Ensure this file exists and contains correct styles
 import { projects } from './projects';
 
 interface ProjectFullPageProps {
-  selectedProject: number;
+  selectedProject: number | null;
   onClose: () => void;
 }
 
 const ProjectFullPage: React.FC<ProjectFullPageProps> = ({ selectedProject, onClose }) => {
-  const project = projects[selectedProject]; // Assuming projects array is accessible
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      e.stopPropagation();
+    };
 
+    document.addEventListener('wheel', handleScroll, { passive: false });
+    return () => {
+      document.removeEventListener('wheel', handleScroll);
+    };
+  }, []);
+
+  if (selectedProject === null) {
+    return null;
+  }
+
+  const project = projects[selectedProject];
   return (
     <div className={styles.fullPage}>
       <button className={styles.closeButton} onClick={onClose}>Close</button>
       <h1>{project.title}</h1>
-      <img src={project.imageUrl} alt={project.title} className={styles.fullImage} />
+      <div className={styles.image} style={{ backgroundImage: `url(${project.imageUrl})` }}></div>
       <p>{project.description}</p>
       <p>{project.date}</p>
       <div className={styles.topics}>
