@@ -9,21 +9,30 @@ const BlogComponent = () => {
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
     const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
 
-    // Function to handle scroll event and update opacity
+    const handleResize = () => {
+        setViewportWidth(window.innerWidth);
+    };
+
     const handleScroll = () => {
         blogRefs.current.forEach((blog) => {
             const rect = blog.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            if (rect.top < windowHeight && rect.bottom >= 0) {
-                // Calculate opacity based on the position of the element
-                const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
-                blog.style.opacity = visibility.toString();
+            if (viewportWidth < 600) {
+                // Set fixed opacity for small screens
+                blog.style.opacity = '1'; // or any other fixed value
             } else {
-                blog.style.opacity = '0'; // Fully transparent when out of view
+                // Calculate opacity based on the scroll position
+                if (rect.top < windowHeight && rect.bottom >= 0) {
+                    const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
+                    blog.style.opacity = visibility.toString();
+                } else {
+                    blog.style.opacity = '0'; // Fully transparent when out of view
+                }
             }
         });
     };
@@ -51,10 +60,12 @@ const BlogComponent = () => {
         });
 
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize);
         handleScroll(); // Initial call to set opacity based on current scroll position
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
             blogRefs.current.forEach((blog) => {
                 observer.unobserve(blog);
             });
@@ -62,7 +73,7 @@ const BlogComponent = () => {
                 observer.unobserve(headingRef.current);
             }
         };
-    }, []);
+    }, [viewportWidth]);
 
     const handleReadFullDescription = (index: number) => {
         if (!expandedBlogs.includes(index)) {
@@ -91,22 +102,20 @@ const BlogComponent = () => {
         <>
             <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
                 <h1 ref={headingRef}>
-                    {
-                        <Typewriter
-                            onInit={(typewriter) => {
-                                typewriter
-                                    .typeString('Bitcoi') // Typing the incorrect string
-                                    .pauseFor(50) // Pause before starting correction
-                                    .deleteAll() // Delete incorrect string
-                                    .typeString('Blogs') // Correct string
-                                    .start(); // Start the effect
-                            }}
-                            options={{
-                                cursor: '', // Set the cursor to an underscore
-                                deleteSpeed: 7000,
-                            }}
-                        />
-                    }
+                    <Typewriter
+                        onInit={(typewriter) => {
+                            typewriter
+                                .typeString('Bitcoi') // Typing the incorrect string
+                                .pauseFor(50) // Pause before starting correction
+                                .deleteAll() // Delete incorrect string
+                                .typeString('Blogs') // Correct string
+                                .start(); // Start the effect
+                        }}
+                        options={{
+                            cursor: '', // Set the cursor to an underscore
+                            deleteSpeed: 7000,
+                        }}
+                    />
                 </h1>
             </div>
 

@@ -75,14 +75,23 @@
     width: 75px;
     height: 39px;
     border-radius: 3px;
+    padding: 0;
     background: transparent;
     border: none;
     cursor: pointer;
     font-size: 14px;
-    transition: background .333s ease;
+    transition: background .333s ease, border-color .333s ease;
     color: #efeeee;
+    border: 1px solid transparent ;
 }
 .contactButton:hover {
-    background: rgba(100, 100, 100, 0.602);
+    background: rgba(100, 100, 100, 0.6);
+    border-color: rgba(137, 43, 226, 0.5);
     
+}
+@media (max-width: 600px) {
+    .blogs {
+        opacity: 1 !important; /* Override fade effect on small screens */
+        transition: none !important; /* Disable transition effect on small screens */
+    }
 }

@@ -13,7 +13,27 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     const [sending, setSending] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [visible, setVisible] = useState<boolean>(true); // Popup visibility state
+    const [visible, setVisible] = useState<boolean>(false); // Popup visibility state
+    const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
+    useEffect(() => {
+        const img = new Image();
+        img.src = '../../assets/pop-up.jpg'; // Path to your background image
+        img.onload = () => setImageLoaded(true);
+        img.onerror = () => setImageLoaded(true); // Handle errors
+
+        return () => {
+            // Cleanup
+            img.onload = null;
+            img.onerror = null;
+        };
+    }, []);
+
+    useEffect(() => {
+        if (imageLoaded) {
+            setVisible(true); // Show popup once image is loaded
+        }
+    }, [imageLoaded]);
 
     useEffect(() => {
         if (!visible) {

@@ -13,7 +13,7 @@ function App() {
       <Hero />
       <Blog />
       <Project />
-      <Footer copyrightText="Main Hub - 2024" />
+      <Footer copyrightText="Trevor Sykes - 2024" />
     </>
   );
 }

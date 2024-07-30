@@ -28,7 +28,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* cursor: url('../../assets/cursor-awing.png'), default; */
 }
 
 
@@ -49,4 +48,18 @@
     background-image: url('../../assets/ai_mugshot1.jpeg');
     background-position: center;
     background-size: cover;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+    .canvasContainer {
+        max-width: 400px;
+    }
+
+    .mugshotContainer
+
+    .mugshot {
+        width: 100%;
+        height: 100%;
+    }
 }
