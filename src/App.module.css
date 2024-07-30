@@ -1,3 +1,37 @@
 .header {
     color: red;
 }
+
+
+/* Container to manage all pages */
+.container {
+    position: relative;
+  }
+  
+  /* Page styles */
+  .page {
+    position: relative; /* Each page will be positioned relative */
+    padding: 50px;
+    box-sizing: border-box;
+    height: 100vh; /* Full viewport height for each page */
+    overflow: hidden;
+  }
+  
+  /* Parallax effect */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+    z-index: 1; /* Ensure the pseudo-element is behind the content */
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* Adjust parallax effect as you scroll */
+  .page.parallax::before {
+    transform: translateY(-10%); /* Adjust this value to control the effect */
+  }
+  

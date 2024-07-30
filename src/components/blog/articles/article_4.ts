@@ -4,14 +4,14 @@ const blogPreview: BlogPreview = {
     title: 'Current State of Crypto',
     description: `Explore the dynamic landscape of the cryptocurrency world in our latest article. From market trends to regulatory developments, we delve into the key factors shaping the current state of crypto. Gain insights into the latest innovations, challenges, and potential opportunities that are influencing the digital asset space.`,
     date: 'February 9, 2024', // Replace with the actual date
-    topic: ['Cryptocurrency', 'Blockchain', 'Market Trends', 'Solidity'], // Replace with relevant topics
+    topic: ['Cryptocurrency', 'Blockchain','Web Development', 'Market Trends', 'Solidity'], // Replace with relevant topics
     imageUrl: img
 }
 
 const fullArticle: FullArticle = {
     sections: [
         {
-            title: 'Introduction',
+            title: 'Current state of crypto',
             content: `Welcome to our latest article on the current state of cryptocurrency! Cryptocurrency has become a focal point of global finance, technology, and innovation. In this section, we'll provide an overview of the topics we'll cover and why they're important in understanding the dynamic landscape of crypto.
         
             The world of cryptocurrency is constantly evolving, with new trends, developments, and challenges emerging regularly. From market volatility to regulatory changes, understanding the current state of crypto is essential for investors, enthusiasts, and industry professionals alike.

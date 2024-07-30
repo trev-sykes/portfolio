@@ -2,17 +2,17 @@ import img from '../../../assets/article_1.png'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 
 const blogPreview: BlogPreview = {
-    title: 'Build a Platformer Game with Phaser 3',
+    title: 'Develop a Platformer Game with Phaser 3',
     description: 'Dive into the world of game development as we explore the creation of an engaging platformer using Phaser 3. Leveraging the power of JavaScript and HTML canvas, this article will guide you through the process of building your own game, offering insights into game mechanics and utilizing the capabilities of the Phaser 3 library. Join me on this exciting journey, and let\'s bring our creative ideas to life with this awesome game development framework.',
     date: 'January 29, 2024',
-    topic: ['Game Development', 'Phaser 3', 'JavaScript', 'HTML Canvas'],
+    topic: ['Game Development', 'Phaser 3', 'JavaScript', 'HTML Canvas', 'Tutorial'],
     imageUrl: img,
 };
 
 const fullArticle: FullArticle = {
     sections: [
         {
-            title: 'Introduction',
+            title: 'Develop a platformer game with Phaser3',
             content: `Welcome to the world of game development! Get ready to embark on an exhilarating journey into the realm of game creation with Knightmare. In this article, we'll delve into the thrilling adventure of crafting your own platformer game using the powerful Phaser 3 game development framework.
         
             Knightmare is no ordinary platformer. In this action-packed game, you take on the role of a brave knight who must navigate through a treacherous world filled with perilous challenges and cunning adversaries. As a knight, your mission is to dodge and weave through a maze of falling chess pieces while collecting valuable treasures scattered throughout the realm. With every step, you'll test your reflexes, strategy, and courage as you strive to conquer each level and emerge victorious.

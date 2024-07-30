@@ -1,3 +1,28 @@
 .container {
     text-align: center;
 }
+
+.rockImage {
+    position: absolute; /* Position the element absolutely within the container */
+    right: 42%;
+    bottom: -132%;
+    width: 90px; /* Width of the element */
+    height: 90px; /* Height of the element */
+    border-radius: 50%; /* Circular shape */
+    background: url('/src/assets/about.png') no-repeat center center; /* Background image */
+    background-size: cover; /* Cover the area */
+    z-index: -1; /* Place behind other content */
+  }
+  
+  .rockImage::before {
+    content: '';
+    position: absolute; /* Position the overlay absolutely within the .rockImage */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover full width of .rockImage */
+    height: 100%; /* Cover full height of .rockImage */
+    background: rgba(255, 0, 0, 0.0); /* Red overlay with 50% opacity */
+    border-radius: 50%; /* Match border-radius of .rockImage */
+    z-index: 1; /* Ensure it's on top of the image */
+  }
+  

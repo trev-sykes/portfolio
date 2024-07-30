@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import search from '../../assets/search.svg';
 import dark from '../../assets/moon.png';
-import styles from '../../components/header/Header.module.css';
+import Contact from '../contact/Contact'; // Adjust the path as needed
+import styles from './Header.module.css';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
-    const [, setSessionTime] = useState(0);
+    const [contactPopupVisible, setContactPopupVisible] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,14 +21,9 @@ export default function Header() {
         };
     }, []);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setSessionTime(prevTime => prevTime + 1);
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, []);
-
+    const toggleContactPopup = () => {
+        setContactPopupVisible(!contactPopupVisible);
+    };
 
     return (
         <>
@@ -42,17 +38,19 @@ export default function Header() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <button className={styles.contactButton}>Contact</button>
-                        <button>
-                            <img className={styles.icon} src={dark} alt="" />
+                        <button className={styles.contactButton} onClick={toggleContactPopup}>
+                            Contact
                         </button>
                         <button>
-                            <img className={styles.icon} src={search} alt="" />
+                            <img className={styles.icon} src={dark} alt="Toggle theme" />
                         </button>
-                        {/* <span className={styles.sessionTimer}>{formatTime(sessionTime)}</span> */}
+                        <button>
+                            <img className={styles.icon} src={search} alt="Search" />
+                        </button>
                     </div>
                 </nav>
             </header>
+            {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
         </>
     );
 }

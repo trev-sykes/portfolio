@@ -1,0 +1,109 @@
+.projects {
+    text-align: center;
+    margin-top: 55px;
+    padding: 10px;
+    margin-bottom: 95px;
+    /* Additional styles for projects can be added here */
+  }
+  
+  .container {
+    max-width: 1100px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .projectContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .projectPreview {
+    flex: 0 0 calc(50% - 20px); /* Two elements per row */
+    max-width: calc(50% - 20px); /* Two elements per row */
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: 0; /* Ensure that elements are initially invisible */
+    transition: opacity 0.6s ease-out; /* Smooth transition for fading in */
+  }
+  
+  .projectPreview:last-child {
+    margin-right: 0; /* Remove right margin for the last element in each row */
+  }
+  
+  .projectPreview h2 {
+    margin-top: 0;
+  }
+  
+  .projectPreview p {
+    margin-bottom: 10px;
+  }
+  
+  .readMoreButton {
+    background-color: transparent;
+    color: #bdff5a;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .readLessActive {
+    color: #ff0000; /* Change to red */
+  }
+  
+  .readFullProjectButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .date {
+    color: #beccd8;
+    margin-top: 5px;
+  }
+  
+  .topics {
+    margin-bottom: 10px;
+  }
+  
+  .topic {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 5px;
+    border-radius: 9px;
+    user-select: none;
+  }
+  
+  .topic.javascript {
+    background-color: #f0db4f; /* Yellow */
+    color: #000;
+  }
+  
+  /* Add styles for other topics here */
+  
+  .image {
+    width: 100%;
+    max-height: 200px; /* Adjust this as needed */
+    object-fit: cover;
+    scale: .8;
+    margin-bottom: 10px;
+    right: 0;
+  }
+  
+  /* Fade-in related styles */
+  .fadeIn {
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+  }
+  
+  .fadeInVisible {
+    opacity: 1;
+  }
+  

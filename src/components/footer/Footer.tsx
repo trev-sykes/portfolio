@@ -11,6 +11,7 @@ const Footer: React.FC<FooterProps> = ({ copyrightText }) => {
       <div>
         <p>&copy; {copyrightText}</p>
       </div>
+      {/* <div className={styles.rockImage}></div> */}
     </footer>
   );
 };

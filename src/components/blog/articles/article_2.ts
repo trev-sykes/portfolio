@@ -1,17 +1,17 @@
 import img from '../../../assets/article_2.jpeg'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 const blogPreview: BlogPreview = {
-    title: 'Build a Crypto Price Fetching Tool with Favorite Coins Feature',
+    title: 'Develop a Crypto Price Fetching Tool',
     description: `Explore the fascinating world of cryptocurrency by learning how to build a versatile price fetching tool. This article provides a hands-on guide to creating a tool that not only fetches real-time prices for various cryptocurrencies but also allows users to save and track their favorite coins. From API integration to front-end development, follow along as we cover the essential steps to bring this practical tool to life. Whether you're a crypto enthusiast or a developer looking to enhance your skills, this project offers a valuable learning experience.`,
     date: 'February 4, 2024', // Replace with the actual date
-    topic: ['Cryptocurrency', 'Web Development', 'API Integration', 'JavaScript'],
+    topic: ['Cryptocurrency', 'Web Development', 'API Integration', 'JavaScript', 'Tutorial'],
     imageUrl: img, // Replace with the actual image URL
 };
 
 const fullArticle: FullArticle = {
     sections: [
         {
-            title: 'Introduction',
+            title: 'Learn how to make API calls by building a crypto price fetcher',
             content: `Welcome to the exciting world of cryptocurrency! Cryptocurrencies have revolutionized the way we perceive and interact with financial systems, offering decentralization, security, and transparency. In this article, we embark on a journey to build a versatile price fetching tool that not only provides real-time prices for various cryptocurrencies but also empowers users to save and track their favorite coins.
         
             Cryptocurrency Price Tracking:

@@ -2,6 +2,7 @@ import Github from './components/github/GithubLink';
 import Header from './components/header/Header';
 import Hero from './containers/hero/Hero';
 import Blog from './containers/blog/Blog';
+import Project from './containers/project/Project';
 import Footer from './components/footer/Footer';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Hero />
       <Blog />
+      <Project />
       <Footer copyrightText="Main Hub - 2024" />
     </>
   );

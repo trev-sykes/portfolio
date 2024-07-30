@@ -2,16 +2,16 @@ import img from '../../../assets/article_3.jpeg'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces';
 
 const blogPreview: BlogPreview = {
-    title: 'Create A Lottery Casino dapp',
+    title: 'Develop A Lottery Casino dapp',
     description: `In this comprehensive guide, we will delve into the exciting world of decentralized applications (dapps) by exploring the creation of a Lottery Casino dapp using smart contracts. The article will cover the entire development process, from conceptualization to implementation, offering step-by-step instructions and insights into the key components involved. Whether you're a seasoned blockchain developer or a curious enthusiast, join us on this journey to understand the intricacies of smart contracts and witness the creation of a fully functional Lottery Casino dapp.`,
     date: 'February 7, 2024', // You can replace this with the actual date
-    topic: ['Blockchain', 'Smart Contracts', 'Decentralized Applications', 'Solidity'],
+    topic: ['Blockchain', 'Smart Contracts', 'Decentralized Applications', 'Solidity', 'Tutorial'],
     imageUrl: img
 };
 const fullArticle: FullArticle = {
     sections: [
         {
-            title: 'Introduction to Decentralized Applications (dapps)',
+            title: 'Develop a Decentralized Dice Game',
             content: `Welcome to the fascinating realm of decentralized applications (dapps), where innovation meets decentralization to revolutionize various industries. Decentralized applications, often referred to as dapps, are a key component of the blockchain ecosystem, offering unique advantages over traditional centralized applications.
 
             At their core, dapps leverage blockchain technology to operate autonomously without the need for intermediaries or centralized control. This fundamental shift in architecture introduces unparalleled levels of transparency, security, and censorship resistance, paving the way for a more inclusive and equitable digital economy.
