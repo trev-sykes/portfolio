@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
 import { magazine } from './articles';
 import styles from './BlogComponent.module.css';
@@ -7,9 +7,9 @@ import BlogFullPage from './BlogFullPage';
 const BlogComponent = () => {
     const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
-    const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
-    const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+    const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
+    const [showAllBlogs, setShowAllBlogs] = useState(false);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,6 @@ const BlogComponent = () => {
                 right: 586,
                 bottom: 290,
                 left: 146,
-                // The following methods can be added as needed:
                 toJSON: () => ({
                     x: 146,
                     y: 50,
@@ -39,26 +38,22 @@ const BlogComponent = () => {
                     bottom: 290,
                     left: 146
                 }),
-                // Optional methods, if you need to mimic them
-
             };
             if(blog){ 
-                     rect = blog.getBoundingClientRect();
-                }
+                rect = blog.getBoundingClientRect();
+            }
      
             const windowHeight = window.innerHeight;
 
             if (viewportWidth < 600) {
-                // Set fixed opacity for small screens
                 if(blog)
-                blog.style.opacity = '1'; // or any other fixed value
+                    blog.style.opacity = '1';
             } else {
-                // Calculate opacity based on the scroll position
                 if (rect.top < windowHeight && rect.bottom >= 0) {
                     const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
                     blog.style.opacity = visibility.toString();
                 } else {
-                    blog.style.opacity = '0'; // Fully transparent when out of view
+                    blog.style.opacity = '0';
                 }
             }
         });
@@ -88,7 +83,7 @@ const BlogComponent = () => {
 
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
-        handleScroll(); // Initial call to set opacity based on current scroll position
+        handleScroll(); 
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -102,12 +97,12 @@ const BlogComponent = () => {
         };
     }, [viewportWidth]);
 
-    const handleReadFullDescription = (index: number) => {
-        if (!expandedBlogs.includes(index)) {
-            setExpandedBlogs([...expandedBlogs, index]);
-        } else {
-            setExpandedBlogs(expandedBlogs.filter((item) => item !== index));
-        }
+    const handleViewAllBlogs = () => {
+        setShowAllBlogs(true);
+    };
+
+    const handleHideBlogs = () => {
+        setShowAllBlogs(false);
     };
 
     const handleReadFullArticle = (index: number) => {
@@ -127,29 +122,28 @@ const BlogComponent = () => {
 
     return (
         <>
-            <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
+            <div className={`${styles.blogs}`}>
                 <h1 ref={headingRef}>
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
-                                .typeString('Bitcoi') // Typing the incorrect string
-                                .pauseFor(50) // Pause before starting correction
-                                .deleteAll() // Delete incorrect string
-                                .typeString('Blogs') // Correct string
-                                .start(); // Start the effect
+                                .typeString('Bitcoi') 
+                                .pauseFor(50)
+                                .deleteAll()
+                                .typeString('Blogs')
+                                .start();
                         }}
                         options={{
-                            cursor: '', // Set the cursor to an underscore
+                            cursor: '',
                             deleteSpeed: 7000,
                         }}
                     />
                 </h1>
             </div>
-
             <div className={styles.container}>
-                {!showFullPage && (
-                    <div className={styles.blogContainer}>
-                        {magazine.slice().reverse().map((blog, index) => (
+                <div className={styles.blogContainer}>
+                    {magazine.slice().reverse().map((blog, index) => (
+                        (showAllBlogs || index === 0) && (
                             <div
                                 key={index}
                                 className={`${styles.blogPreview}`}
@@ -157,13 +151,13 @@ const BlogComponent = () => {
                             >
                                 <h2 className={styles.title}>{blog.title}</h2>
                                 <p className={styles.description}> 
-                                    {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
-                                    {blog.description.length > 100 && (
+                                    {blog.description.substring(0, 100)}
+                                    {blog.description.length > 100 && !showAllBlogs && (
                                         <button
-                                            className={`${styles.readMoreButton} ${expandedBlogs.includes(index) ? styles.readLessActive : ''}`}
-                                            onClick={() => handleReadFullDescription(index)}
+                                            className={`${styles.readMoreButton}`}
+                                            onClick={() => handleReadFullArticle(index)}
                                         >
-                                            {expandedBlogs.includes(index) ? '...Read less' : '...Read more'}
+                                            Read more
                                         </button>
                                     )}
                                 </p>
@@ -232,13 +226,32 @@ const BlogComponent = () => {
                                     Read full article
                                 </button>
                             </div>
-                        ))}
-                    </div>
-                )}
+                        )
+                    ))}
+                </div>
+
                 {selectedBlog !== null && showFullPage && (
                     <BlogFullPage selectedBlog={selectedBlog} onClose={handleCloseFullView} />
                 )}
             </div>
+            <div className={styles.buttonContainer}>
+            {!showAllBlogs && (
+                    <button
+                        className={styles.viewBlogs}
+                        onClick={handleViewAllBlogs}
+                    >
+                        View All Blogs
+                    </button>
+                )}
+                {showAllBlogs && (
+                    <button
+                        className={styles.hideBlogs}
+                        onClick={handleHideBlogs}
+                    >
+                        Hide All Blogs
+                    </button>
+                )}
+                </div>
         </>
     );
 };
