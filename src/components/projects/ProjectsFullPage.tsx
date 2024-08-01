@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './ProjectsFullPage.module.css'; // Ensure this file exists and contains correct styles
-import { projects } from './projects';
+import { projects } from './project/index';
 
 interface ProjectFullPageProps {
   selectedProject: number | null;
@@ -26,16 +26,18 @@ const ProjectFullPage: React.FC<ProjectFullPageProps> = ({ selectedProject, onCl
   const project = projects[selectedProject];
   return (
     <div className={styles.fullPage}>
-      <button className={styles.closeButton} onClick={onClose}>Close</button>
+      <div className={styles.header}>
       <h1>{project.title}</h1>
+      <button className={styles.closeButton} onClick={onClose}>X</button>
+      </div>
+      <p className={styles.date}>{project.date}</p>
       <div className={styles.image} style={{ backgroundImage: `url(${project.imageUrl})` }}></div>
-      <p>{project.description}</p>
-      <p>{project.date}</p>
-      <div className={styles.topics}>
-        {project.topic.map((topic, index) => (
+      <p>{project.summary}</p>
+      {/* <div className={styles.topics}>
+        {project.languages.map((topic, index) => (
           <span key={index} className={styles.topic}>{topic}</span>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

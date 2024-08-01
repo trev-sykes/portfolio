@@ -109,7 +109,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                 <button className={styles.close} onClick={() => setVisible(false)}>×</button>
                 {!success ? (
                     <>
-                        <h2 className={styles.header}>Lessen the Space - Let's Connect</h2>
+                        <h2 className={styles.header}>Let's Connect!</h2>
                         <form onSubmit={handleSubmit}>
                             <input
                                 type="text"

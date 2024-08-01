@@ -1,78 +1,29 @@
-.container {
-    max-width: 100%;
+.fullPage {
+    display: block;
+    width: 50%;
+    height: 50vh;
     margin: 0 auto;
-    padding: 0 15px 10px 0;
-    background-image: 
-    radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%), /* Gradient overlay */
-    url(../../assets/blog.jpg); /* Background image */
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(255, 255, 255);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Add scrolling behavior */
-    max-height: 90vh; /* Limit the height and enable scrolling when necessary */
-}
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    padding: 15px;
 
+
+}
 .header {
-    background: rgba(50, 50, 50, 0.2);
-    position: sticky;
-    top: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: rgba(43, 53, 58, 0.2);
-    z-index: 1000; /* Ensure the header stays above other content */
-    backdrop-filter: blur(10px);
-}
-
-
-.title {
-    font-size: 24px;
-    margin: 0;
+    margin-bottom: 15px;
 }
 
 .closeButton {
-    background-color: #f00;
-    position: absolute;
-    right: 0;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.closeButton:hover {
-    background-color: #d00;
-}
-.content {
-    padding: 25px;
-    text-align: center;
-}
-.date {
-    color: #beccd8;
-    margin-bottom: 20px;
-    margin-top: 15px;
-}
-
-.tableOfContents {
-    margin-bottom: 20px;
-}
-
-.sectionTitle {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 10px;
-}
-
-.sectionContent {
-    line-height: 1.6;
-    text-align: left;
-    font-size: 1.2rem;
+    align-items: center;
+    padding: 0;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: red;
 }
 .image {
     width: 100%;
@@ -80,114 +31,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-}
-
-@media (max-width: 600px) {
-    .container {
-        max-width: 300px;
-    }
-    .header {
-        justify-content: space-between;
-    }
-    .title {
-        font-size: .95rem;
-    }
-
-}.container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 15px 10px 0;
-    background-image: 
-    radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%), /* Gradient overlay */
-    url(../../assets/blog.jpg); /* Background image */
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(255, 255, 255);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Add scrolling behavior */
-    max-height: 90vh; /* Limit the height and enable scrolling when necessary */
-}
-
-.header {
-    background: rgba(50, 50, 50, 0.2);
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: rgba(43, 53, 58, 0.2);
-    z-index: 1000; /* Ensure the header stays above other content */
-    backdrop-filter: blur(10px);
-}
-
-
-.title {
-    font-size: 24px;
-    margin: 0;
-}
-
-.closeButton {
-    background-color: #f00;
-    position: absolute;
-    right: 0;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.closeButton:hover {
-    background-color: #d00;
-}
-.content {
-    padding: 25px;
-    text-align: center;
+    border: 3px solid rgba(255, 255, 255, 0.456);
+    margin-bottom: 5px;
 }
 .date {
-    color: #beccd8;
-    margin-bottom: 20px;
-    margin-top: 15px;
-}
-
-.tableOfContents {
-    margin-bottom: 20px;
-}
-
-.sectionTitle {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 10px;
-}
-
-.sectionContent {
-    line-height: 1.6;
-    text-align: left;
-    font-size: 1.2rem;
-}
-.image {
-    width: 100%;
-    height: 200px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-}
-
-@media (max-width: 600px) {
-    .container {
-        max-width: 300px;
-    }
-    .header {
-        justify-content: space-between;
-    }
-    .title {
-        font-size: .95rem;
-    }
-
+    margin-bottom: 15px;
+    text-align:center;
 }

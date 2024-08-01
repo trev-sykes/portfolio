@@ -39,9 +39,12 @@
   .projectPreview h2 {
     margin-top: 0;
   }
+  .projectTitle {
+    margin-bottom: 10px;
+  }
   
   .projectPreview p {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .readMoreButton {
@@ -66,25 +69,68 @@
   
   .date {
     color: #beccd8;
-    margin-top: 5px;
   }
   
   .topics {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .topic {
     display: inline-block;
     margin-right: 5px;
     padding: 2px 5px;
-    border-radius: 9px;
+    border-radius: 50px 25px 50px 25px;
     user-select: none;
+    font-weight: 700;
+    margin-bottom: 5px;
   }
-  
+  .languageHeader {
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
   .topic.javascript {
     background-color: #f0db4f; /* Yellow */
     color: #000;
   }
+  .topic.html {
+    background-color: #c16f04; /* Yellow */
+    color: #ffffff;
+  }
+  .topic.css {
+    background-color: rgb(39, 89, 234); /* Yellow */
+    color: #c1c1c1;
+  }
+  .topic.solidity{
+    background-color: rgb(42, 37, 124); /* Yellow */
+    color: #e6e6e6;
+  }
+  .languages {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+  }
+  .language {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 5px;
+    border-radius: 25px 50px 25px 50px;
+    user-select: none;
+    font-weight: 700;
+
+  }
+.language.react {
+  background: rgb(87, 197, 221);
+  color: #474747;
+
+}
+.language.vite {
+  background: purple;
+  color: yellow;
+}
+  
   
   /* Add styles for other topics here */
   

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { projects } from './projects'; // Import your projects data
+import { projects } from './project';
 import styles from './ProjectsComponent.module.css';
 import ProjectFullPage from './ProjectsFullPage';
 
@@ -92,7 +92,7 @@ const ProjectsComponent = () => {
                                 ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
                             >
                                 <img src={project.imageUrl} alt={project.title} className={styles.image} />
-                                <h2>{project.title}</h2>
+                                <h2 className={styles.projectTitle}>{project.title}</h2>
                                 <p>
                                     {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
                                     {project.description.length > 100 && (
@@ -105,17 +105,49 @@ const ProjectsComponent = () => {
                                     )}
                                 </p>
                                 <p className={styles.date}>{project.date}</p>
+                                <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
                                 <div className={styles.topics}>
-                                    {project.topic.map((topic, topicIndex) => {
+                                    {project.languages.map((language, topicIndex) => {
                                         let topicClass = '';
-                                        switch (topic) {
-                                            // Add cases for your topics
+                                        switch (language) {
+                                            case 'JavaScript':
+                                                topicClass = styles.javascript;
+                                                break;
+                                            case 'HTML':
+                                                topicClass = styles.html;
+                                                break;
+                                            case 'CSS':
+                                                topicClass = styles.css;
+                                                break;
+                                            case 'Solidity':
+                                                topicClass = styles.solidity;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }
                                         return (
                                             <span key={topicIndex} className={`${styles.topic} ${topicClass}`}>
-                                                {topic}
+                                                {language}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                                <div className={styles.languages}>
+                                {project.frameworks.map((language, topicIndex) => {
+                                        let languageClass = '';
+                                        switch (language) {
+                                            case 'React':
+                                                languageClass = styles.react;
+                                                break;
+                                            case 'Vite':
+                                                languageClass = styles.vite;
+                                                break;
+                                            default:
+                                                languageClass = '';
+                                        }
+                                        return (
+                                            <span key={topicIndex} className={`${styles.language} ${languageClass}`}>
+                                                {language}
                                             </span>
                                         );
                                     })}

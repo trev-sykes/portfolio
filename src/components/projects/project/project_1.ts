@@ -1,6 +1,6 @@
-import img from '../../assets/crypto-scope.png'
-import img1 from '../../assets/the-candle-shop copy.png'
-import img2 from '../../assets/lucky-6.png'
+import img from '../../../assets/crypto-scope.png'
+import img1 from '../../../assets/landing-template.png'
+import img2 from '../../../assets/lucky-6.png'
 
 export const projects = [
     {
