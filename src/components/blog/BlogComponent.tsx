@@ -137,7 +137,7 @@ const BlogComponent = () => {
         setShowFullPage(false);
         document.body.style.overflow = ''; // Restore body overflow
     };
-
+    animatingBlog;
     return (
         <>
             <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
