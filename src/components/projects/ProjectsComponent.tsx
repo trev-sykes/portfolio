@@ -56,16 +56,16 @@ const ProjectsComponent = () => {
     };
     
 
-    const handleReadFullProject = (index: number) => {
-        setSelectedProject(index);
-        setShowFullPage(true); // Show full-page project when "Read full project" is clicked
+    // const handleReadFullProject = (index: number) => {
+    //     setSelectedProject(index);
+    //     setShowFullPage(true); // Show full-page project when "Read full project" is clicked
 
-        // Scroll to the top of the full project post
-        const fullProjectPost = document.getElementById(`project-${index}`);
-        if (fullProjectPost) {
-            fullProjectPost.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+    //     // Scroll to the top of the full project post
+    //     const fullProjectPost = document.getElementById(`project-${index}`);
+    //     if (fullProjectPost) {
+    //         fullProjectPost.scrollIntoView({ behavior: "smooth" });
+    //     }
+    // };
 
     const handleCloseFullView = () => {
         console.log(`Closing full view`)
@@ -152,12 +152,18 @@ const ProjectsComponent = () => {
                                         );
                                     })}
                                 </div>
-                                <button
+                                {/* <button
                                     className={styles.readFullProjectButton}
                                     onClick={() => handleReadFullProject(projects.length - index - 1)}
                                 >
                                     Read full project
-                                </button>
+                                </button> */}
+                                <a 
+                                href={project.url}
+                                className={styles.readFullProjectLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Visit Site</a>
                             </div>
                         ))}
                     </div>

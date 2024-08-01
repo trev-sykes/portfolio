@@ -135,7 +135,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                             <textarea
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Please be nice..."
+                                placeholder="Ideas, Inquiries, etc."
                                 rows={4}
                                 required
                             />

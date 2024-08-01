@@ -7,7 +7,8 @@ const cryptoScopePreview : ProjectPreview =     {
     date: 'August 23, 2023',
     languages: ["JavaScript", 'HTML','CSS'],
     frameworks: [],
-    imageUrl: img
+    imageUrl: img,
+    url: 'https://trevarious.github.io/Crypto-Scope/'
   }
 
 const coinGecko : Dependency = {

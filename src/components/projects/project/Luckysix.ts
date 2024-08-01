@@ -7,7 +7,8 @@ const luckySixPreview : ProjectPreview =     {
     date: 'January 27, 2024',
     languages: ["JavaScript","Solidity", 'HTML','CSS'],
     frameworks:["React", "Vite"],
-    imageUrl: img
+    imageUrl: img,
+    url: 'https://meta-roll.vercel.app/'
   }
 
   const chainlinkVRF: Dependency = {

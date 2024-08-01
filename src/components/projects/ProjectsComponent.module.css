@@ -93,6 +93,7 @@
   .topic.javascript {
     background-color: #f0db4f; /* Yellow */
     color: #000;
+    letter-spacing: -1px;
   }
   .topic.html {
     background-color: #c16f04; /* Yellow */
@@ -179,3 +180,7 @@
     }
   }
   
+  .readFullProjectLink {
+      text-decoration: none;
+      color: rgb(34, 255, 0);
+  }

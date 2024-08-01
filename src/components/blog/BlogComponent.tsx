@@ -7,18 +7,27 @@ import BlogFullPage from './BlogFullPage';
 const BlogComponent = () => {
     const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
+    const [animatingBlog, setAnimatingBlog] = useState<number | null>(null);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+    const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
     const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
     const [showAllBlogs, setShowAllBlogs] = useState(false);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
+
+    const handleReadFullDescription = (index: number) => {
+        if (!expandedBlogs.includes(index)) {
+            setExpandedBlogs([...expandedBlogs, index]);
+        } else {
+            setExpandedBlogs(expandedBlogs.filter((item) => item !== index));
+        }
+    };
 
     const handleResize = () => {
         setViewportWidth(window.innerWidth);
     };
 
     const handleScroll = () => {
-        typewriterStarted;
         blogRefs.current.forEach((blog) => {
             let rect: DOMRect = {
                 x: 146,
@@ -40,21 +49,26 @@ const BlogComponent = () => {
                     left: 146
                 }),
             };
-            if(blog){ 
+            if (blog) { 
                 rect = blog.getBoundingClientRect();
             }
      
             const windowHeight = window.innerHeight;
 
             if (viewportWidth < 600) {
-                if(blog)
+                if (blog) {
                     blog.style.opacity = '1';
+                }
             } else {
                 if (rect.top < windowHeight && rect.bottom >= 0) {
                     const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
-                    blog.style.opacity = visibility.toString();
+                    if (blog) {
+                        blog.style.opacity = visibility.toString();
+                    }
                 } else {
-                    blog.style.opacity = '0';
+                    if (blog) {
+                        blog.style.opacity = '0';
+                    }
                 }
             }
         });
@@ -79,7 +93,9 @@ const BlogComponent = () => {
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         blogRefs.current.forEach((blog) => {
-            observer.observe(blog);
+            if (blog) {
+                observer.observe(blog);
+            }
         });
 
         window.addEventListener('scroll', handleScroll);
@@ -90,7 +106,9 @@ const BlogComponent = () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
             blogRefs.current.forEach((blog) => {
-                observer.unobserve(blog);
+                if (blog) {
+                    observer.unobserve(blog);
+                }
             });
             if (headingRef.current) {
                 observer.unobserve(headingRef.current);
@@ -107,23 +125,21 @@ const BlogComponent = () => {
     };
 
     const handleReadFullArticle = (index: number) => {
+        setAnimatingBlog(index); // Set the blog to animate
         setSelectedBlog(index);
         setShowFullPage(true);
-
-        const fullBlogPost = document.getElementById(`blog-${index}`);
-        if (fullBlogPost) {
-            fullBlogPost.scrollIntoView({ behavior: "smooth" });
-        }
     };
 
     const handleCloseFullView = () => {
         setSelectedBlog(null);
+        setAnimatingBlog(null); // Reset the animation state
         setShowFullPage(false);
+        document.body.style.overflow = ''; // Restore body overflow
     };
 
     return (
         <>
-            <div className={`${styles.blogs}`}>
+            <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
                 <h1 ref={headingRef}>
                     <Typewriter
                         onInit={(typewriter) => {
@@ -144,21 +160,21 @@ const BlogComponent = () => {
             <div className={styles.container}>
                 <div className={styles.blogContainer}>
                     {magazine.slice().reverse().map((blog, index) => (
-                        (showAllBlogs || index === 0) && (
+                        (showAllBlogs || index < 2) && (
                             <div
                                 key={index}
-                                className={`${styles.blogPreview}`}
+                                className={`${styles.blogPreview} ${styles.open}`}
                                 ref={(el) => (blogRefs.current[index] = el as HTMLDivElement)}
                             >
                                 <h2 className={styles.title}>{blog.title}</h2>
                                 <p className={styles.description}> 
-                                    {blog.description.substring(0, 100)}
-                                    {blog.description.length > 100 && !showAllBlogs && (
+                                    {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
+                                    {blog.description.length > 100 && (
                                         <button
                                             className={`${styles.readMoreButton}`}
-                                            onClick={() => handleReadFullArticle(index)}
+                                            onClick={() => handleReadFullDescription(index)}
                                         >
-                                            Read more
+                                            {expandedBlogs.includes(index) ? 'Read less' : 'Read more'}
                                         </button>
                                     )}
                                 </p>
@@ -230,13 +246,13 @@ const BlogComponent = () => {
                         )
                     ))}
                 </div>
-
                 {selectedBlog !== null && showFullPage && (
                     <BlogFullPage selectedBlog={selectedBlog} onClose={handleCloseFullView} />
                 )}
+
             </div>
             <div className={styles.buttonContainer}>
-            {!showAllBlogs && (
+                {!showAllBlogs && (
                     <button
                         className={styles.viewBlogs}
                         onClick={handleViewAllBlogs}
@@ -252,7 +268,7 @@ const BlogComponent = () => {
                         Hide All Blogs
                     </button>
                 )}
-                </div>
+            </div>
         </>
     );
 };

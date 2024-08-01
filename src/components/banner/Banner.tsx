@@ -59,10 +59,8 @@ const Banner: React.FC = () => {
         const debris: Debris[] = [];
         if(viewportWidth < 600){
             numDebris = 100;
-            console.log('one hundred debris')
         } else if(viewportWidth >= 600) {
             numDebris = 500;
-            console.log('Five hundred debris')
         }
 
         for (let i = 0; i < numDebris; i++) {
@@ -82,10 +80,8 @@ const Banner: React.FC = () => {
         let shootingStarProbability = 0.01;
         if(viewportWidth < 600){
             shootingStarProbability = 0.005;
-            console.log('0.005 prob...');
         } else if (viewportWidth >= 600){
             shootingStarProbability = 0.01;
-            console.log('0.01 prob...');
         }
         const canvas = canvasRef.current;
         if (!canvas) return null;

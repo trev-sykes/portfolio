@@ -7,7 +7,8 @@ const landingTemplatePreview : ProjectPreview =     {
     date: 'April 23, 2023',
     languages: ["JavaScript", 'HTML','CSS'],
     frameworks: [],
-    imageUrl: img
+    imageUrl: img,
+    url: 'https://trevarious.github.io/Boilerplate-Landing-Page/'
   }
 
 const boxicons : Dependency = {

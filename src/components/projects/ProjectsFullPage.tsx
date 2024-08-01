@@ -33,11 +33,6 @@ const ProjectFullPage: React.FC<ProjectFullPageProps> = ({ selectedProject, onCl
       <p className={styles.date}>{project.date}</p>
       <div className={styles.image} style={{ backgroundImage: `url(${project.imageUrl})` }}></div>
       <p>{project.summary}</p>
-      {/* <div className={styles.topics}>
-        {project.languages.map((topic, index) => (
-          <span key={index} className={styles.topic}>{topic}</span>
-        ))}
-      </div> */}
     </div>
   );
 };

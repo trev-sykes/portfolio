@@ -193,7 +193,7 @@
 
 .buttonContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .viewBlogs{
@@ -211,4 +211,18 @@
   padding: 5px 10px;
   cursor: pointer;
   margin: 0 auto;
+}
+
+.fullBlog {
+  position: fixed;
+  top: -100vh; /* Start off the screen */
+  left: 0;
+  width: 100%;
+  transition: top 1s ease-out; /* Smooth transition */
+  z-index: 9999; /* Make sure it’s on top */
+  background: white; /* Adjust background as needed */
+}
+
+.fullBlog.open {
+  top: 0; /* Move to the top of the screen */
 }

@@ -1,5 +1,10 @@
 .container {
-    max-width: 100%;
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    max-width: 95%;
     margin: 0 auto;
     padding: 0 15px 10px 0;
     background-image: 
@@ -11,7 +16,9 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto; /* Add scrolling behavior */
-    max-height: 90vh; /* Limit the height and enable scrolling when necessary */
+    max-height: 95vh; /* Limit the height and enable scrolling when necessary */
+    z-index: 100000;
+    border: 5px solid purple;
 }
 
 .header {
