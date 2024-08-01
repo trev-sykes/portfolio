@@ -18,6 +18,7 @@ const BlogComponent = () => {
     };
 
     const handleScroll = () => {
+        typewriterStarted;
         blogRefs.current.forEach((blog) => {
             let rect: DOMRect = {
                 x: 146,
