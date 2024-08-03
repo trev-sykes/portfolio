@@ -4,13 +4,13 @@
     padding: 10px;
     margin-bottom: 95px;
     opacity: 1;
-    /* Additional styles for projects can be added here */
   }
   
   .container {
     max-width: 1100px;
     height: auto;
     margin: 0 auto;
+    cursor: default;
   }
   
   .projectContainer {
@@ -75,9 +75,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
   
   .topic {
+    text-align: center;
     display: inline-block;
     margin-right: 5px;
     padding: 2px 5px;
@@ -93,7 +95,7 @@
   .topic.javascript {
     background-color: #f0db4f; /* Yellow */
     color: #000;
-    letter-spacing: -1px;
+    width: 100px;
   }
   .topic.html {
     background-color: #c16f04; /* Yellow */

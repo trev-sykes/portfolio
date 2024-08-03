@@ -72,14 +72,15 @@
     overflow-y: hidden;
 }
 .contactButton {
-    width: 75px;
+    width: auto;
     height: 39px;
     border-radius: 3px;
-    padding: 0;
+    padding: 0 5px 0 5px;
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 1rem;
+    font-weight: 400;
     transition: background .333s ease, border-color .333s ease;
     color: #efeeee;
     border: 1px solid transparent ;

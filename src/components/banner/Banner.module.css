@@ -19,18 +19,6 @@
     overflow: hidden;
 }
 
-.canvas {
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), /* Gradient overlay */
-        url(../../assets/banner.jpeg); /* Background image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
 .mugshotContainer {
     width: 150px;
     height: 150px;
@@ -38,17 +26,8 @@
     position: absolute;
     margin-top: 250px;
     opacity: 1;
-    cursor: url('../../assets/glasses-banner.png'), default;
 }
 
-.mugshot {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-image: url('../../assets/ai_mugshot1.jpeg');
-    background-position: center;
-    background-size: cover;
-}
 
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {

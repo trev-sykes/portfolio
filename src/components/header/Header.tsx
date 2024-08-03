@@ -41,12 +41,12 @@ export default function Header() {
                         <button className={styles.contactButton} onClick={toggleContactPopup}>
                             Contact
                         </button>
-                        <button className={styles.iconButton}>
+                        {/* <button className={styles.iconButton}>
                             <img className={styles.icon} src={dark} alt="Toggle theme" />
                         </button>
                         <button className={styles.iconButton}>
                             <img className={styles.icon} src={search} alt="Search" />
-                        </button>
+                        </button> */}
                     </div>
                 </nav>
             </header>

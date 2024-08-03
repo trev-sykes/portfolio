@@ -1,5 +1,19 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import canvasImage from '../../assets/banner.jpeg';
 import styles from './Banner.module.css';
+interface ImageStyles {
+    width: string;
+    height: string;
+    backgroundImage: string;
+    backgroundSize: string;
+    backgroundPosition: string;
+    backgroundRepeat: string;
+}
+interface CanvasStyles extends ImageStyles {
+}
+interface MugshotStyles extends ImageStyles {
+    borderRadius: string;
+}
 
 interface Debris {
     x: number;
@@ -286,15 +300,31 @@ const Banner: React.FC = () => {
             cancelAnimationFrame(animationRef.current);
         };
     }, [initializeCanvas, createDebris, animateDebris, handleResize, handleReSize]);
-
+    const canvasStyles: CanvasStyles = {
+        width: '100%',
+        height: '100%',
+        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${canvasImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+    }
+    const mugshotStyles: MugshotStyles= {
+        width: '100%',
+        height: '100%',
+        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${canvasImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        borderRadius: '50%'
+    }
     return (
         <div className={styles.container}>
             <div className={styles.bannerContainer}>
                 <div className={styles.canvasContainer}>
-                    <canvas className={styles.canvas} ref={canvasRef}></canvas>
+                    <canvas ref={canvasRef} style={canvasStyles}></canvas>
                 </div>
                 <div className={styles.mugshotContainer}>
-                    <div className={styles.mugshot} />
+                    <div style={mugshotStyles} />
                 </div>
             </div>
         </div>

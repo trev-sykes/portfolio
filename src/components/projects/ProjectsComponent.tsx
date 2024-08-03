@@ -1,49 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { projects } from './project';
 import styles from './ProjectsComponent.module.css';
-import ProjectFullPage from './ProjectsFullPage';
 
 const ProjectsComponent = () => {
-    const [selectedProject, setSelectedProject] = useState<number | null>(null);
-    const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
-    const [ ] = useState<boolean>(false); // State to control Typewriter start
-    const projectRefs = useRef<HTMLDivElement[]>([]); // To store references to project preview elements
+    const [ ] = useState<boolean>(false); 
+    const projectRefs = useRef<HTMLDivElement[]>([]); 
     const headingRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1, // Trigger when 10% of the element is visible
-        };
-
-        const observerCallback: IntersectionObserverCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add(styles.fadeInVisible);
-                    }, 300);
-                } else {
-                    entry.target.classList.remove(styles.fadeInVisible);
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        projectRefs.current.forEach((project) => {
-            observer.observe(project);
-        });
-
-        return () => {
-            projectRefs.current.forEach((project) => {
-                observer.unobserve(project);
-            });
-            if (headingRef.current) {
-                observer.unobserve(headingRef.current);
-            }
-        };
-    }, []);
 
     const handleReadFullDescription = (index: number) => {
         if (!expandedProjects.includes(index)) {
@@ -55,24 +19,6 @@ const ProjectsComponent = () => {
         }
     };
     
-
-    // const handleReadFullProject = (index: number) => {
-    //     setSelectedProject(index);
-    //     setShowFullPage(true); // Show full-page project when "Read full project" is clicked
-
-    //     // Scroll to the top of the full project post
-    //     const fullProjectPost = document.getElementById(`project-${index}`);
-    //     if (fullProjectPost) {
-    //         fullProjectPost.scrollIntoView({ behavior: "smooth" });
-    //     }
-    // };
-
-    const handleCloseFullView = () => {
-        console.log(`Closing full view`)
-        setSelectedProject(null);
-        setShowFullPage(false); // Hide full-page project
-    };
-
     return (
         <>
             <div className={`${styles.projects}`}>
@@ -83,7 +29,7 @@ const ProjectsComponent = () => {
             </div>
 
             <div className={styles.container}>
-                {!showFullPage && (
+                {(
                     <div className={styles.projectContainer}>
                         {projects.slice().reverse().map((project, index) => (
                             <div
@@ -152,12 +98,6 @@ const ProjectsComponent = () => {
                                         );
                                     })}
                                 </div>
-                                {/* <button
-                                    className={styles.readFullProjectButton}
-                                    onClick={() => handleReadFullProject(projects.length - index - 1)}
-                                >
-                                    Read full project
-                                </button> */}
                                 <a 
                                 href={project.url}
                                 className={styles.readFullProjectLink}
@@ -167,9 +107,6 @@ const ProjectsComponent = () => {
                             </div>
                         ))}
                     </div>
-                )}
-                {selectedProject !== null && showFullPage && (
-                    <ProjectFullPage selectedProject={selectedProject} onClose={handleCloseFullView} />
                 )}
             </div>
         </>

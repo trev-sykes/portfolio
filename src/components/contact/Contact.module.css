@@ -73,8 +73,8 @@ textarea {
 
 input:focus,
 textarea:focus {
-    outline: 2px solid #a722ff6e;
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 2px 0 0 #a722ff; /* Adjust the values as needed */
 }
 
 button {

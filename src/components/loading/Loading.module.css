@@ -1,0 +1,39 @@
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+.loading::before {
+    content: '↻';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: transparent;
+    transform: rotate(360deg);
+    transition: transform 2s ease;
+    animation: spin 2s infinite ease forwards;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(270deg);
+    } 
+    75% {
+        transform: rotate(360deg);
+    }
+}
