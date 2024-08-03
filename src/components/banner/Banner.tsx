@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
+import mugshotImage from '../../assets/ai_mugshot1.jpeg';
 import styles from './Banner.module.css';
 interface ImageStyles {
     width: string;
@@ -311,7 +312,7 @@ const Banner: React.FC = () => {
     const mugshotStyles: MugshotStyles= {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${canvasImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${mugshotImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

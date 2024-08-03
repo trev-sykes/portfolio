@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import search from '../../assets/search.svg';
-import dark from '../../assets/moon.png';
+// `import search from '../../assets/search.svg';
+// import dark from '../../assets/moon.png';`
 import Contact from '../contact/Contact'; // Adjust the path as needed
 import styles from './Header.module.css';
 
