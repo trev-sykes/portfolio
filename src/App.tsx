@@ -10,19 +10,17 @@ function App() {
   const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Remove the DOMContentLoaded listener and handle loading state directly
+    const handleLoad = () => setIsLoading(false);
 
-    const handleLoad = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-    }
+    // Simulate loading with a delay, if needed
+    const timerId = setTimeout(handleLoad, 1000);
 
-    window.addEventListener('load', handleLoad);
-
-    return () => window.removeEventListener('load', handleLoad);
+    return () => clearTimeout(timerId); // Cleanup timer on component unmount
   }, []);
 
   useEffect(() => {
+    // Look for and remove the kins-kins-popup element
     const intervalId = setInterval(() => {
       const kinsKins = document.querySelector('#kins-kins-popup');
       if (kinsKins) {
@@ -36,14 +34,17 @@ function App() {
 
   return (
     <>
-      {loading && <Loading />}
-      <div style={{ overflowY: loading ? 'hidden' : 'scroll', opacity: loading ? '0' : '1', transition: 'opacity 2s ease' }}>
-        <Github />
-        <Header />
-        <Hero />
-        <Blog />
-        <Footer copyrightText="Trevor Sykes - 2024" />
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div style={{ overflowY: 'scroll', opacity: '1', transition: 'opacity 2s ease' }}>
+          <Github />
+          <Header />
+          <Hero />
+          <Blog />
+          <Footer copyrightText="Trevor Sykes - 2024" />
+        </div>
+      )}
     </>
   );
 }

@@ -312,7 +312,7 @@ const Banner: React.FC = () => {
     const mugshotStyles: MugshotStyles= {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${mugshotImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.1) 0%, rgba(0, 0, 0, 0.3) 70%), url(${mugshotImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

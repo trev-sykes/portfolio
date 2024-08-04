@@ -13,13 +13,14 @@
   --webkit-font-smoothing: antialiased;
   --moz-osx-font-smoothing: grayscale;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-
 }
 
 body {

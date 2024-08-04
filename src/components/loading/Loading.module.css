@@ -5,34 +5,30 @@
     background: black;
     opacity: 1;
     transition: opacity 1s ease-out;
-}
-.loading::before {
-    margin: 0;
-    padding: 0;
-    content: '\20BF';
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.loading::before {
+    content: '\20BF'; /* Bitcoin symbol */
     font-size: 5rem;
-    position: fixed;
-    top: 50%;
-    right: 50%;
-    inset: 45%;;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     background: yellow;
     color: black;
-    transform: rotate(360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: inset 1px 1px 10px black;
-    transition: transform 2s ease;
-    animation: spin 2s infinite ease forwards;
+    transform: rotate(360deg);
+    animation: spin 2s infinite ease;
 }
 
 @keyframes spin {
     0% {
         transform: rotate(0deg);
-
     }
     25% {
         transform: rotate(180deg);
