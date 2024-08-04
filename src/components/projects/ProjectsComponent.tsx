@@ -98,12 +98,20 @@ const ProjectsComponent = () => {
                                         );
                                     })}
                                 </div>
+                                <div className={styles.linkContainer}>
                                 <a 
                                 href={project.url}
                                 className={styles.readFullProjectLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 >Visit Site</a>
+                                <a 
+                                href={project.gitLink}
+                                className={styles.gitLink}
+                                target='_blank'
+                                rel='noopen noreferrer'
+                                >Source Code</a>
+                                </div>
                             </div>
                         ))}
                     </div>

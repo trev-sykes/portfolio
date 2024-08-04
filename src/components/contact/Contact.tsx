@@ -36,8 +36,8 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     }, []);
 
     useEffect(() => {
-        if (imageLoaded) {
-            setVisible(true); // Show popup once image is loaded
+            if (imageLoaded) {
+                setVisible(true); // Show popup once image is loaded
         }
     }, [imageLoaded]);
 

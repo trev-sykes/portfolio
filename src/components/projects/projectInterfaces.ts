@@ -6,7 +6,8 @@ export interface ProjectPreview {
     languages: string[];
     frameworks: string[];
     imageUrl: string;
-    url: string
+    url: string;
+    gitLink: string;
 }
 
 // Define an interface for sections

@@ -9,11 +9,17 @@ import Footer from './components/footer/Footer';
 function App() {
   const [loading, setIsLoading] = useState(true);
 
+  const loadingStyle: React.CSSProperties = {
+        transition: 'background 2s ease',
+        background: 'linear-gradient(to left, yellow 100%, black)'  
+};
+
   useEffect(() => {
     // Simulate a loading delay
+
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 750); // Adjust this value as needed
+    }, 2000); // Adjust this value as needed
 
     // Clean up the timeout if the component unmounts before it completes
     return () => clearTimeout(loadingTimeout);
@@ -33,7 +39,7 @@ function App() {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && <Loading loadingStyle={loadingStyle} />}
       <div style={{ opacity: loading ? '0' : '1', transition: 'opacity 1s ease' }}>
         <Github />
         <Header />

@@ -8,7 +8,8 @@ const landingTemplatePreview : ProjectPreview =     {
     languages: ["JavaScript", 'HTML','CSS'],
     frameworks: [],
     imageUrl: img,
-    url: 'https://trevarious.github.io/Boilerplate-Landing-Page/'
+    url: 'https://trevarious.github.io/Boilerplate-Landing-Page/',
+    gitLink: 'https://github.com/trevarious/Boilerplate-Landing-Page'
   }
 
 const boxicons : Dependency = {

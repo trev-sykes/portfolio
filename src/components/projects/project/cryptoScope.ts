@@ -8,7 +8,8 @@ const cryptoScopePreview : ProjectPreview =     {
     languages: ["JavaScript", 'HTML','CSS'],
     frameworks: [],
     imageUrl: img,
-    url: 'https://trevarious.github.io/Crypto-Scope/'
+    url: 'https://trevarious.github.io/Crypto-Scope/',
+    gitLink: 'https://github.com/trevarious/Crypto-Scope?tab=readme-ov-file'
   }
 
 const coinGecko : Dependency = {

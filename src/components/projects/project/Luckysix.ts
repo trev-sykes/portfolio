@@ -8,7 +8,8 @@ const luckySixPreview : ProjectPreview =     {
     languages: ["JavaScript","Solidity", 'HTML','CSS'],
     frameworks:["React", "Vite"],
     imageUrl: img,
-    url: 'https://meta-roll.vercel.app/'
+    url: 'https://meta-roll.vercel.app/',
+    gitLink: 'https://github.com/trevarious/lucky'
   }
 
   const chainlinkVRF: Dependency = {

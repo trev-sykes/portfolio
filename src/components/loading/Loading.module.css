@@ -4,33 +4,38 @@
     height: 100%;
     background: black;
     opacity: 1;
-    transition: opacity 1s ease-out;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.loading::before {
-    content: '\20BF'; /* Bitcoin symbol */
+.bitcoin {
     font-size: 5rem;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: yellow;
+    background: yellow; /* Base color */
     color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: inset 1px 1px 10px black;
-    transform: rotate(360deg);
-    animation: spin .750s infinite ease;
+    animation: hueAnimation 1.25s linear ;
+    filter: hue-rotate(0deg); /* Initial hue rotation */
 }
 
-@keyframes spin {
+.bitcoin::before {
+    content: '\20BF'; /* Bitcoin symbol */
+}
+
+@keyframes hueAnimation {
     0% {
-        transform: rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(170deg);
     }
     100% {
-        transform: rotate(360deg);
+        filter: hue-rotate(0deg);
     }
 }
