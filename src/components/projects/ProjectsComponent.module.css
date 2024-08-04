@@ -133,6 +133,10 @@
   background: purple;
   color: yellow;
 }
+.language.web3 {
+  background: lightgreen;
+  color: rgb(125, 0, 106);
+}
 .linkContainer {
   width: 100%;
   display: flex;

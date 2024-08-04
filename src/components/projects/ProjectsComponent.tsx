@@ -88,6 +88,9 @@ const ProjectsComponent = () => {
                                             case 'Vite':
                                                 languageClass = styles.vite;
                                                 break;
+                                            case 'Web3.js':
+                                                languageClass = styles.web3;
+                                                break;
                                             default:
                                                 languageClass = '';
                                         }
