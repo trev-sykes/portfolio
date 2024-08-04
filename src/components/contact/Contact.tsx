@@ -19,8 +19,14 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     useEffect(() => {
         const img = new Image();
         img.src = '../../assets/pop-up.jpg'; // Path to your background image
-        img.onload = () => setImageLoaded(true);
-        img.onerror = () => setImageLoaded(true); // Handle errors
+
+        img.onload = () => {
+            setImageLoaded(true);
+        };
+
+        img.onerror = () => {
+            setImageLoaded(true); // Handle errors by still updating the state
+        };
 
         return () => {
             // Cleanup
@@ -63,7 +69,6 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                         phone_Number,
                         email,
                         message,
-                        // Add other template parameters as needed
                     },
                 }),
             });
@@ -75,7 +80,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                 responseData = JSON.parse(responseText);
             } catch (e) {
                 console.error('Error parsing response as JSON:', e);
-                responseData = responseText; // fallback to text response
+                responseData = responseText; // Fallback to text response
             }
 
             if (response.ok) {

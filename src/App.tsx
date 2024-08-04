@@ -10,15 +10,13 @@ function App() {
   const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Simulate a loading delay
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 750); // Adjust this value as needed
 
-    const handleLoad = () => {
-
-        setIsLoading(false);
-    }
-
-    window.addEventListener('load', handleLoad);
-
-    return () => window.removeEventListener('load', handleLoad);
+    // Clean up the timeout if the component unmounts before it completes
+    return () => clearTimeout(loadingTimeout);
   }, []);
 
   useEffect(() => {
@@ -36,7 +34,7 @@ function App() {
   return (
     <>
       {loading && <Loading />}
-      <div style={{ overflowY: loading ? 'hidden' : 'scroll', opacity: loading ? '0' : '1', display: loading ? 'none' : 'block', transition: 'opacity 2s ease' }}>
+      <div style={{ opacity: loading ? '0' : '1', transition: 'opacity 1s ease' }}>
         <Github />
         <Header />
         <Hero />

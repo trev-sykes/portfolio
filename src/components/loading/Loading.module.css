@@ -23,20 +23,14 @@
     justify-content: center;
     box-shadow: inset 1px 1px 10px black;
     transform: rotate(360deg);
-    animation: spin 2s infinite ease;
+    animation: spin .750s infinite ease;
 }
 
 @keyframes spin {
     0% {
         transform: rotate(0deg);
     }
-    25% {
-        transform: rotate(180deg);
-    }
-    50% {
-        transform: rotate(270deg);
-    } 
-    75% {
+    100% {
         transform: rotate(360deg);
     }
 }
