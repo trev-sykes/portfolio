@@ -34,13 +34,7 @@ const fullArticle: FullArticle = {
         
             Project Structure:
             A well-organized project structure is crucial for managing your game development workflow efficiently. Here's a basic project structure for your Phaser 3 game:
-        
-            - /src
-                - /assets       // Directory for storing game assets (images, audio files, etc.)
-                - /scenes       // Directory for Phaser scenes (game states)
-                - index.html    // HTML file for launching your game
-                - main.js       // Main JavaScript file for configuring and starting your game
-        
+    
             Basic Setup:
             After setting up your project structure, you'll need to initialize Phaser 3 in your main JavaScript file (e.g., main.js) and create a new Phaser game instance.
             With Phaser 3 set up and your project configured, you're now ready to start building your game! Stay tuned for the next sections, where we'll dive deeper into creating player characters, designing levels, and implementing exciting game mechanics.`,
