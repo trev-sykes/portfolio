@@ -50,10 +50,10 @@ const BlogComponent = () => {
                     left: 146
                 }),
             };
-            if (blog) { 
+            if (blog) {
                 rect = blog.getBoundingClientRect();
             }
-     
+
             const windowHeight = window.innerHeight;
 
             if (viewportWidth < 600) {
@@ -101,7 +101,7 @@ const BlogComponent = () => {
 
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
-        handleScroll(); 
+        handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -145,7 +145,7 @@ const BlogComponent = () => {
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
-                                .typeString('Bitcoi') 
+                                .typeString('Bitcoi')
                                 .pauseFor(50)
                                 .deleteAll()
                                 .typeString('Blogs')
@@ -168,7 +168,7 @@ const BlogComponent = () => {
                                 ref={(el) => (blogRefs.current[index] = el as HTMLDivElement)}
                             >
                                 <h2 className={styles.title}>{blog.title}</h2>
-                                <p className={styles.description}> 
+                                <p className={styles.description}>
                                     {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
                                     {blog.description.length > 100 && (
                                         <button
@@ -258,7 +258,7 @@ const BlogComponent = () => {
                         className={styles.viewBlogs}
                         onClick={handleViewAllBlogs}
                     >
-                        View All Blogs
+                        View More...
                     </button>
                 )}
                 {showAllBlogs && (
@@ -266,7 +266,7 @@ const BlogComponent = () => {
                         className={styles.hideBlogs}
                         onClick={handleHideBlogs}
                     >
-                        Hide All Blogs
+                        View Less...
                     </button>
                 )}
             </div>
