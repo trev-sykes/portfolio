@@ -12,13 +12,13 @@ export default function About() {
         if (container) {
             const rect = container.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            if (viewportWidth > 600) {
+            if (viewportWidth > 800) {
                 const speedFactor = .4; // Adjust this value to control the speed of the opacity change
-                const opacity = 1 - (Math.max(0, (windowHeight - rect.top - 725) / (windowHeight * speedFactor)));
+                const opacity = 1 - (Math.max(0, (windowHeight - rect.top - 1000) / (windowHeight * speedFactor)));
                 container.style.opacity = opacity.toString();
             } else {
                 const speedFactor = .8; // Adjust this value to control the speed of the opacity change
-                const opacity = 1 - (Math.max(0, (windowHeight - rect.top - 2000) / (windowHeight * speedFactor)));
+                const opacity = 1 - (Math.max(0, (windowHeight - rect.top - 20000) / (windowHeight * speedFactor)));
                 container.style.opacity = opacity.toString();
             }
         }

@@ -36,8 +36,8 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     }, []);
 
     useEffect(() => {
-            if (imageLoaded) {
-                setVisible(true); // Show popup once image is loaded
+        if (imageLoaded) {
+            setVisible(true); // Show popup once image is loaded
         }
     }, [imageLoaded]);
 
@@ -62,7 +62,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                 },
                 body: JSON.stringify({
                     service_id: 'service_sok07xr', // Replace with your EmailJS service ID
-                    template_id: 'template_fg95aqn', // Replace with your EmailJS template ID
+                    template_id: 'template_r04awcu', // Replace with your EmailJS template ID
                     user_id: 'ekj6CdZg1bJfloucD', // Replace with your EmailJS user ID
                     template_params: {
                         from_name,
