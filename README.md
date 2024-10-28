@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# My Portfolio & Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio and blog! Here, you can explore my projects, learn about my skills, and read my thoughts on various topics in tech and beyond.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About Me
 
-## Expanding the ESLint configuration
+I'm [Your Name], a [Your Profession/Title] based in [Your Location]. I specialize in [Your Specialization/Skills], and I’m passionate about [Your Interests]. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Email:** [trevsykes97@gmail.com]
+- **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/trevsykes/)
+- **GitHub:** [Your GitHub Profile](https://github.com/trevarious)
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 3 Projects
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Project 1: [Terminal_BlackJack]
+- **Description:** A CLI version of the best game on Earth.
+- **Technologies Used:** [Javascript]
+- **Live Demo:** [No Demo, Play In Terminal]()
+- **Source Code:** [Link to Repository](https://github.com/trevarious/Terminal_BlackJack)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Project 2: [Fantasy5]
+- **Description:** A Dapp built on Sepolia/Ethereum testnet that simulates a real lottery.
+- **Technologies Used:** [Solidity, React.ts, web3.js]
+- **Live Demo:** [Link to Demo](https://fantasy5-io.vercel.app/)
+- **Source Code:** [Link to Repository](https://github.com/trevarious/Fantasy5.io)
+
+### Project 3: [Peer_Link]
+- **Description:** A Dapp built on arbitrum that allows users to sign up and send messages to friendsß
+- **Technologies Used:** [Solidity, React.ts, web3js]
+- **Live Demo:** [Link to Demo](https://peer-link-lime.vercel.app/)
+- **Source Code:** [Link to Repository](https://github.com/trevarious/peer_link)
+
+---
+
+
+## Skills
+
+- **Programming Languages:** [JavaScript, Solidity, CSS]
+- **Frameworks:** [React, web3.js]
+- **Tools:** [Git]
+
+---
+
+## Contact Me
+
+Feel free to reach out for collaborations, inquiries, or just to say hi!
+
+- **Email:** [trevsykes97@gmail.com]
+- **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/trevsykes/)
+
+---
+
+Thank you for visiting my portfolio and blog! I look forward to connecting with you.
