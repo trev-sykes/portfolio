@@ -28,17 +28,17 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
     return (
         <div id={`blog-${selectedBlog}`} className={styles.container}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{article.titleHeader}</h1>
-                <button className={styles.closeButton} onClick={onClose}>Close</button>
+                <h1 className={styles.titleHeader}>{article.titleHeader}</h1>
+                <button className={styles.closeButton} onClick={onClose}>X</button>
             </div>
 
             <div className={styles.content}>
-            <div 
-                className={styles.image} 
-                style={{ backgroundImage: `url(${article.imageUrl})` }}
-            >
-            </div>
-            
+                <div
+                    className={styles.image}
+                    style={{ backgroundImage: `url(${article.imageUrl})` }}
+                >
+                </div>
+
                 <p className={styles.date}>Published on {article.date}</p>
                 {article.sections.map((section, index) => (
                     <div key={index} id={section.title.replace(/\s+/g, '-')}>
@@ -48,7 +48,7 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
                 ))}
             </div>
         </div>
-        
+
     );
 }
 

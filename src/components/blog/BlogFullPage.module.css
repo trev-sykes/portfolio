@@ -7,16 +7,20 @@
     max-width: 95%;
     margin: 0 auto;
     padding: 0 15px 10px 0;
-    background-image: 
-    radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%), /* Gradient overlay */
-    url(../../assets/blog.jpg); /* Background image */
+    background-image:
+        radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%),
+        /* Gradient overlay */
+        url(../../assets/blog.jpg);
+    /* Background image */
     background-position: center;
     background-repeat: no-repeat;
     color: rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Add scrolling behavior */
-    max-height: 95vh; /* Limit the height and enable scrolling when necessary */
+    overflow-y: auto;
+    /* Add scrolling behavior */
+    max-height: 95vh;
+    /* Limit the height and enable scrolling when necessary */
     z-index: 100000;
     border: 5px solid purple;
 }
@@ -31,14 +35,23 @@
     margin-bottom: 20px;
     padding: 10px;
     background: rgba(43, 53, 58, 0.2);
-    z-index: 1000; /* Ensure the header stays above other content */
+    z-index: 1000;
+    /* Ensure the header stays above other content */
     backdrop-filter: blur(10px);
 }
 
+.titleHeader {
+    font-size: 1.75rem;
+    letter-spacing: .25;
+    line-height: 1;
+}
 
 .title {
-    font-size: 24px;
+    font-size: 1.5rem;
+    letter-spacing: .5;
+    line-height: .75;
     margin: 0;
+
 }
 
 .closeButton {
@@ -56,10 +69,12 @@
 .closeButton:hover {
     background-color: #d00;
 }
+
 .content {
     padding: 25px;
     text-align: center;
 }
+
 .date {
     color: #beccd8;
     margin-bottom: 20px;
@@ -81,6 +96,7 @@
     text-align: left;
     font-size: 1.2rem;
 }
+
 .image {
     width: 100%;
     height: 200px;
@@ -92,13 +108,33 @@
 
 @media (max-width: 600px) {
     .container {
+        border: 3px solid green;
+    }
+
+    .closeButton {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+    }
+
+    .container {
         max-width: 300px;
     }
+
     .header {
         justify-content: space-between;
     }
-    .title {
-        font-size: .95rem;
+
+    .sectionTitle {
+        letter-spacing: 1;
+        width: 100%;
+        word-wrap: normal;
+        margin-bottom: 20px;
+
+    }
+
+    .sectionContent {
+        margin-bottom: 10px;
     }
 
 }
