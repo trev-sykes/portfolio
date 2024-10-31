@@ -3,6 +3,13 @@
 Welcome to my portfolio and blog! Here, you can explore my projects, learn about my skills, and read my thoughts on various topics in tech and beyond.
 
 ---
+## Technologies Used
+- **React** 
+- **TypeScript** 
+- **Vite** 
+- **React Router** 
+- **Typewriter Effect** 
+- **React Lazy Load Image** -
 
 ## 3 Projects
 
