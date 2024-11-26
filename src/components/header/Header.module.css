@@ -125,7 +125,10 @@
     }
 
     .contactButton {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(186, 186, 186);
     }
 
     .mugshotName {
