@@ -9,30 +9,14 @@ export default function About() {
         setViewportWidth(window.innerWidth);
     }
 
-    const handleScroll = () => {
-        const container = containerRef.current;
-        if (container) {
-            const rect = container.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            // More nuanced opacity calculation
-            const speedFactor = viewportWidth > 800 ? 0.4 : 0.8;
-            const opacityOffset = viewportWidth > 800 ? 1000 : 20000;
-
-            const opacity = 1 - (Math.max(0, (windowHeight - rect.top - opacityOffset) / (windowHeight * speedFactor)));
-            container.style.opacity = opacity.toString();
-        }
-    };
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+
         window.addEventListener('resize', handleReSize);
 
-        // Initial call to set opacity
-        handleScroll();
+
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleReSize);
         };
     }, [viewportWidth]);
