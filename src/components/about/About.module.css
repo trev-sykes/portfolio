@@ -20,27 +20,40 @@
     max-width: 1100px;
     text-align: left;
     line-height: 1.75;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 500;
     color: white;
     padding: 0 100px 0 100px;
 }
 
+.paragraphContainer {
+    max-width: 1100px;
+}
+
+.sectionTitle {
+    visibility: hidden;
+}
+
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
     .title {
-        font-size: 2rem;
+        font-size: 1.25rem;
         margin-bottom: 20px;
     }
 
     .introParagraph {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 400;
         line-height: 2;
         padding: 0px 5px 0px 5px;
         border: 1px solid transparent;
         border-bottom: 1px solid white;
+        margin-bottom: 15px;
 
+    }
+
+    .introParagraph:first-child {
+        margin-top: 30px;
     }
 
     .introParagraph:last-child {
@@ -51,5 +64,15 @@
         max-width: 300px;
 
     }
+
+    .paragraphContainer {
+        height: 100vh;
+        max-width: 1100px;
+    }
+
+    .sectionTitle {
+        visibility: visible;
+    }
+
 
 }

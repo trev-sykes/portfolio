@@ -33,9 +33,12 @@
 @media (max-width: 600px) {
     .canvasContainer {
         max-width: 300px;
+        max-height: 100px;
     }
+
     .mugshotContainer {
-        width: 125px;
-        height: 125px;
+        width: 100px;
+        height: 100px;
+        margin-top: 100px;
     }
 }
