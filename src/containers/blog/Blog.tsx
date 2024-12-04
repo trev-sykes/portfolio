@@ -4,8 +4,8 @@ import ProjectsComponent from "../../components/projects/ProjectsComponent";
 export default function Blog() {
     return (
         <>
-        <BlogComponent />
-        <ProjectsComponent />
+            <ProjectsComponent />
+            <BlogComponent />
         </>
     )
 }

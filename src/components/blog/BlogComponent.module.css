@@ -5,20 +5,23 @@
   margin-bottom: 95px;
   scale: 3;
 }
+
 .container {
   max-width: 1100px;
   height: auto;
   margin: 0 auto;
   display: flex;
 }
+
 .blogContainer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+
 .blogPreview {
-  position: relative; 
-  flex: 0 0 calc(50% - 20px); 
+  position: relative;
+  flex: 0 0 calc(50% - 20px);
   max-width: calc(50% - 20px);
   margin-right: 20px;
   margin-bottom: 20px;
@@ -37,12 +40,15 @@
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, rgba(96, 34, 111, 0.1) 0%, rgba(0, 0, 0, 0.05) 70%);
-  z-index: 1; /* Ensure this is below the content */
-  pointer-events: none; /* Ensure the overlay does not interfere with interactions */
+  z-index: 1;
+  /* Ensure this is below the content */
+  pointer-events: none;
+  /* Ensure the overlay does not interfere with interactions */
 }
 
 .blogPreview:last-child {
-  margin-right: 0; /* Remove right margin for the last element in each row */
+  margin-right: 0;
+  /* Remove right margin for the last element in each row */
 }
 
 
@@ -61,8 +67,10 @@
   padding: 5px 10px;
   cursor: pointer;
 }
+
 .readLessActive {
-  color: #ff0000; /* Change to red */
+  color: #ff0000;
+  /* Change to red */
 }
 
 
@@ -93,30 +101,38 @@
 }
 
 .topic.javascript {
-  background-color: #f0db4f; /* Yellow */
+  background-color: #f0db4f;
+  /* Yellow */
   color: #000;
 }
+
 .topic.htmlcanvas {
-  background-color: #f16529; /* Orange */
+  background-color: #f16529;
+  /* Orange */
   color: #fff;
 }
 
 .topic.gamedev {
-  background-color: #0095dd; /* Blue */
+  background-color: #0095dd;
+  /* Blue */
   color: #fff;
 }
+
 .topic.phaserthree {
   background-color: #ccc;
   color: rgb(0, 0, 0);
 }
+
 .topic.cryptocurrency {
   background-color: rgb(0, 255, 94);
   color: rgb(114, 0, 89);
 }
+
 .topic.apiintegration {
   background-color: antiquewhite;
   color: black;
 }
+
 .topic.webdevelopment {
   background-color: rgb(255, 0, 0);
   color: rgb(255, 252, 255);
@@ -126,59 +142,87 @@
   background-color: #f16529;
   color: rgb(255, 255, 255);
 }
+
 .topic.smartcontracts {
   background-color: #dd9373;
   color: rgb(255, 255, 255);
 }
+
 .topic.decentralizedapplications {
   background-color: #29f1ae;
   color: rgb(111, 111, 111);
 }
+
 .topic.dappdevelopment {
   background-color: #790061;
   color: rgb(255, 255, 255);
 }
+
 .topic.markettrends {
   background-color: #00d22a;
   color: rgb(255, 255, 255);
 }
+
 .topic.solidity {
   background-color: palevioletred;
   color: white;
 }
+
 .topic.tutorial {
   background-color: rgb(112, 188, 216);
   color: white;
 }
+
+.topic.ethereum {
+  background-color: white;
+  color: blue;
+}
+
+.topic.ltwo {
+  background-color: plum;
+  color: white;
+}
+
 .image {
   width: 100%;
-  max-height: 200px; /* Adjust this as needed */
+  max-height: 200px;
+  /* Adjust this as needed */
   object-fit: cover;
   margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
   .container {
-    max-width: 100%; /* Allow the container to use full width */
-    padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
+    max-width: 100%;
+    /* Allow the container to use full width */
+    padding: 0 10px;
+    /* Optional: Add some padding for better spacing on smaller screens */
     margin: 0 auto;
   }
+
   .blogs {
     margin-bottom: 70px;
     margin-top: 20px;
   }
+
   .blogContainer {
-    flex-direction: column; /* Stack blog previews vertically */
+    flex-direction: column;
+    /* Stack blog previews vertically */
     max-width: 300px;
     margin: 0 auto;
   }
 
   .blogPreview {
-    flex: 1 1 auto; /* Allow items to grow and shrink as needed */
-    max-width: 100%; /* Ensure items take up full width of the container */
-    margin-right: 0; /* Remove right margin */
-    margin-bottom: 20px; /* Keep space between items */
-    box-sizing: border-box; /* Ensure padding and border are included in width/height calculations */
+    flex: 1 1 auto;
+    /* Allow items to grow and shrink as needed */
+    max-width: 100%;
+    /* Ensure items take up full width of the container */
+    margin-right: 0;
+    /* Remove right margin */
+    margin-bottom: 20px;
+    /* Keep space between items */
+    box-sizing: border-box;
+    /* Ensure padding and border are included in width/height calculations */
     height: auto;
   }
 
@@ -196,16 +240,18 @@
   justify-content: flex-start;
   align-items: center;
 }
-.viewBlogs{
-  background-color:rgb(73, 73, 73);
+
+.viewBlogs {
+  background-color: rgb(73, 73, 73);
   color: #bdff5a;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   margin: 0 auto;
 }
-.hideBlogs{
-  background-color:rgb(73, 73, 73);
+
+.hideBlogs {
+  background-color: rgb(73, 73, 73);
   color: #ff0000;
   border: none;
   padding: 5px 10px;
@@ -215,14 +261,19 @@
 
 .fullBlog {
   position: fixed;
-  top: -100vh; /* Start off the screen */
+  top: -100vh;
+  /* Start off the screen */
   left: 0;
   width: 100%;
-  transition: top 1s ease-out; /* Smooth transition */
-  z-index: 9999; /* Make sure it’s on top */
-  background: white; /* Adjust background as needed */
+  transition: top 1s ease-out;
+  /* Smooth transition */
+  z-index: 9999;
+  /* Make sure it’s on top */
+  background: white;
+  /* Adjust background as needed */
 }
 
 .fullBlog.open {
-  top: 0; /* Move to the top of the screen */
+  top: 0;
+  /* Move to the top of the screen */
 }

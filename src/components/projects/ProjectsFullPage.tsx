@@ -25,14 +25,16 @@ const ProjectFullPage: React.FC<ProjectFullPageProps> = ({ selectedProject, onCl
 
   const project = projects[selectedProject];
   return (
-    <div className={styles.fullPage}>
-      <div className={styles.header}>
-      <h1>{project.title}</h1>
-      <button className={styles.closeButton} onClick={onClose}>X</button>
+    <div className={styles.container}>
+      <div className={styles.fullPage}>
+        <div className={styles.header}>
+          <h1>{project.title}</h1>
+          <button className={styles.closeButton} onClick={onClose}>X</button>
+        </div>
+        <p className={styles.date}>{project.date}</p>
+        <div className={styles.image} style={{ backgroundImage: `url(${project.imageUrl})` }}></div>
+        <p>{project.summary}</p>
       </div>
-      <p className={styles.date}>{project.date}</p>
-      <div className={styles.image} style={{ backgroundImage: `url(${project.imageUrl})` }}></div>
-      <p>{project.summary}</p>
     </div>
   );
 };

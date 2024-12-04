@@ -1,150 +1,175 @@
 .projects {
-    text-align: center;
-    margin-top: 55px;
-    padding: 10px;
-    margin-bottom: 95px;
-    opacity: 1;
-  }
-  
-  .container {
-    max-width: 1100px;
-    height: auto;
-    margin: 0 auto;
-    cursor: default;
-  }
-  
-  .projectContainer {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .projectPreview {
-    flex: 0 0 calc(50% - 20px); /* Two elements per row */
-    max-width: calc(50% - 20px); /* Two elements per row */
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    cursor: pointer;
-    box-sizing: border-box;
-    opacity: 1; /* Ensure that elements are initially invisible */
-    transition: opacity 0.6s ease-out; /* Smooth transition for fading in */
-  }
-  
-  .projectPreview:last-child {
-    margin-right: 0; /* Remove right margin for the last element in each row */
-  }
-  
-  .projectPreview h2 {
-    margin-top: 0;
-  }
-  .projectTitle {
-    margin-bottom: 10px;
-  }
-  
-  .projectPreview p {
-    margin-bottom: 5px;
-  }
-  
-  .readMoreButton {
-    background-color: transparent;
-    color: #bdff5a;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .readLessActive {
-    color: #ff0000; /* Change to red */
-  }
-  
-  .readFullProjectButton {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .date {
-    color: #beccd8;
-  }
-  
-  .topics {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-  
-  .topic {
-    text-align: center;
-    display: inline-block;
-    margin-right: 5px;
-    padding: 2px 5px;
-    border-radius: 50px 25px 50px 25px;
-    user-select: none;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
-  .languageHeader {
-    margin-bottom: 5px;
-    margin-top: 30px;
-  }
-  .topic.javascript {
-    background-color: #f0db4f; /* Yellow */
-    color: #000;
-    width: 100px;
-  }
-  .topic.html {
-    background-color: #c16f04; /* Yellow */
-    color: #ffffff;
-  }
-  .topic.css {
-    background-color: rgb(39, 89, 234); /* Yellow */
-    color: #c1c1c1;
-  }
-  .topic.solidity{
-    background-color: rgb(42, 37, 124); /* Yellow */
-    color: #e6e6e6;
-  }
-  .languages {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 30px;
-  }
-  .language {
-    display: inline-block;
-    margin-right: 5px;
-    padding: 2px 5px;
-    border-radius: 25px 50px 25px 50px;
-    user-select: none;
-    font-weight: 700;
+  text-align: center;
+  margin-top: 55px;
+  padding: 10px;
+  margin-bottom: 95px;
+  opacity: 1;
+}
 
-  }
+.container {
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto;
+  cursor: default;
+  display: flex;
+}
+
+.projectContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.projectPreview {
+  position: relative;
+  flex: 0 0 calc(50% - 20px);
+  /* Two elements per row */
+  max-width: calc(50% - 20px);
+  /* Two elements per row */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: 1;
+  /* Ensure that elements are initially invisible */
+  transition: opacity 0.6s ease-out;
+  /* Smooth transition for fading in */
+}
+
+.projectPreview:last-child {
+  margin-right: 0;
+  /* Remove right margin for the last element in each row */
+}
+
+.projectPreview h2 {
+  margin-top: 0;
+}
+
+.projectTitle {
+  margin-bottom: 10px;
+}
+
+.projectPreview p {
+  margin-bottom: 5px;
+}
+
+.readMoreButton {
+  background-color: transparent;
+  color: #bdff5a;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.readLessActive {
+  color: #ff0000;
+  /* Change to red */
+}
+
+.readFullProjectButton {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.date {
+  color: #beccd8;
+}
+
+.topics {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.topic {
+  text-align: center;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 2px 5px;
+  border-radius: 50px 25px 50px 25px;
+  user-select: none;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.languageHeader {
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
+
+.topic.javascript {
+  background-color: #f0db4f;
+  /* Yellow */
+  color: #000;
+  width: 100px;
+}
+
+.topic.html {
+  background-color: #c16f04;
+  /* Yellow */
+  color: #ffffff;
+}
+
+.topic.css {
+  background-color: rgb(39, 89, 234);
+  /* Yellow */
+  color: #c1c1c1;
+}
+
+.topic.solidity {
+  background-color: rgb(42, 37, 124);
+  /* Yellow */
+  color: #e6e6e6;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.language {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 2px 5px;
+  border-radius: 25px 50px 25px 50px;
+  user-select: none;
+  font-weight: 700;
+
+}
+
 .language.react {
   background: rgb(87, 197, 221);
   color: #474747;
 
 }
+
 .language.vite {
   background: purple;
   color: yellow;
 }
+
 .language.web3 {
   background: lightgreen;
   color: rgb(125, 0, 106);
 }
+
 .linkContainer {
   width: 100%;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content:center;
+  justify-content: center;
   margin-bottom: 0;
 }
+
 .gitLink {
   text-decoration: none;
   color: rgb(193, 190, 190);
@@ -159,50 +184,63 @@
 
 .image {
   width: 100%;
-  max-height: 200px; /* Adjust this as needed */
+  max-height: 300px;
+  /* Adjust this as needed */
   object-fit: cover;
   scale: .8;
   margin-bottom: 10px;
   right: 0;
 }
+
 .fadeInVisible {
   opacity: 0;
 }
-  @media (max-width: 600px) {
-    .container {
-      max-width: 100%; /* Allow the container to use full width */
-      padding: 0 10px; /* Optional: Add some padding for better spacing on smaller screens */
-      margin: 0 auto;
-    }
-    .projects {
-      margin-bottom: 70px;
-      margin-top: 20px;
-    }
-    .projectContainer {
-      flex-direction: column; /* Stack blog previews vertically */
-      max-width: 300px;
-      margin: 0 auto;
-    }
-  
-    .projectPreview {
-      flex: 1 1 auto; /* Allow items to grow and shrink as needed */
-      max-width: 100%; /* Ensure items take up full width of the container */
-      margin-right: 0; /* Remove right margin */
-      margin-bottom: 20px; /* Keep space between items */
-      box-sizing: border-box; /* Ensure padding and border are included in width/height calculations */
-      height: auto;
-    }
-  
-    .description {
-      font-size: .9rem;
-    }
-  
-    .topics {
-      font-size: .9rem;
-    }
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    /* Allow the container to use full width */
+    padding: 0 10px;
+    /* Optional: Add some padding for better spacing on smaller screens */
+    margin: 0 auto;
   }
-  
-  .readFullProjectLink {
-      text-decoration: none;
-      color: rgb(34, 255, 0);
+
+  .projects {
+    margin-bottom: 70px;
+    margin-top: 20px;
   }
+
+  .projectContainer {
+    flex-direction: column;
+    /* Stack blog previews vertically */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .projectPreview {
+    flex: 1 1 auto;
+    /* Allow items to grow and shrink as needed */
+    max-width: 100%;
+    /* Ensure items take up full width of the container */
+    margin-right: 0;
+    /* Remove right margin */
+    margin-bottom: 20px;
+    /* Keep space between items */
+    box-sizing: border-box;
+    /* Ensure padding and border are included in width/height calculations */
+    height: auto;
+  }
+
+  .description {
+    font-size: .9rem;
+  }
+
+  .topics {
+    font-size: .9rem;
+  }
+}
+
+.readFullProjectLink {
+  text-decoration: none;
+  color: rgb(34, 255, 0);
+}

@@ -1,46 +1,140 @@
-.fullPage {
+.container {
     position: fixed;
     top: 5%;
     right: 5%;
     bottom: 5%;
     left: 5%;
-    width: 95%;
-    height: 95vh;
+    max-width: 95%;
     margin: 0 auto;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    padding: 15px;
+    padding: 0 15px 10px 0;
+    background-image:
+        radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%),
+
+        url(../../assets/blog.jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    min-height: 90vh;
+    max-height: 95vh;
+
     z-index: 100000;
     border: 5px solid purple;
-
-
 }
+
 .header {
+    background: rgba(50, 50, 50, 0.2);
+    position: sticky;
+    top: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(43, 53, 58, 0.2);
+    z-index: 1000;
+    /* Ensure the header stays above other content */
+    backdrop-filter: blur(10px);
+}
+
+.titleHeader {
+    font-size: 1.75rem;
+    letter-spacing: .25;
+    line-height: 1;
+}
+
+.title {
+    font-size: 1.5rem;
+    letter-spacing: .5;
+    line-height: .75;
+    margin: 0;
+
 }
 
 .closeButton {
-    align-items: center;
-    padding: 0;
-    font-weight: 700;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: red;
+    background-color: #f00;
+    position: absolute;
+    right: 0;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
+
+.closeButton:hover {
+    background-color: #d00;
+}
+
+.content {
+    padding: 25px;
+    text-align: center;
+}
+
+.date {
+    color: #beccd8;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.tableOfContents {
+    margin-bottom: 20px;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.sectionContent {
+    line-height: 1.6;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
 .image {
     width: 100%;
     height: 200px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border: 3px solid rgba(255, 255, 255, 0.456);
-    margin-bottom: 10px;
+
 }
-.date {
-    margin-bottom: 15px;
-    text-align:center;
+
+@media (max-width: 600px) {
+    .container {
+        border: 3px solid green;
+    }
+
+    .closeButton {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+    }
+
+    .container {
+        max-width: 300px;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+
+    .sectionTitle {
+        letter-spacing: 1;
+        width: 100%;
+        word-wrap: normal;
+        margin-bottom: 20px;
+
+    }
+
+    .sectionContent {
+        margin-bottom: 10px;
+    }
+
 }

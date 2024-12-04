@@ -10,9 +10,9 @@ function App() {
   const [loading, setIsLoading] = useState(true);
 
   const loadingStyle: React.CSSProperties = {
-        transition: 'background 2s ease',
-        background: 'linear-gradient(to left, yellow 100%, black)'  
-};
+    transition: 'background 2s ease',
+    background: 'linear-gradient(to left, yellow 100%, black)'
+  };
 
   useEffect(() => {
     // Simulate a loading delay

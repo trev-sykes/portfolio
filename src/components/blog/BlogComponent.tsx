@@ -226,6 +226,12 @@ const BlogComponent = () => {
                                             case 'Tutorial':
                                                 topicClass = styles.tutorial;
                                                 break;
+                                            case 'Ethereum':
+                                                topicClass = styles.ethereum;
+                                                break;
+                                            case `L2's`:
+                                                topicClass = styles.ltwo;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }

@@ -5,7 +5,7 @@ const blogPreview: BlogPreview = {
     title: `Are L2s Parasitic to Ethereum?`,
     description: `While layer two scaling solutions were once seen as key to Ethereum's growth, they are now often labeled as liquidity-sucking parasites that threaten the very foundation they rely on.`,
     date: 'October 28, 2024',
-    topic: ['Ethereum', 'Blockchains', 'Web Development'],
+    topic: ['Ethereum', 'Blockchain', 'Web Development', `L2's`],
     imageUrl: img
 }
 
