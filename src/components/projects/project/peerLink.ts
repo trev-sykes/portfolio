@@ -3,7 +3,7 @@ import img from '../../../assets/peer-link.png'
 
 const peerLinkPreview: ProjectPreview = {
     title: 'Peerlink',
-    description: 'PeerLink is a decentralized social network that lets users add friends and create groups on the blockchain.(NOTE) Must have Metamask installed, mobile users must be within a wallet explorer.',
+    description: '*(NOTE) Must have Metamask installed, mobile users must be within a wallet explorer.* PeerLink is a decentralized social network that lets users add friends and create groups on the blockchain.',
     date: 'October 5th, 2024 ',
     languages: ["JavaScript", "Solidity", 'CSS'],
     frameworks: ["Web3.js", "React"],
