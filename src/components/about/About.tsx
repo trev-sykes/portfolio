@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Projects from "../projects/ProjectsComponent";
 import styles from './About.module.css';
 export default function About() {
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -34,7 +35,7 @@ export default function About() {
                     I’m continuously exploring new tools and technologies to stay ahead of the curve, and I am eager to contribute to the growth of the decentralized web.
                 </p>
             </div>
-
+            <Projects />
             <div className={styles.contentSection}>
                 <h2 className={styles.sectionTitle}>Skills</h2>
 

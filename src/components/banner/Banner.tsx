@@ -56,7 +56,7 @@ const Banner: React.FC = () => {
     const animationRef = useRef<number>(0);
     const handleReSize = () => {
         setViewportWidth(window.innerWidth);
-    }    
+    }
 
     const initializeCanvas = useCallback(() => {
         const canvas = canvasRef.current;
@@ -72,9 +72,9 @@ const Banner: React.FC = () => {
         if (!canvas) return;
 
         const debris: Debris[] = [];
-        if(viewportWidth < 600){
+        if (viewportWidth < 600) {
             numDebris = 100;
-        } else if(viewportWidth >= 600) {
+        } else if (viewportWidth >= 600) {
             numDebris = 500;
         }
 
@@ -93,14 +93,14 @@ const Banner: React.FC = () => {
 
     const createShootingStar = useCallback((): ShootingStar | null => {
         let shootingStarProbability = 0.01;
-        if(viewportWidth < 600){
+        if (viewportWidth < 600) {
             shootingStarProbability = 0.005;
-        } else if (viewportWidth >= 600){
+        } else if (viewportWidth >= 600) {
             shootingStarProbability = 0.01;
         }
         const canvas = canvasRef.current;
         if (!canvas) return null;
-    
+
         if (Math.random() < shootingStarProbability) { // Probability of creating a shooting star
             return {
                 x: Math.random() * canvas.width,
@@ -109,10 +109,10 @@ const Banner: React.FC = () => {
                 angle: Math.random() * Math.PI * 2,
                 color: `rgba(255, 255, 255, ${Math.random()})`,
                 velocity: Math.random() * 5 + 2,
-                trail: true 
+                trail: true
             };
         }
-    
+
         return null;
     }, [viewportWidth]);
 
@@ -151,12 +151,12 @@ const Banner: React.FC = () => {
 
         const debris = debrisRef.current;
         debris.forEach(fragment => {
-    
-                fragment.x -= fragment.velocity;
-                if (fragment.x < 0) {
-                    fragment.x = canvas.width;
-                }
-    
+
+            fragment.x -= fragment.velocity;
+            if (fragment.x < 0) {
+                fragment.x = canvas.width;
+            }
+
             fragment.x -= fragment.velocity;
             if (fragment.x < 0) {
                 fragment.x = canvas.width;
@@ -177,7 +177,7 @@ const Banner: React.FC = () => {
             shootingStar.y -= shootingStar.velocity * Math.sin(shootingStar.angle);
         });
 
-        shootingStarsRef.current = shootingStars.filter(shootingStar => 
+        shootingStarsRef.current = shootingStars.filter(shootingStar =>
             shootingStar.x >= 0 && shootingStar.y >= 0 && shootingStar.x <= canvas.width && shootingStar.y <= canvas.height
         );
 
@@ -194,7 +194,7 @@ const Banner: React.FC = () => {
             }
             return true;
         });
-    },[]);
+    }, []);
 
     const drawExplosion = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
         ctx.beginPath();
@@ -304,15 +304,15 @@ const Banner: React.FC = () => {
     const canvasStyles: CanvasStyles = {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.25) 0%, rgba(0, 0, 0, 0.75) 70%), url(${canvasImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(205,205, 205, 0.1) 0%, rgba(205, 205, 205, .15) 90%), url(${canvasImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
     }
-    const mugshotStyles: MugshotStyles= {
+    const mugshotStyles: MugshotStyles = {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(96, 34, 111, 0.1) 0%, rgba(0, 0, 0, 0.3) 70%), url(${mugshotImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.15) 70%), url(${mugshotImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

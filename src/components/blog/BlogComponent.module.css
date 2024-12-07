@@ -1,3 +1,5 @@
+@import "../../index.css";
+
 .blogs {
   text-align: center;
   margin-top: 55px;
@@ -62,28 +64,27 @@
 
 .readMoreButton {
   background-color: transparent;
-  color: #bdff5a;
+  color: var(--read-more-color);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
 }
 
 .readLessActive {
-  color: #ff0000;
-  /* Change to red */
+  color: var(--read-less-color);
 }
 
 
 .readFullArticleButton {
-  background-color: #28a745;
-  color: #fff;
+  background: var(--button-background);
+  color: #ffffff;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
 }
 
 .date {
-  color: #beccd8;
+  color: var(--date-color);
   margin-top: 5px;
 }
 
@@ -242,8 +243,8 @@
 }
 
 .viewBlogs {
-  background-color: rgb(73, 73, 73);
-  color: #bdff5a;
+  background: var(--button-background);
+  color: var(--button-color);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -251,8 +252,8 @@
 }
 
 .hideBlogs {
-  background-color: rgb(73, 73, 73);
-  color: #ff0000;
+  background: var(--read-less-background);
+  color: var(--button-color);
   border: none;
   padding: 5px 10px;
   cursor: pointer;

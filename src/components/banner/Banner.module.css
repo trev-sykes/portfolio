@@ -14,8 +14,9 @@
     width: 100%;
     max-width: 1200px;
     height: 250px;
-    border-radius: 25px;
-    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.058);
+    border-radius: 33px;
+    border: 1px solid transparent;
+    box-shadow: 2px 2px 1px 1px rgba(244, 244, 244, 0.058);
     overflow: hidden;
 }
 
@@ -26,14 +27,16 @@
     position: absolute;
     margin-top: 250px;
     opacity: 1;
+
 }
 
 
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
     .canvasContainer {
-        max-width: 300px;
+        max-width: 315px;
         max-height: 100px;
+        border-radius: 15px;
     }
 
     .mugshotContainer {

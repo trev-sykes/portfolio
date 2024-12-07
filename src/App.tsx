@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import Loading from './components/loading/Loading';
 import Github from './components/github/GithubLink';
 import Header from './components/header/Header';
-import Hero from './containers/hero/Hero';
-import Blog from './containers/blog/Blog';
+import Banner from "../src/components/banner/Banner";
+import About from "../src/components/about/About";
+import BlogComponent from "../src/components/blog/BlogComponent";
 import Footer from './components/footer/Footer';
 
 function App() {
@@ -15,15 +16,46 @@ function App() {
   };
 
   useEffect(() => {
-    // Simulate a loading delay
+    // Disable scrolling immediately when the component mounts
+    document.body.style.overflow = 'hidden';
 
+    // Prevent default scroll behavior
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
+    // Add event listeners to multiple scroll-related events
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+    window.addEventListener('scroll', preventScroll, { passive: false });
+
+    // Simulate a loading delay
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Adjust this value as needed
 
-    // Clean up the timeout if the component unmounts before it completes
-    return () => clearTimeout(loadingTimeout);
-  }, []);
+      // Keep scroll prevention active for an additional 1 second
+      const scrollPreventionTimeout = setTimeout(() => {
+        // Re-enable scrolling
+        document.body.style.overflow = 'auto';
+
+        // Remove scroll prevention event listeners
+        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener('touchmove', preventScroll);
+        window.removeEventListener('scroll', preventScroll);
+      }, 1500); // Additional 1 second after loading becomes false
+
+      // Store the additional timeout for cleanup
+      return () => clearTimeout(scrollPreventionTimeout);
+    }, 3000);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(loadingTimeout);
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+      window.removeEventListener('scroll', preventScroll);
+    };
+  }, []); // Empty dependency array to run only on mount
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -43,8 +75,9 @@ function App() {
       <div style={{ opacity: loading ? '0' : '1', transition: 'opacity 1s ease' }}>
         <Github />
         <Header />
-        <Hero />
-        <Blog />
+        <Banner />
+        <About />
+        <BlogComponent />
         <Footer copyrightText="Trevor Sykes - 2024" />
       </div>
     </>

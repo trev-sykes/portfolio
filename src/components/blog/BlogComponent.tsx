@@ -146,7 +146,7 @@ const BlogComponent = () => {
                         onInit={(typewriter) => {
                             typewriter
                                 .typeString('Bitcoi')
-                                .pauseFor(50)
+                                .pauseFor(350)
                                 .deleteAll()
                                 .typeString('Blogs')
                                 .start();
@@ -172,10 +172,10 @@ const BlogComponent = () => {
                                     {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
                                     {blog.description.length > 100 && (
                                         <button
-                                            className={`${styles.readMoreButton}`}
+                                            className={`${styles.readMoreButton} ${expandedBlogs.includes(index) ? styles.readLessActive : ''}`}
                                             onClick={() => handleReadFullDescription(index)}
                                         >
-                                            {expandedBlogs.includes(index) ? 'Read less' : 'Read more'}
+                                            {expandedBlogs.includes(index) ? '...Read less' : '...Read more'}
                                         </button>
                                     )}
                                 </p>

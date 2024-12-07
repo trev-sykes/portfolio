@@ -2,20 +2,35 @@
   --font-family: 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', sans-serif;
   --line-height: 1.5;
   --font-weight: 400;
-
+  --padding: 20px;
+  --max-width: 1100px;
+  --nav-background: rgb(202, 202, 202);
+  --nav-text-color: rgb(0, 0, 0);
+  --button-background: rgb(50, 162, 87);
+  --button-color: white;
   --color-scheme: light dark;
-  --text-color: rgba(255, 255, 255, 0.87);
-  background: rgb(56,63,65);
-  background: radial-gradient(circle, rgba(56,63,65,1) 0%, rgba(0,0,0,1) 100%);
+  --text-color: rgb(56, 63, 65);
+  background: radial-gradient(circle, rgba(200, 197, 195, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  --read-more-color: #005d03;
+  --read-less-background: #00cd04;
+  --read-less-color: #ff5858;
+  --date-color: #74837a;
+
+  --project-background: radial-gradient(circle, rgb(223, 223, 223) 0%, rgb(236, 248, 239) 100%);
+  --project-padding: 10px;
+  --project-margin-top: 55px;
+  --project-margin-bottom: 95px;
 
   --font-synthesis: none;
   --text-rendering: optimizeLegibility;
   --webkit-font-smoothing: antialiased;
   --moz-osx-font-smoothing: grayscale;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 * {
   padding: 0;
   margin: 0;

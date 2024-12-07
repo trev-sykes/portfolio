@@ -1,9 +1,11 @@
+@import '../../index.css';
+
 .container {
     position: relative;
     display: block;
     margin: 0 auto;
     padding-top: 80px;
-    max-width: 1100px;
+    max-width: var(--max-width);
     overflow: hidden;
     transition: opacity 0.3s ease-out;
     cursor: default;
@@ -29,7 +31,6 @@
 .sectionTitle {
     font-size: 2rem;
     font-weight: bold;
-    color: #a9a9a9;
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -44,7 +45,6 @@
 .skillCategoryTitle {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #999;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -53,7 +53,6 @@
 .frameworkTitle {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #b9b9b9;
     margin-top: 10px;
 }
 
@@ -66,7 +65,6 @@
 
 .skillsList li {
     font-size: 1rem;
-    color: #f9f9f9;
     margin-bottom: 8px;
     padding-left: 20px;
     position: relative;
@@ -75,7 +73,6 @@
 
 .skillsList li::before {
     content: "•";
-    color: #4c95af;
     position: absolute;
     left: 0;
     top: 0;
@@ -86,7 +83,6 @@
 .introParagraph {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #f9f9f9;
     margin-bottom: 20px;
     max-width: 800px;
     margin-left: auto;

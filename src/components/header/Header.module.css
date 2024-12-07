@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .header {
     position: absolute;
     top: 0;
@@ -7,7 +9,8 @@
     max-width: 100vw;
     height: 54px;
     overflow: hidden;
-    background: rgb(0, 0, 0);
+    background: var(--nav-background);
+    color: var(--nav-text-color);
     transition: background .333s ease, backdrop-filter .333s ease, position .333s ease;
     /* Add backdrop-filter transition */
     backdrop-filter: blur(0);
@@ -19,13 +22,12 @@
     background: rgba(43, 53, 58, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    /* Adjust the blur value based on your preference */
+    /* Subtle blur when we scroll  */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    /* Add any other styling for the scrolled state */
 }
 
 .nav {
-    max-width: 1100px;
+    max-width: var(--max-width);
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -88,18 +90,17 @@
     height: 39px;
     border-radius: 3px;
     padding: 0 5px 0 5px;
-    background: transparent;
+    background: var(--button-background);
+    color: white;
     border: none;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 400;
     transition: background .333s ease, border-color .333s ease;
-    color: #efeeee;
-    border: 1px solid transparent;
+    border: 3px solid transparent;
 }
 
 .contactButton:hover {
-    background: rgba(100, 100, 100, 0.6);
     border-color: rgba(137, 43, 226, 0.5);
 
 }
@@ -128,7 +129,6 @@
         font-size: 1.15rem;
         font-weight: 600;
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-        color: rgb(213, 213, 213);
     }
 
     .mugshotName {

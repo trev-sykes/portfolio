@@ -24,16 +24,11 @@ const ProjectsComponent = () => {
             setExpandedProjects(expandedProjects.filter((item) => item !== index));
         }
     };
-    // const handleReadFullArticle = (index: number) => {
-    //     setAnimatingProject(index); // Set the blog to animate
-    //     setSelectedProject(index);
-    //     setShowFullPage(true);
-    // };
     const handleCloseFullView = () => {
         setSelectedProject(null);
-        setAnimatingProject(null); // Reset the animation state
+        setAnimatingProject(null);
         setShowFullPage(false);
-        document.body.style.overflow = ''; // Restore body overflow
+        document.body.style.overflow = '';
     };
     const handleResize = () => {
         setViewportWidth(window.innerWidth);
@@ -220,13 +215,13 @@ const ProjectsComponent = () => {
                                     </button> */}
                                     <a
                                         href={project.url}
-                                        className={styles.readFullProjectLink}
+                                        className={styles.visitSite}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >Visit Site</a>
                                     <a
                                         href={project.gitLink}
-                                        className={styles.gitLink}
+                                        className={styles.sourceCode}
                                         target='_blank'
                                         rel='noopen noreferrer'
                                     >Source Code</a>
