@@ -36,7 +36,7 @@ export default function About() {
                 </p>
             </div>
             <Projects />
-            <div className={styles.contentSection}>
+            <div className={`${styles.contentSection} ${styles.skills}`}>
                 <h2 className={styles.sectionTitle}>Skills</h2>
 
                 <section className={styles.skillsSection}>
@@ -62,7 +62,7 @@ export default function About() {
                 </section>
             </div>
 
-            <div className={styles.contentSection}>
+            <div className={`${styles.contentSection} ${styles.goals}`}>
                 <h2 className={styles.sectionTitle}>Goals</h2>
                 <p className={styles.introParagraph}>
                     I’m excited about the transformative potential of Web3 and blockchain to create a more open, secure, and user-centric internet. My goal is to work alongside forward-thinking teams to build decentralized applications that enable new use cases, empower individuals, and enhance trust in the digital world.
