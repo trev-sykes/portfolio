@@ -4,8 +4,9 @@ import landingTemplate from "./landingTemplate.ts";
 // import luckySix from "./Luckysix.ts";
 import rollSixWin from "./rollSixWin.ts";
 import peerLink from "./peerLink.ts";
+import bondingCurveSimulator from "./BondingCurve.ts";
 
 
 
 
-export const projects: Projects = [landingTemplate, rollSixWin, peerLink];
+export const projects: Projects = [landingTemplate, rollSixWin, peerLink, bondingCurveSimulator];
