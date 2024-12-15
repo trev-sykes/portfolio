@@ -256,3 +256,12 @@
   text-decoration: none;
   color: rgb(34, 255, 0);
 }
+
+.viewProjects {
+  background: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 auto;
+}

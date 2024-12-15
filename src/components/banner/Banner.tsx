@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
-import mugshotImage from '../../assets/ai_mugshot1.jpeg';
+import mugshotImage from '../../assets/hero2.jpeg';
 import styles from './Banner.module.css';
 interface ImageStyles {
     width: string;

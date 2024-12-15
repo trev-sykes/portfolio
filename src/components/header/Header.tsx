@@ -39,7 +39,7 @@ export default function Header() {
                     </div>
                     <div className={styles.right}>
                         <button className={styles.contactButton} onClick={toggleContactPopup}>
-                            Contact
+                            contact
                         </button>
                         {/* <button className={styles.iconButton}>
                             <img className={styles.icon} src={dark} alt="Toggle theme" />
