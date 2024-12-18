@@ -184,6 +184,21 @@
   color: white;
 }
 
+.topic.ai {
+  background: pink;
+  color: rgb(85, 22, 128);
+}
+
+.topic.tokenomics {
+  background: green;
+  color: rgb(232, 209, 209);
+}
+
+.topic.rwa {
+  background: blue;
+  color: rgb(255, 255, 255);
+}
+
 .image {
   width: 100%;
   max-height: 200px;

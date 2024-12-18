@@ -232,6 +232,15 @@ const BlogComponent = () => {
                                             case `L2's`:
                                                 topicClass = styles.ltwo;
                                                 break;
+                                            case 'AI':
+                                                topicClass = styles.ai;
+                                                break;
+                                            case 'Tokenomics':
+                                                topicClass = styles.tokenomics;
+                                                break;
+                                            case 'RWA':
+                                                topicClass = styles.rwa;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }
