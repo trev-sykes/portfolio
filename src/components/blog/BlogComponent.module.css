@@ -199,6 +199,27 @@
   color: rgb(255, 255, 255);
 }
 
+.topic.privacy {
+  background: red;
+  color: white;
+}
+
+.topic.scalability {
+  background: lime;
+  color: black;
+}
+
+.topic.zkProofs {
+  background: royalblue;
+  color: white;
+}
+
+.topic.cryptography {
+  background: crimson;
+  color: #FFF;
+}
+
+
 .image {
   width: 100%;
   max-height: 200px;

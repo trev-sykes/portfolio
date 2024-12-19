@@ -34,7 +34,7 @@ export default function Header() {
                             <div className={styles.mugshotImageContainer}>
                                 <div className={styles.mugshotImage} />
                             </div>
-                            <span className={styles.mugshotName}>Trevor Jacob Sykes</span>
+                            <span className={styles.mugshotName}>Trevor Sykes</span>
                         </div>
                     </div>
                     <div className={styles.right}>

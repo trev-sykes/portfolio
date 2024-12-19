@@ -241,6 +241,18 @@ const BlogComponent = () => {
                                             case 'RWA':
                                                 topicClass = styles.rwa;
                                                 break;
+                                            case 'Privacy':
+                                                topicClass = styles.privacy;
+                                                break;
+                                            case 'Scalability':
+                                                topicClass = styles.scalability;
+                                                break;
+                                            case 'Zero-Knowledge Proofs':
+                                                topicClass = styles.zkProofs;
+                                                break;
+                                            case 'Cryptography':
+                                                topicClass = styles.cryptography;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }

@@ -8,7 +8,7 @@ const peerLinkPreview: ProjectPreview = {
     languages: ["JavaScript", "Solidity", 'CSS'],
     frameworks: ["Web3.js", "React"],
     imageUrl: img,
-    url: 'https://peer-link-z4me.vercel.app/',
+    url: 'https://peer-link-5rkvbl22j-trevarious-projects.vercel.app/',
     gitLink: 'https://github.com/trevarious/peer_link'
 }
 
