@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { LucideSend } from 'lucide-react';
 // `import search from '../../assets/search.svg';
 // import dark from '../../assets/moon.png';`
 import Contact from '../contact/Contact'; // Adjust the path as needed
@@ -38,9 +39,13 @@ export default function Header() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <button className={styles.contactButton} onClick={toggleContactPopup}>
-                            contact
-                        </button>
+                        <LucideSend
+                            className={styles.contactButton}
+                            onClick={toggleContactPopup}
+                            size={24}
+                            strokeWidth={1}
+                        />
+
                         {/* <button className={styles.iconButton}>
                             <img className={styles.icon} src={dark} alt="Toggle theme" />
                         </button>

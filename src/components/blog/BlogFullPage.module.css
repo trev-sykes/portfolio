@@ -25,6 +25,10 @@
     animation: fadeIn 0.3s ease-out;
 }
 
+.min:hover {
+    color: var(--accent-color);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './BlogFullPage.module.css';
+import { Minimize2 } from 'lucide-react';
 import { magazine } from './articles';
 
 interface Props {
@@ -29,7 +30,12 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
         <div id={`blog-${selectedBlog}`} className={styles.container}>
             <div className={styles.header}>
                 <h1 className={styles.titleHeader}>{article.titleHeader}</h1>
-                <button className={styles.closeButton} onClick={onClose}>X</button>
+                <Minimize2
+                    className={styles.min}
+                    strokeWidth={3}
+                    onClick={onClose}
+                    size={24}
+                />
             </div>
 
             <div className={styles.content}>

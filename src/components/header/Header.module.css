@@ -86,23 +86,14 @@
 }
 
 .contactButton {
-    width: auto;
-    height: 36px;
-    border-radius: 3px;
-    padding: 0 5px 0 5px;
-    background: var(--button-background);
-    color: white;
+    margin-top: 6px;
+
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: background .333s ease, border-color .333s ease;
-    border: 3px solid transparent;
 }
 
 .contactButton:hover {
-    border-color: rgba(137, 43, 226, 0.5);
-
+    color: #3498db;
 }
 
 @media (max-width: 600px) {
