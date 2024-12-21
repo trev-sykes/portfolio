@@ -253,6 +253,15 @@ const BlogComponent = () => {
                                             case 'Cryptography':
                                                 topicClass = styles.cryptography;
                                                 break;
+                                            case 'DeFi':
+                                                topicClass = styles.defi;
+                                                break;
+                                            case 'Finance':
+                                                topicClass = styles.finance;
+                                                break;
+                                            case 'Decentralization':
+                                                topicClass = styles.decentralization;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }

@@ -219,6 +219,20 @@
   color: #FFF;
 }
 
+.topic.defi {
+  background: pink;
+  color: white;
+}
+
+.topic.finance {
+  background: green;
+  color: rgb(210, 209, 209);
+}
+
+.topic.decentralization {
+  background: radial-gradient(circle at center, rgb(238, 238, 238) 10%, rgb(204, 174, 241) 90%);
+}
+
 
 .image {
   width: 100%;
