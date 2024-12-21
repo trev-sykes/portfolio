@@ -1,140 +1,211 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --text-color: #333;
+    --background-color: #f4f6f7;
+    --content-background: #ffffff;
+    --accent-color: #e74c3c;
+}
+
 .container {
     position: fixed;
-    top: 5%;
-    right: 5%;
-    bottom: 5%;
-    left: 5%;
-    max-width: 95%;
-    margin: 0 auto;
-    padding: 0 15px 10px 0;
-    background-image:
-        radial-gradient(circle at center, rgba(0, 0, 0, 085) 0%, rgba(0, 0, 0, 0.85) 70%),
-
-        url(../../assets/blog.jpg);
-
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(255, 255, 255);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
     overflow-y: auto;
-    min-height: 90vh;
-    max-height: 95vh;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
 
-    z-index: 100000;
-    border: 5px solid purple;
+.min {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.min:hover {
+    color: var(--accent-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container>div {
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    background-color: var(--content-background);
+    border-radius: 0px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    position: relative;
 }
 
 .header {
-    background: rgba(50, 50, 50, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(52, 152, 219, 0.05);
+    border-bottom: 1px solid rgba(52, 152, 219, 0.1);
     position: sticky;
     top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: rgba(43, 53, 58, 0.2);
-    z-index: 1000;
-    /* Ensure the header stays above other content */
-    backdrop-filter: blur(10px);
+    z-index: 10;
+    min-height: 120px;
 }
 
 .titleHeader {
-    font-size: 1.75rem;
-    letter-spacing: .25;
-    line-height: 1;
-}
-
-.title {
     font-size: 1.5rem;
-    letter-spacing: .5;
-    line-height: .75;
+    font-weight: 600;
+    color: var(--secondary-color);
     margin: 0;
-
-}
-
-.closeButton {
-    background-color: #f00;
-    position: absolute;
-    right: 0;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.closeButton:hover {
-    background-color: #d00;
+    max-width: 80%;
 }
 
 .content {
-    padding: 25px;
-    text-align: center;
-}
-
-.date {
-    color: #beccd8;
-    margin-bottom: 20px;
-    margin-top: 15px;
-}
-
-.tableOfContents {
-    margin-bottom: 20px;
-}
-
-.sectionTitle {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 10px;
-}
-
-.sectionContent {
-    line-height: 1.6;
-    text-align: left;
-    font-size: 1.2rem;
+    padding: 30px;
 }
 
 .image {
     width: 100%;
-    height: 200px;
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 400px;
     background-size: cover;
-
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 600px) {
-    .container {
-        border: 3px solid green;
-    }
+.date {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+}
 
-    .closeButton {
-        padding: 0;
-        width: 20px;
-        height: 20px;
-    }
+.description {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
 
-    .container {
-        max-width: 300px;
+/* Tech Stack Section */
+.techStack {
+    background-color: rgba(52, 152, 219, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.techStack h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.techStack ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.techStack li {
+    margin: 10px 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.techStack strong {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+/* Project Overview and Inspiration Sections */
+.summary,
+.inspiration {
+    margin: 30px 0;
+}
+
+.summary h2,
+.inspiration h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+}
+
+.summary p,
+.inspiration p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .container>div {
+        margin: 0;
+        width: 100%;
+        max-height: 95vh;
+        border-radius: 0;
     }
 
     .header {
-        justify-content: space-between;
+        padding: 15px;
+        min-height: 80px;
     }
 
-    .sectionTitle {
-        letter-spacing: 1;
-        width: 100%;
-        word-wrap: normal;
-        margin-bottom: 20px;
-
+    .titleHeader {
+        font-size: 1.2rem;
     }
 
-    .sectionContent {
-        margin-bottom: 10px;
+    .content {
+        padding: 20px;
     }
 
+    .image {
+        height: 250px;
+    }
+
+    .description,
+    .summary p,
+    .inspiration p,
+    .techStack li {
+        font-size: 1rem;
+    }
+
+    .summary h2,
+    .inspiration h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Scrollbar styling */
+.container>div::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container>div::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.container>div::-webkit-scrollbar-thumb {
+    background-color: rgba(52, 152, 219, 0.5);
+    border-radius: 4px;
 }

@@ -86,7 +86,6 @@
 }
 
 .contactButton {
-    margin-top: 6px;
 
     border: none;
     cursor: pointer;
@@ -102,6 +101,10 @@
         /* Override fade effect on small screens */
         transition: none !important;
         /* Disable transition effect on small screens */
+    }
+
+    .contactButton {
+        margin-top: 5px;
     }
 
     .nav {

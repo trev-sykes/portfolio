@@ -32,7 +32,7 @@
   margin-bottom: 20px;
   border: 1px solid #ccc;
   padding: 20px;
-  cursor: pointer;
+  cursor: default;
   box-sizing: border-box;
   opacity: 1;
   background: radial-gradient(circle at center, rgba(211, 177, 220, 0.15) 0%, rgba(0, 0, 0, 0.05) 70%);
@@ -179,6 +179,7 @@
   background: rgba(0, 0, 0, 0.2);
   padding: 0 5px 0 5px;
   margin-top: 15px;
+  cursor: pointer;
 
 }
 
@@ -244,7 +245,11 @@
 
 .sourceCode {
   text-decoration: none;
-  color: black;
+  color: #e74c3c;
+}
+
+.sourceCode:hover {
+  color: #9b3e34;
 }
 
 .visitSite {
@@ -252,9 +257,24 @@
   color: rgb(24, 136, 30);
 }
 
+.visitSite:hover {
+  color: rgb(41, 179, 48);
+}
+
 .readFullProjectLink {
   text-decoration: none;
   color: rgb(34, 255, 0);
+}
+
+
+.readFullArticleButton {
+  color: #3498db;
+  margin: 0;
+  cursor: pointer;
+}
+
+.readFullArticleButton:hover {
+  color: #4fb0f1;
 }
 
 .viewProjects {

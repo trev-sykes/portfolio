@@ -1,24 +1,28 @@
-// Define a base interface for common properties
+// projectInterfaces.ts
 export interface ProjectPreview {
     title: string;
     description: string;
     date: string;
-    languages: string[];
-    frameworks: string[];
+    techStack: TechStack;
     imageUrl: string;
     url: string;
     gitLink: string;
 }
 
-// Define an interface for sections
+export interface TechStack {
+    languages: string[];
+    frameworks: string[];
+}
+
 export interface Dependency {
     name: string;
     description: string;
 }
 
-// Define an interface for the full blog article, extending the preview
-export interface FullProject extends ProjectPreview{
+export interface FullProject extends ProjectPreview {
     summary: string;
     dependencies: Dependency[];
+    inspiration: string;
 }
+
 export type Projects = FullProject[];
