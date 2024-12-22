@@ -1,7 +1,11 @@
-
 import { Copy } from 'lucide-react';
 
-const CodeBlockFormatter = ({ code, language }) => {
+interface CodeBlockFormatterProps {
+    code: string;
+    language: string;
+}
+
+const CodeBlockFormatter: React.FC<CodeBlockFormatterProps> = ({ code, language }) => {
     const copyToClipboard = () => {
         navigator.clipboard.writeText(code);
     };
