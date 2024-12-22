@@ -1,6 +1,7 @@
 // Importing interfaces and image
 import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
 import img from '../../../assets/roll-six-win.png'
+import gif from "../../../assets/roll-six-win.gif"
 
 // Defining the tech stack (languages and frameworks)
 const techStack: TechStack = {
@@ -36,6 +37,7 @@ while also exploring the implementation of features like streak bonuses to enhan
 
 // Full project data (extends preview with additional details)
 const rollSixWin: FullProject = {
+  gif: gif,
   summary: `Roll Six Win is an innovative decentralized dice game built on the Polygon network that combines blockchain security with engaging gameplay mechanics. 
     Using Chainlink VRF for verifiable randomness, players can confidently place bets on various dice roll outcomes, including exact numbers and parity predictions. 
     The game features a unique streak bonus system that rewards consistent winners, while maintaining configurable parameters to ensure a balanced and sustainable gaming experience. 

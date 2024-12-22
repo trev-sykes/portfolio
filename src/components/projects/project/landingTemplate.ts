@@ -1,6 +1,7 @@
 // Importing interfaces and image
 import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
 import img from '../../../assets/landing-template.png'
+import gif from "../../../assets/landingPage.gif"
 
 // Defining the tech stack (languages and frameworks)
 const techStack: TechStack = {
@@ -36,6 +37,7 @@ accessibility and ease of customization.`;
 
 // Full project data (extends preview with additional details)
 const landingTemplate: FullProject = {
+    gif,
     summary: 'A landing page template designed to be compatible with plenty of ecommerce sectors. CSS transitions are the main focus for this project, highlighting dynamic transitions and movement within the landing page.',
     ...landingTemplatePreview,  // Spreading project preview into the full project
     dependencies,  // Including the list of dependencies

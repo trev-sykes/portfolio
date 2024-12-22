@@ -20,6 +20,7 @@ export interface Dependency {
 }
 
 export interface FullProject extends ProjectPreview {
+    gif: any;
     summary: string;
     dependencies: Dependency[];
     inspiration: string;

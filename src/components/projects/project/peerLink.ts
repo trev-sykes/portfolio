@@ -1,6 +1,7 @@
 // Importing interfaces and image
 import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
 import img from '../../../assets/peer-link.png'
+import gif from "../../../assets/peerlink.gif"
 
 // Defining the tech stack (languages and frameworks)
 const techStack: TechStack = {
@@ -36,6 +37,7 @@ that prioritize user privacy and data ownership.`;
 
 // Full project data (extends preview with additional details)
 const peerLink: FullProject = {
+    gif,
     summary: 'PeerLink is a decentralized social network built on Ethereum that enables users to create and manage their social connections on the blockchain. The platform allows users to add friends, create groups, and interact in a decentralized manner, ensuring data privacy and user autonomy. With MetaMask integration, users can securely manage their identity and interactions while maintaining full control over their social graph.',
     ...peerLinkPreview,  // Spreading project preview into the full project
     dependencies,  // Including the list of dependencies

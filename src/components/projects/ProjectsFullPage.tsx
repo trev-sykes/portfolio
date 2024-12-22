@@ -48,7 +48,7 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
       <div className={styles.content}>
         <div
           className={styles.image}
-          style={{ backgroundImage: `url(${project.imageUrl})` }}
+          style={{ backgroundImage: `url(${project.gif})` }}
         />
 
         <p className={styles.date}>Published on {project.date}</p>
@@ -71,11 +71,14 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
         <div className={styles.techStack}>
           <h2>Dependencies</h2>
           <ul>
-            {project.dependencies?.length > 0 && (
-              <li><strong>{project.dependencies.map(dep => dep.name).join(", ")}</strong><span>{project.dependencies.map(dep => dep.description).join(" ")}</span></li>
-
-            )}
-
+            {project.dependencies?.length > 0 &&
+              project.dependencies.map((dep, index) => (
+                <li key={index} className={styles.dependencyItem}>
+                  <div className={styles.dependencyName}><strong>{dep.name}</strong></div>
+                  <div className={styles.dependencyDescription}>{dep.description}</div>
+                </li>
+              ))
+            }
           </ul>
         </div>
 

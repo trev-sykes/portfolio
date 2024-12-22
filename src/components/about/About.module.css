@@ -126,29 +126,30 @@
 
 .goals {
     animation: colorChange 8s linear infinite;
-    box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.15);
+    animation-fill-mode: forwards;
+    box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.05);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes colorChange {
     0% {
-        background-color: #e9e9e9;
+        background-color: #fafafa;
     }
 
     25% {
-        background-color: #ebebeb;
+        background-color: #f8f8f8;
     }
 
     50% {
-        background-color: #eeeeee;
+        background-color: #f0f0f0;
     }
 
     75% {
-        background-color: #efefef;
+        background-color: #f8f8f8;
     }
 
     100% {
-        background-color: #e9e9e9;
+        background-color: #fafafa;
     }
 }
 
