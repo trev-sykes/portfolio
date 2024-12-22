@@ -1,6 +1,7 @@
 // Importing interfaces and image
 import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
 import img from '../../../assets/crypto-scope.png'
+import gif from "../../../assets/crypto-scope.png"
 
 // Defining the tech stack (languages and frameworks)
 const techStack: TechStack = {
@@ -39,6 +40,7 @@ With the dynamic nature of crypto markets, having an intuitive and interactive c
 
 // Full project data (extends preview with additional details)
 const cryptoScope: FullProject = {
+    gif,
     summary: 'A tool used to fetch and visualize cryptocurrency price data. This project highlights an ability to manipulate and display real-time data in a dynamic way, providing users with a clear and informative interface for tracking cryptocurrency prices.',
     ...cryptoScopePreview,  // Spreading project preview into the full project
     dependencies,  // Including the list of dependencies

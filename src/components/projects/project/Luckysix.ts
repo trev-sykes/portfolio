@@ -1,6 +1,7 @@
 // Importing interfaces and image
 import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
 import img from '../../../assets/lucky-6.png'
+import gif from "../../../assets/lucky-6.png"
 
 // Defining the tech stack (languages and frameworks)
 const techStack: TechStack = {
@@ -35,6 +36,7 @@ trustless, and tamper-proof, providing players with confidence in the fairness o
 
 // Full project data (extends preview with additional details)
 const luckySix: FullProject = {
+  gif,
   summary: 'RollSixWin is a decentralized Ethereum-based dice game that uses Chainlink VRF for fair randomness. Players can bet on dice rolls, with options like guessing an exact number or whether the roll will be odd or even. The game features a streak bonus system and customizable betting parameters, offering a dynamic and engaging gambling experience.',
   ...luckySixPreview,  // Spreading project preview into the full project
   dependencies,  // Including the list of dependencies
