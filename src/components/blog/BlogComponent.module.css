@@ -233,6 +233,26 @@
   background: radial-gradient(circle at center, rgb(238, 238, 238) 10%, rgb(204, 174, 241) 90%);
 }
 
+.topic.amm {
+  background: rgb(0, 242, 255);
+}
+
+.topic.dapp {
+  background: rgb(255, 187, 0);
+}
+
+.topic.web3 {
+  background: rgb(49, 255, 107);
+}
+
+.topic.bitcoinEtf {
+  background: #0a002e;
+  color: white;
+}
+
+.topic.marketAnalysis {
+  background: #ffc8f4;
+}
 
 .image {
   width: 100%;

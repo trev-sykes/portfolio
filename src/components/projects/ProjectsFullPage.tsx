@@ -69,7 +69,7 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
         </div>
         {/* Dependencies */}
         <div className={styles.techStack}>
-          <h2>Dependencies</h2>
+          <h3>Dependencies</h3>
           <ul>
             {project.dependencies?.length > 0 &&
               project.dependencies.map((dep, index) => (

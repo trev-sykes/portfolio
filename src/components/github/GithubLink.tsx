@@ -37,7 +37,7 @@ export default function GithubLink() {
       >
         <a
           className={styles.githubLink}
-          href="https://www.github.com/trevarious"
+          href="https://www.github.com/trev-sykes"
           target="_blank"
           rel="noreferrer"
         >

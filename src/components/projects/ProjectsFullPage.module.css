@@ -136,6 +136,12 @@
     margin-right: 10px;
 }
 
+.dependencyItem {}
+
+.dependencyName {
+    color: var(--primary-color);
+}
+
 /* Project Overview and Inspiration Sections */
 .summary,
 .inspiration {

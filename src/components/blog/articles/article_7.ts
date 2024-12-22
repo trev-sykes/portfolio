@@ -77,10 +77,10 @@ const fullArticle: FullArticle = {
     ]
 }
 
-const article_6: Blog = {
+const article_7: Blog = {
     titleHeader: `The Role of Zero-Knowledge Proofs in Blockchain Privacy and Scalability`,
     ...blogPreview,
     ...fullArticle
 }
 
-export default article_6;
+export default article_7;

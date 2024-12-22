@@ -45,10 +45,10 @@ const fullArticle: FullArticle = {
     ]
 }
 
-const article_7: Blog = {
+const article_8: Blog = {
     titleHeader: `AI Meets Crypto`,
     ...blogPreview,
     ...fullArticle
 }
 
-export default article_7;
+export default article_8;

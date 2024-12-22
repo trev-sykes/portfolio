@@ -7,5 +7,6 @@ import article_5 from "./article_5";
 import article_6 from "./article_6";
 import article_7 from "./article_7";
 import article_8 from "./article_8";
+import article_9 from "./article_9";
 
-export const magazine: Magazine = [article_1, article_2, article_3, article_4, article_5, article_6, article_7, article_8];
+export const magazine: Magazine = [article_1, article_2, article_3, article_4, article_5, article_6, article_7, article_8, article_9];

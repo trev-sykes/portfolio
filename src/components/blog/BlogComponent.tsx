@@ -262,6 +262,21 @@ const BlogComponent = () => {
                                             case 'Decentralization':
                                                 topicClass = styles.decentralization;
                                                 break;
+                                            case 'AMM':
+                                                topicClass = styles.amm;
+                                                break;
+                                            case 'DApp':
+                                                topicClass = styles.dapp;
+                                                break;
+                                            case 'Web3':
+                                                topicClass = styles.web3;
+                                                break;
+                                            case 'Bitcoin ETF':
+                                                topicClass = styles.bitcoinEtf;
+                                                break;
+                                            case 'Market Analysis':
+                                                topicClass = styles.marketAnalysis;
+                                                break;
                                             default:
                                                 topicClass = '';
                                         }

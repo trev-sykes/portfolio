@@ -2,7 +2,7 @@ import img from '../../../assets/article_5.webp'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 
 const blogPreview: BlogPreview = {
-    title: `Understanding the Relationship Between L2s and Ethereum`,
+    title: `L2s and Ethereum`,
     description: `Layer two (L2) scaling solutions are often discussed in terms of their impact on Ethereum’s Layer one (L1) network. This article takes a more objective look at the complex dynamics between the two.`,
     date: 'October 28, 2024',
     topic: ['Ethereum', 'Blockchain', 'Web Development', `L2's`],
