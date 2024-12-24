@@ -1,4 +1,5 @@
 import { useState, useEffect, FormEvent } from 'react';
+import { Minimize2 } from 'lucide-react';
 import styles from './Contact.module.css'; // Ensure you create this CSS file
 
 interface Contact {
@@ -53,6 +54,13 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
         setSending(true);
         setSuccess(false);
         setError(null);
+
+        // Ensure at least one of phone number or email is provided
+        if (!phone_Number && !email) {
+            setError('Please provide either a phone number or an email address.');
+            setSending(false);
+            return;
+        }
 
         try {
             const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -111,36 +119,35 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     return (
         <div className={`${styles.overlay} ${visible ? styles.visible : ''}`}>
             <div className={styles.popup}>
-                <button className={styles.close} onClick={() => setVisible(false)}>×</button>
+                {/* <button className={styles.close} onClick={() => setVisible(false)}>×</button> */}
+                <Minimize2 className={styles.close} onClick={() => setVisible(false)} />
                 {!success ? (
                     <>
-                        <h2 className={styles.header}>Let's Connect!</h2>
+                        <h2 className={styles.header}>Get In Touch</h2>
                         <form onSubmit={handleSubmit}>
                             <input
                                 type="text"
                                 value={from_name}
                                 onChange={(e) => setFrom_Name(e.target.value)}
-                                placeholder="Full Name"
+                                placeholder="Satoshi Nakamoto"
                                 required
                             />
                             <input
                                 type="text"
                                 value={phone_Number}
                                 onChange={(e) => setPhone_Number(e.target.value)}
-                                placeholder="Phone Number"
-                                required
+                                placeholder="369-369-3693"
                             />
                             <input
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email Address"
-                                required
+                                placeholder="satoshi@aol.com"
                             />
                             <textarea
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Your message here..."
+                                placeholder="This is placeholder text..."
                                 rows={4}
                                 required
                             />

@@ -7,28 +7,38 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [textColor, setTextColor] = useState('black'); // Default text color
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Track window width
+
+    // Adjust scroll range dynamically based on screen size
+    const scrollRange = windowWidth < 600 ? { min: 0, max: 0 } : { min: 16, max: 284 };
 
     useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth); // Update window width on resize
+        };
+
         const handleScroll = () => {
             const scrollY = window.scrollY; // Get the current scroll position
             const isScrolled = scrollY > 0;
             setScrolled(isScrolled);
 
-            // Change text color when scroll position is between 0 and 144px
-            if (scrollY > 15 && scrollY <= 285) {
-                setTextColor('white'); // Change to red when within this range
+            // Change text color when scroll position is within the adjusted range
+            if (scrollY > scrollRange.min && scrollY <= scrollRange.max) {
+                setTextColor('white'); // Change to white when within this range
             } else {
                 setTextColor('black'); // Revert to black when outside this range
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize); // Listen for resize events
+        window.addEventListener('scroll', handleScroll); // Listen for scroll events
 
-        // Clean up the event listener on component unmount
+        // Cleanup event listeners
         return () => {
+            window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []); // The empty array ensures this runs only once, after the initial render
+    }, [windowWidth, scrollRange]); // Re-run effect when windowWidth or scrollRange changes
 
     const toggleContactPopup = () => {
         setContactPopupVisible(!contactPopupVisible);

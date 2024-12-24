@@ -125,11 +125,10 @@ const ProjectsComponent = () => {
                             >
                                 <img src={project.imageUrl} alt={project.title} className={styles.image} loading='lazy' />
                                 <h2 className={styles.projectTitle}>{project.title}</h2>
-                                <p>
+                                <p className={styles.description}>
                                     {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
                                     {project.description.length > 100 && (
                                         <button
-                                            aria-expanded={expandedProjects.includes(index)}
                                             className={`${styles.readMoreButton} ${expandedProjects.includes(index) ? styles.readLessActive : ''}`}
                                             onClick={() => handleReadFullDescription(index)}
                                         >

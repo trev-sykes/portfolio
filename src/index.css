@@ -11,6 +11,9 @@
   --button-color: white;
   --color-scheme: light dark;
   --text-color: rgb(56, 63, 65);
+  --input-background: rgb(211, 225, 209);
+  --input-color: rgb(63, 71, 64);
+  --accent-color: rgb(75, 91, 69);
   background: radial-gradient(circle, rgba(200, 197, 195, 1) 0%, rgba(255, 255, 255, 1) 100%);
   --read-more-color: #005d03;
   --read-less-background: #00cd04;
