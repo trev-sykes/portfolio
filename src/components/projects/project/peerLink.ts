@@ -1,47 +1,122 @@
 // Importing interfaces and image
-import { ProjectPreview, Dependency, FullProject, TechStack } from '../projectInterfaces'
+import { FullProject } from '../projectInterfaces'
 import img from '../../../assets/peer-link.png'
 import gif from "../../../assets/peerlink.gif"
 
-// Defining the tech stack (languages and frameworks)
-const techStack: TechStack = {
-    languages: ["JavaScript", "Solidity", 'CSS'],
-    frameworks: ["Web3.js", "React"]
-};
-
-// Defining the project preview (common project details)
-const peerLinkPreview: ProjectPreview = {
-    title: 'Peerlink',
-    description: '*(NOTE) Must have Metamask installed, mobile users must be within a wallet explorer.* PeerLink is a decentralized social network that lets users add friends and create groups on the blockchain.',
-    date: 'October 5th, 2024',
-    techStack,  // Including the tech stack here
-    imageUrl: img,
-    url: 'https://peer-link-5rkvbl22j-trevarious-projects.vercel.app/',
-    gitLink: 'https://github.com/trev-sykes/peer_link'
-};
-
-// Defining the dependencies (libraries used in the project)
-const openzeppelinContracts: Dependency = {
-    name: 'Openzeppelin Contracts',
-    description: 'Gold standard of smart contracts for token standards.'
-};
-
-// List of dependencies
-const dependencies: Dependency[] = [openzeppelinContracts];
-
-// Defining the inspiration for the project
-const inspiration: string = `The inspiration behind PeerLink comes from a vision to create a truly decentralized social networking platform. 
-By leveraging blockchain technology, the project aims to give users complete control over their social connections and group interactions, 
-free from traditional centralized platforms. The goal was to demonstrate how blockchain can be used to create meaningful social applications 
-that prioritize user privacy and data ownership.`;
-
-// Full project data (extends preview with additional details)
 const peerLink: FullProject = {
-    gif,
-    summary: 'PeerLink is a decentralized social network built on Ethereum that enables users to create and manage their social connections on the blockchain. The platform allows users to add friends, create groups, and interact in a decentralized manner, ensuring data privacy and user autonomy. With MetaMask integration, users can securely manage their identity and interactions while maintaining full control over their social graph.',
-    ...peerLinkPreview,  // Spreading project preview into the full project
-    dependencies,  // Including the list of dependencies
-    inspiration   // Adding inspiration for the project
+    title: 'PeerLink',
+    shortDescription: 'Decentralized social network built on Ethereum blockchain',
+    description: 'PeerLink is a decentralized social network that enables users to add friends and create groups directly on the blockchain, providing complete control over social connections and data.',
+    date: {
+        started: '2024-09-01',
+        completed: '2024-10-05',
+        lastUpdated: '2024-10-05'
+    },
+    status: 'completed',
+    featured: true,
+    techStack: {
+        languages: ["JavaScript", "Solidity", "CSS", "HTML"],
+        frameworks: ["React", "Web3.js"],
+        tools: ["MetaMask", "Git", "Vercel", "Hardhat"],
+        databases: ["Ethereum Blockchain"]
+    },
+    images: {
+        thumbnail: img,
+        preview: gif,
+        screenshots: [
+            // Add relevant screenshots showing different features
+        ]
+    },
+    links: [
+        {
+            type: 'live',
+            url: 'https://peer-link-5rkvbl22j-trevarious-projects.vercel.app/',
+            label: 'Live Demo'
+        },
+        {
+            type: 'github',
+            url: 'https://github.com/trev-sykes/peer_link',
+            label: 'Source Code'
+        }
+    ],
+    features: [
+        'Decentralized friend request and acceptance system',
+        'Blockchain-based group creation and management',
+        'MetaMask integration for secure authentication',
+        'On-chain social graph storage',
+        'Real-time updates using Web3 events',
+        'Privacy-focused user interactions'
+    ],
+    challenges: [
+        {
+            description: 'Implementing efficient on-chain social connections',
+            solution: 'Utilized optimized smart contract structures and events for managing social relationships'
+        },
+        {
+            description: 'Managing MetaMask integration across different devices',
+            solution: 'Implemented robust wallet detection and connection handling with clear user guidance'
+        },
+        {
+            description: 'Optimizing gas costs for social interactions',
+            solution: 'Designed efficient smart contract methods and batch processing where applicable'
+        }
+    ],
+    dependencies: [
+        {
+            name: 'OpenZeppelin Contracts',
+            version: '^4.9.0',
+            description: 'Gold standard of smart contracts for token standards',
+            purpose: 'Provides secure, tested, and community-reviewed smart contract implementations'
+        },
+        {
+            name: 'Web3.js',
+            version: '^1.9.0',
+            description: 'Ethereum JavaScript API',
+            purpose: 'Enables interaction with local or remote Ethereum nodes'
+        },
+        {
+            name: 'Hardhat',
+            version: '^2.14.0',
+            description: 'Development environment for Ethereum software',
+            purpose: 'Used for compiling, deploying, testing, and debugging Ethereum software'
+        }
+    ],
+    summary: `PeerLink is a decentralized social network built on Ethereum that enables users to create and manage their social connections on the blockchain. 
+    The platform allows users to add friends, create groups, and interact in a decentralized manner, ensuring data privacy and user autonomy. 
+    With MetaMask integration, users can securely manage their identity and interactions while maintaining full control over their social graph.`,
+    inspiration: `The inspiration behind PeerLink comes from a vision to create a truly decentralized social networking platform. 
+    By leveraging blockchain technology, the project aims to give users complete control over their social connections and group interactions, 
+    free from traditional centralized platforms. The goal was to demonstrate how blockchain can be used to create meaningful social applications 
+    that prioritize user privacy and data ownership.`,
+    codeBlocks: [
+        {
+            language: 'solidity',
+            fileName: 'PeerLink.sol',
+            content: `// Example of friend request functionality
+function sendFriendRequest(address _to) public {
+    require(_to != msg.sender, "Cannot send request to yourself");
+    require(!friends[msg.sender][_to], "Already friends");
+    require(!friendRequests[msg.sender][_to], "Request already sent");
+    
+    friendRequests[msg.sender][_to] = true;
+    emit FriendRequestSent(msg.sender, _to);
+}`,
+            description: 'Core smart contract function for sending friend requests with proper validation'
+        }
+    ],
+    learnings: [
+        'Gained deep understanding of Web3 development and blockchain social interactions',
+        'Improved smart contract optimization and gas efficiency techniques',
+        'Enhanced knowledge of decentralized application architecture',
+        'Learned best practices for Web3 user experience design'
+    ],
+    futureImprovements: [
+        'Implement decentralized content storage using IPFS',
+        'Add encrypted messaging functionality',
+        'Create mobile-optimized interface',
+        'Add DAO governance for platform decisions',
+        'Implement layer 2 scaling solution for reduced gas fees'
+    ]
 };
 
 export default peerLink;

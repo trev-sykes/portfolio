@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
 import mugshotImage from '../../assets/logo1.webp';
 import styles from './Banner.module.css';
+
+/**
+ * Defines the structure for image styling properties.
+ * Used as a base interface for both canvas and mugshot styling.
+ */
 interface ImageStyles {
     width: string;
     height: string;
@@ -15,48 +20,57 @@ interface CanvasStyles extends ImageStyles {
 interface MugshotStyles extends ImageStyles {
     borderRadius: string;
 }
-
+/**
+ * Represents a particle in the space debris field.
+ * These particles create the background star effect in the animation.
+ */
 interface Debris {
-    x: number;
-    y: number;
-    radius: number;
-    color: string;
-    velocity: number;
+    x: number;          // Horizontal position
+    y: number;          // Vertical position
+    radius: number;     // Size of the debris particle
+    color: string;      // RGBA color value with opacity
+    velocity: number;   // Movement speed
 }
 
+/**
+ * Defines properties for shooting star animations.
+ * These create dynamic light streaks across the canvas.
+ */
 interface ShootingStar {
-    x: number;
-    y: number;
-    length: number;
-    angle: number;
-    color: string;
-    velocity: number;
-    trail: boolean;
-    collisionTime?: number; // Optional property to track collision time
+    x: number;          // Starting x position
+    y: number;          // Starting y position
+    length: number;     // Length of the shooting star trail
+    angle: number;      // Direction of movement in radians
+    color: string;      // RGBA color value
+    velocity: number;   // Movement speed
+    trail: boolean;     // Whether to render a trailing effect
+    collisionTime?: number;  // Timestamp of collision for animation effects
 }
 
-interface SpaceshipCircle {
-    x: number;
-    y: number;
-    radius: number;
-    color: string;
-    velocity: number;
-    angle: number;
-    rotationSpeed: number;
-    creationTime: number; // Timestamp when the spaceship was created
-    lifetime: number;     // Lifetime in milliseconds
-}
-
+/**
+ * Banner component that renders an animated space scene with debris and shooting stars.
+ * Provides a dynamic background effect with collision detection and responsive behavior.
+ */
 const Banner: React.FC = () => {
+    // Tracks viewport width for responsive adjustments
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const debrisRef = useRef<Debris[]>([]);
     const shootingStarsRef = useRef<ShootingStar[]>([]);
-    const spaceshipCirclesRef = useRef<SpaceshipCircle[]>([]);
     const animationRef = useRef<number>(0);
+
+    /**
+  * Updates viewport width state when window is resized.
+  * Ensures animations remain responsive to screen size changes.
+  */
     const handleReSize = () => {
         setViewportWidth(window.innerWidth);
     }
+
+    /**
+ * Sets up the canvas dimensions to match the viewport.
+ * Essential for maintaining proper scaling and animation boundaries.
+ */
 
     const initializeCanvas = useCallback(() => {
         const canvas = canvasRef.current;
@@ -66,18 +80,23 @@ const Banner: React.FC = () => {
         }
     }, []);
 
+    /**
+     * Generates the initial debris field based on viewport width.
+     * Creates more particles for larger screens to maintain visual density.
+     */
     const createDebris = useCallback(() => {
         const canvas = canvasRef.current;
         let numDebris = 0;
         if (!canvas) return;
-
+        // Initializes array of Debris, depending on the width of user screen
         const debris: Debris[] = [];
         if (viewportWidth < 600) {
             numDebris = 100;
         } else if (viewportWidth >= 600) {
             numDebris = 500;
         }
-
+        // Pushes individual debris by giving then random position on x,y axies
+        // random plot on x and y , random size, random color, random vel
         for (let i = 0; i < numDebris; i++) {
             debris.push({
                 x: Math.random() * canvas.width,
@@ -91,16 +110,25 @@ const Banner: React.FC = () => {
         debrisRef.current = debris;
     }, [viewportWidth]);
 
+
+    /**
+     * Generates new shooting stars with random properties.
+     * Probability of creation varies based on viewport width to prevent overwhelming smaller screens.
+     */
     const createShootingStar = useCallback((): ShootingStar | null => {
+        // Probability per render
+        // 1% chance for screens bigger than 600 width
+        // 0.5% chance for screens smaller than 600 width
         let shootingStarProbability = 0.01;
         if (viewportWidth < 600) {
             shootingStarProbability = 0.005;
         } else if (viewportWidth >= 600) {
             shootingStarProbability = 0.01;
         }
+        // Grabs the currently rendered canvas
         const canvas = canvasRef.current;
         if (!canvas) return null;
-
+        // generating a random number from 0 to 1 exclusive, then comparing against our probability
         if (Math.random() < shootingStarProbability) { // Probability of creating a shooting star
             return {
                 x: Math.random() * canvas.width,
@@ -112,20 +140,31 @@ const Banner: React.FC = () => {
                 trail: true
             };
         }
-
         return null;
     }, [viewportWidth]);
 
+    /**
+     * Calculates Euclidean distance between two points.
+     * Used for collision detection between shooting stars.
+     */
     const distanceBetweenPoints = (x1: number, y1: number, x2: number, y2: number): number => {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     };
 
+    /**
+     * Determines if two shooting stars have collided based on their proximity.
+     * Uses the stars' lengths to create a realistic collision boundary.
+     */
     const detectCollision = (star1: ShootingStar, star2: ShootingStar): boolean => {
         const distance = distanceBetweenPoints(star1.x, star1.y, star2.x, star2.y);
         const minDistance = star1.length / 2 + star2.length / 2; // Adjust based on your needs
         return distance < minDistance;
     };
 
+    /**
+ * Manages collision effects between shooting stars.
+ * Updates their properties to create visual feedback of the collision.
+ */
     const handleCollision = (star1: ShootingStar, star2: ShootingStar) => {
         // Set collision time
         const currentTime = Date.now();
@@ -145,13 +184,18 @@ const Banner: React.FC = () => {
         star2.velocity = Math.random() * 5 + 2;
     };
 
+    /**
+     * Updates positions of all debris and shooting stars.
+     * Handles collision detection and cleanup of out-of-bounds objects.
+     */
     const moveDebris = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-
+        // Grabs debris array
         const debris = debrisRef.current;
-        debris.forEach(fragment => {
 
+        debris.forEach(fragment => {
+            // Moves objects incrementally to the left horizontally 
             fragment.x -= fragment.velocity;
             if (fragment.x < 0) {
                 fragment.x = canvas.width;
@@ -162,7 +206,7 @@ const Banner: React.FC = () => {
                 fragment.x = canvas.width;
             }
         });
-
+        // Handle shooting star collisions and movement
         const shootingStars = shootingStarsRef.current;
         for (let i = 0; i < shootingStars.length; i++) {
             for (let j = i + 1; j < shootingStars.length; j++) {
@@ -181,27 +225,22 @@ const Banner: React.FC = () => {
             shootingStar.x >= 0 && shootingStar.y >= 0 && shootingStar.x <= canvas.width && shootingStar.y <= canvas.height
         );
 
-        const spaceshipCircles = spaceshipCirclesRef.current;
-        spaceshipCirclesRef.current = spaceshipCircles.filter(circle => {
-            if (Date.now() - circle.creationTime > circle.lifetime) {
-                return false;
-            }
-            circle.x += circle.velocity * Math.cos(circle.angle);
-            circle.y += circle.velocity * Math.sin(circle.angle);
-            circle.angle += circle.rotationSpeed;
-            if (circle.x < 0 || circle.y < 0 || circle.x > canvas.width || circle.y > canvas.height) {
-                return false;
-            }
-            return true;
-        });
     }, []);
-
+    /**
+     * Renders explosion effect when shooting stars collide.
+     * Creates a circular burst effect with fade-out animation.
+     */
     const drawExplosion = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
         ctx.beginPath();
         ctx.arc(x, y, 20, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(25, 25, 25, 0.1)';
         ctx.fill();
     };
+
+    /**
+   * Renders all visual elements on the canvas.
+   * Handles drawing of debris, shooting stars, trails, and explosion effects.
+   */
 
     const drawDebris = useCallback(() => {
         const canvas = canvasRef.current;
@@ -262,17 +301,12 @@ const Banner: React.FC = () => {
                     }
                 }
             });
-
-            const spaceshipCircles = spaceshipCirclesRef.current;
-            spaceshipCircles.forEach(circle => {
-                ctx.beginPath();
-                ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-                ctx.fillStyle = circle.color;
-                ctx.fill();
-            });
         }
     }, []);
-
+    /**
+     * Main animation loop that coordinates all visual updates.
+     * Manages the creation of new shooting stars and updates all animations.
+     */
     const animateDebris = useCallback(() => {
         animationRef.current = requestAnimationFrame(animateDebris);
         // Add shooting stars and spaceship circles based on probability
@@ -283,6 +317,7 @@ const Banner: React.FC = () => {
         drawDebris();
         moveDebris(); // You likely want to call moveDebris here to update positions
     }, [drawDebris, moveDebris, createShootingStar]);
+
     const handleResize = useCallback(() => {
         initializeCanvas();
         createDebris();

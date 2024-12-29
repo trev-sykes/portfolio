@@ -1,4 +1,5 @@
-import { Projects } from "../projectInterfaces";
+import { FullProject } from "../projectInterfaces";
+
 import landingTemplate from "./landingTemplate.ts";
 // import crypoScope from "./cryptoScope.ts";
 // import luckySix from "./Luckysix.ts";
@@ -9,4 +10,4 @@ import bondingCurveSimulator from "./BondingCurve.ts";
 
 
 
-export const projects: Projects = [landingTemplate, rollSixWin, peerLink, bondingCurveSimulator];
+export const projects: FullProject[] = [landingTemplate, rollSixWin, peerLink, bondingCurveSimulator];

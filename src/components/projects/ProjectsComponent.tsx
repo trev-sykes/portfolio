@@ -9,8 +9,6 @@ const ProjectsComponent = () => {
     const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-    // const [animatingProject, setAnimatingProject] = useState<number | null>(null);
-    // const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
     const projectRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +24,6 @@ const ProjectsComponent = () => {
 
     const handleCloseFullView = () => {
         setSelectedProject(null);
-        // setAnimatingProject(null);
         setShowFullPage(false);
         document.body.style.overflow = '';
     };
@@ -109,9 +106,7 @@ const ProjectsComponent = () => {
     return (
         <>
             <div className={`${styles.projects}`}>
-                <h1 ref={headingRef}>
-                    Top Projects
-                </h1>
+                <h1 ref={headingRef}>Top Projects</h1>
             </div>
 
             <div className={styles.container}>
@@ -123,7 +118,7 @@ const ProjectsComponent = () => {
                                 className={`${styles.projectPreview} ${styles.fadeIn}`}
                                 ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
                             >
-                                <img src={project.imageUrl} alt={project.title} className={styles.image} loading='lazy' />
+                                <img src={project.images.thumbnail} alt={project.title} className={styles.image} loading='lazy' />
                                 <h2 className={styles.projectTitle}>{project.title}</h2>
                                 <p className={styles.description}>
                                     {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
@@ -136,7 +131,16 @@ const ProjectsComponent = () => {
                                         </button>
                                     )}
                                 </p>
-                                <p className={styles.date}>{project.date}</p>
+
+                                {/* Date Section */}
+                                <p className={styles.date}>
+                                    Started: {project.date?.started ?? 'N/A'}
+                                    <br />
+                                    Completed: {project.date?.completed ?? 'N/A'}
+                                    <br />
+                                    Last Updated: {project.date?.lastUpdated ?? 'N/A'}
+                                </p>
+
                                 <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
 
                                 {/* Safeguard for undefined techStack */}
@@ -199,13 +203,13 @@ const ProjectsComponent = () => {
                                         Project Details
                                     </a>
                                     <a
-                                        href={project.url}
+                                        href={project.links[0].url}
                                         className={styles.visitSite}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >Visit Site</a>
                                     <a
-                                        href={project.gitLink}
+                                        href={project.links[1].url}
                                         className={styles.sourceCode}
                                         target='_blank'
                                         rel='noopen noreferrer'
