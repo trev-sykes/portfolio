@@ -16,7 +16,7 @@ const bondingCurveSimulator: FullProject = {
     status: 'completed',
     featured: true,
     techStack: {
-        languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
+        languages: ["JavaScript", "HTML", "CSS"],
         frameworks: ["React"],
         tools: ["Git", "npm", "Vercel"],
     },

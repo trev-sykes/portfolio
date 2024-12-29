@@ -14,10 +14,8 @@ const ProjectsComponent = () => {
 
     const handleReadFullDescription = (index: number) => {
         if (!expandedProjects.includes(index)) {
-            console.log(`Expanding project ${index}`);
             setExpandedProjects([...expandedProjects, index]);
         } else {
-            console.log(`Collapsing project ${index}`);
             setExpandedProjects(expandedProjects.filter((item) => item !== index));
         }
     };
@@ -133,18 +131,24 @@ const ProjectsComponent = () => {
                                 </p>
 
                                 {/* Date Section */}
-                                <p className={styles.date}>
-                                    Started: {project.date?.started ?? 'N/A'}
-                                    <br />
-                                    Completed: {project.date?.completed ?? 'N/A'}
-                                    <br />
-                                    Last Updated: {project.date?.lastUpdated ?? 'N/A'}
-                                </p>
+                                <div className={styles.dateContainer}>
+                                    <p className={`${styles.dateItem} ${styles.started}`}>
+                                        Started: {project.date?.started ?? 'N/A'}
+                                    </p>
+                                    <div className={styles.separator}> </div>
+                                    <p className={`${styles.dateItem} ${styles.completed}`}>
+                                        Completed: {project.date?.completed ?? 'N/A'}
+                                    </p>
+                                    <div className={styles.separator}> </div>
+                                    <p className={`${styles.dateItem} ${styles.lastUpdated}`}>
+                                        Last Updated: {project.date?.lastUpdated ?? 'N/A'}
+                                    </p>
+                                </div>
 
                                 <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
 
                                 {/* Safeguard for undefined techStack */}
-                                <div className={styles.topics}>
+                                < div className={styles.topics} >
                                     {(project.techStack?.languages || []).map((language, topicIndex) => {
                                         let topicClass = '';
                                         switch (language) {
@@ -226,8 +230,8 @@ const ProjectsComponent = () => {
                     ) : (
                         <button className={`${styles.viewProjects} ${styles.viewLess}`} onClick={handleShowAllBlogs}>View Less</button>
                     )}
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     );
 };
