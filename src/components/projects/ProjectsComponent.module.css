@@ -1,5 +1,9 @@
 @import "../../index.css";
 
+.contain {
+  margin-bottom: 55px;
+}
+
 .container {
   max-width: 1100px;
   height: auto;

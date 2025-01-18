@@ -104,7 +104,7 @@ const ProjectsComponent: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className={styles.contain}>
             <div className={`${styles.projects} `}>
                 <h1 ref={headingRef}>Top Projects</h1>
             </div>
@@ -228,7 +228,7 @@ const ProjectsComponent: React.FC = () => {
                         <ProjectFullPage selectedProject={selectedProject} onClose={handleCloseFullView} />
                     )}
                     {!showAllProjects ? (
-                        <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More</button>
+                        <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More...</button>
                     ) : (
                         <button className={`${styles.viewProjects} ${styles.viewLess} `} onClick={handleShowAllBlogs}>View Less</button>
                     )}
