@@ -1,4 +1,5 @@
 import { Copy } from 'lucide-react';
+import styles from "./CodeBlockFormatter.module.css";
 
 interface CodeBlockFormatterProps {
     code: string;
@@ -11,7 +12,7 @@ const CodeBlockFormatter: React.FC<CodeBlockFormatterProps> = ({ code, language 
     };
 
     return (
-        <div className="relative my-4 rounded-lg bg-gray-900 overflow-hidden">
+        <div className={styles.container}>
             <div className="flex items-center justify-between px-4 py-2 bg-gray-800">
                 <span className="text-sm text-gray-400">{language}</span>
                 <button

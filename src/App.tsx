@@ -1,19 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Loading from './components/loading/Loading';
 import Github from './components/github/GithubLink';
 import Header from './components/header/Header';
 import Banner from "../src/components/banner/Banner";
-import About from "../src/components/about/About";
-import BlogComponent from "../src/components/blog/BlogComponent";
 import Footer from './components/footer/Footer';
-
+import { Skills } from './components/skills/Skills';
+// import { Goals } from './components/goals/Goals';
+import { AboutMe } from '../src/components/about/AboutMe';
+import { AboutMeHeader } from '../src/components/about/AboutMeHeader';
+import BlogComponent from './components/blog/BlogComponent';
+import ProjectsComponent from './components/projects/ProjectsComponent';
+import { useRemoveKinKins } from './hooks/useClearKinKins';
 function App() {
+  useRemoveKinKins();
   const [loading, setIsLoading] = useState(true);
-
+  const skillsSectionRef = useRef<HTMLDivElement>(null);
   const loadingStyle: React.CSSProperties = {
     transition: 'background 2s ease',
     background: 'linear-gradient(to left, yellow 100%, black)'
   };
+
 
   useEffect(() => {
     // Disable scrolling immediately when the component mounts
@@ -55,18 +61,6 @@ function App() {
       window.removeEventListener('touchmove', preventScroll);
       window.removeEventListener('scroll', preventScroll);
     };
-  }, []); // Empty dependency array to run only on mount
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const kinsKins = document.querySelector('#kins-kins-popup');
-      if (kinsKins) {
-        kinsKins.remove();
-        clearInterval(intervalId); // Clear interval if kinsKins is found and removed
-      }
-    }, 1000);
-
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, []);
 
   return (
@@ -76,7 +70,11 @@ function App() {
         <Github />
         <Header />
         <Banner />
-        <About />
+        <AboutMeHeader />
+        <AboutMe />
+        <ProjectsComponent />
+        <Skills skillsSectionRef={skillsSectionRef} />
+        {/* <Goals /> */}
         <BlogComponent />
         <Footer copyrightText="Trevor Sykes - 2024" />
       </div>

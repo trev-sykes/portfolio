@@ -111,8 +111,19 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
             ))}
           </div>
         )}
+        {project.learnings && project.learnings.length > 0 && (
+          <div className={styles.learnings}>
+            <h2>Learnings</h2>
+            <ul >
+              {project.learnings.map((frag, index) => (
+                <li key={index} >{frag}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
       </div>
-    </div>
+    </div >
   );
 };
 

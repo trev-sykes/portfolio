@@ -125,26 +125,37 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                     <>
                         <h2 className={styles.header}>Get In Touch</h2>
                         <form onSubmit={handleSubmit}>
+                            <label htmlFor="name">Your Name</label>
                             <input
+                                name='name'
                                 type="text"
                                 value={from_name}
                                 onChange={(e) => setFrom_Name(e.target.value)}
-                                placeholder="Satoshi Nakamoto"
+                                placeholder="Your name..."
                                 required
                             />
-                            <input
-                                type="text"
-                                value={phone_Number}
-                                onChange={(e) => setPhone_Number(e.target.value)}
-                                placeholder="369-369-3693"
-                            />
-                            <input
-                                type="text"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="satoshi@aol.com"
-                            />
+                            <div className={styles.options}>
+                                <label htmlFor="phone">Your Number</label>
+                                <input
+                                    name='phone'
+                                    type="text"
+                                    value={phone_Number}
+                                    onChange={(e) => setPhone_Number(e.target.value)}
+                                    placeholder="369-369-3693"
+                                />
+                                <h4 className={styles.optionsTitle}>Or</h4>
+                                <label htmlFor="email"> Your Email</label>
+                                <input
+                                    name='email'
+                                    type="text"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Example@aol.com"
+                                />
+                            </div>
+                            <label htmlFor="inquires">Your Message</label>
                             <textarea
+                                name='inquiries'
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="This is placeholder text..."

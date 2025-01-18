@@ -2,7 +2,6 @@
 import { FullProject } from '../projectInterfaces'
 import img from '../../../assets/bonding-curve.png'
 import gif from "../../../assets/tokenizedAssetSimulator.gif"
-
 // Example implementation
 const bondingCurveSimulator: FullProject = {
     title: 'Bonding Curve Simulator',

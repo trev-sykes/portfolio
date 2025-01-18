@@ -3,7 +3,8 @@ import { projects } from './project';
 import ProjectFullPage from './ProjectsFullPage';
 import styles from './ProjectsComponent.module.css';
 
-const ProjectsComponent = () => {
+
+const ProjectsComponent: React.FC = () => {
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
@@ -11,6 +12,7 @@ const ProjectsComponent = () => {
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const projectRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
+
 
     const handleReadFullDescription = (index: number) => {
         if (!expandedProjects.includes(index)) {
@@ -102,8 +104,8 @@ const ProjectsComponent = () => {
     };
 
     return (
-        <>
-            <div className={`${styles.projects}`}>
+        <div>
+            <div className={`${styles.projects} `}>
                 <h1 ref={headingRef}>Top Projects</h1>
             </div>
 
@@ -113,7 +115,7 @@ const ProjectsComponent = () => {
                         (showAllProjects || index < 2) && (
                             <div
                                 key={index}
-                                className={`${styles.projectPreview} ${styles.fadeIn}`}
+                                className={`${styles.projectPreview} ${styles.fadeIn} `}
                                 ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
                             >
                                 <img src={project.images.thumbnail} alt={project.title} className={styles.image} loading='lazy' />
@@ -122,7 +124,7 @@ const ProjectsComponent = () => {
                                     {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
                                     {project.description.length > 100 && (
                                         <button
-                                            className={`${styles.readMoreButton} ${expandedProjects.includes(index) ? styles.readLessActive : ''}`}
+                                            className={`${styles.readMoreButton} ${expandedProjects.includes(index) ? styles.readLessActive : ''} `}
                                             onClick={() => handleReadFullDescription(index)}
                                         >
                                             {expandedProjects.includes(index) ? '...Read less' : '...Read more'}
@@ -132,15 +134,15 @@ const ProjectsComponent = () => {
 
                                 {/* Date Section */}
                                 <div className={styles.dateContainer}>
-                                    <p className={`${styles.dateItem} ${styles.started}`}>
+                                    <p className={`${styles.dateItem} ${styles.started} `}>
                                         Started: {project.date?.started ?? 'N/A'}
                                     </p>
                                     <div className={styles.separator}> </div>
-                                    <p className={`${styles.dateItem} ${styles.completed}`}>
+                                    <p className={`${styles.dateItem} ${styles.completed} `}>
                                         Completed: {project.date?.completed ?? 'N/A'}
                                     </p>
                                     <div className={styles.separator}> </div>
-                                    <p className={`${styles.dateItem} ${styles.lastUpdated}`}>
+                                    <p className={`${styles.dateItem} ${styles.lastUpdated} `}>
                                         Last Updated: {project.date?.lastUpdated ?? 'N/A'}
                                     </p>
                                 </div>
@@ -168,7 +170,7 @@ const ProjectsComponent = () => {
                                                 topicClass = '';
                                         }
                                         return (
-                                            <span key={topicIndex} className={`${styles.topic} ${topicClass}`}>
+                                            <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
                                                 {language}
                                             </span>
                                         );
@@ -192,7 +194,7 @@ const ProjectsComponent = () => {
                                                 frameworkClass = '';
                                         }
                                         return (
-                                            <span key={topicIndex} className={`${styles.language} ${frameworkClass}`}>
+                                            <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
                                                 {framework}
                                             </span>
                                         );
@@ -228,11 +230,11 @@ const ProjectsComponent = () => {
                     {!showAllProjects ? (
                         <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More</button>
                     ) : (
-                        <button className={`${styles.viewProjects} ${styles.viewLess}`} onClick={handleShowAllBlogs}>View Less</button>
+                        <button className={`${styles.viewProjects} ${styles.viewLess} `} onClick={handleShowAllBlogs}>View Less</button>
                     )}
                 </div >
             </div >
-        </>
+        </div >
     );
 };
 

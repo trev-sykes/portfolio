@@ -1,5 +1,14 @@
 @import "../../index.css";
 
+.container {
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto;
+  cursor: default;
+  display: flex;
+  overflow: hidden !important;
+}
+
 .projects {
   text-align: center;
   margin-top: var(--project-margin-top);
@@ -8,21 +17,17 @@
   opacity: 1;
 }
 
-.container {
-  max-width: 1100px;
-  height: auto;
-  margin: 0 auto;
-  cursor: default;
-  display: flex;
-}
+
 
 .projectContainer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden !important;
 }
 
 .projectPreview {
+  overflow: hidden !important;
   position: relative;
   flex: 0 0 calc(50% - 20px);
   /* Two elements per row */
