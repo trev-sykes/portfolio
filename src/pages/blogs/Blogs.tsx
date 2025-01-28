@@ -5,7 +5,7 @@ const Blogs = () => {
     return (
         <>
             <Header />
-            <Banner />
+            <Banner section={'blogs'} />
             <BlogComponent />
         </>
     )
