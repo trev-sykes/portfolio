@@ -1,5 +1,4 @@
 import Footer from '../footer/Footer';
-import { Goals } from '../goals/Goals';
 import Header from '../header/Header';
 import styles from './Skills.module.css';
 
@@ -78,7 +77,6 @@ export default function Skills() {
                         </div>
                     </section>
                 </div>
-                <Goals />
                 <Footer copyrightText="Trevor Sykes - 2025" />
             </div>
         </>
