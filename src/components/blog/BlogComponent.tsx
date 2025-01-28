@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 import { magazine } from './articles';
 import styles from './BlogComponent.module.css';
 import BlogFullPage from './BlogFullPage';
@@ -140,25 +140,26 @@ const BlogComponent = () => {
     animatingBlog;
     return (
         <>
-            <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
-                <h1 ref={headingRef}>
-                    <Typewriter
-                        onInit={(typewriter) => {
-                            typewriter
-                                .typeString('Bitcoi')
-                                .pauseFor(350)
-                                .deleteAll()
-                                .typeString('Blogs')
-                                .start();
-                        }}
-                        options={{
-                            cursor: '',
-                            deleteSpeed: 7000,
-                        }}
-                    />
-                </h1>
-            </div>
             <div className={styles.container}>
+                <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
+                    <h2 className={styles.typewriter} ref={headingRef}>
+                        {/* <Typewriter
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .typeString('Bitcoi')
+                                    .pauseFor(350)
+                                    .deleteAll()
+                                    .typeString('Blogs')
+                                    .start();
+                            }}
+                            options={{
+                                cursor: '',
+                                deleteSpeed: 7000,
+                            }}
+                        /> */}
+                        Blogs
+                    </h2>
+                </div>
                 <div className={styles.blogContainer}>
                     {magazine.slice().reverse().map((blog, index) => (
                         (showAllBlogs || index < 2) && (

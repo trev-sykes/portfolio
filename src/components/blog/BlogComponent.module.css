@@ -1,11 +1,15 @@
 @import "../../index.css";
 
 .blogs {
-  text-align: center;
-  margin-top: 55px;
-  padding: 10px;
-  margin-bottom: 95px;
-  scale: 3;
+  margin-top: var(--project-margin-top);
+  padding: var(--project-padding);
+  margin-bottom: 15px;
+  opacity: 1;
+  border-bottom: .5px solid black;
+}
+
+.title {
+  font-size: 1.5rem;
 }
 
 .container {
@@ -13,6 +17,8 @@
   height: auto;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+
 }
 
 .blogContainer {

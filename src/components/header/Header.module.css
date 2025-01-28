@@ -1,6 +1,6 @@
 @import '../../index.css';
 
-.header {
+.container {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,13 +15,14 @@
     /* Add backdrop-filter transition */
     backdrop-filter: blur(0);
     /* Initial blur value */
+
 }
 
-.header.scrolled {
+.container.scrolled {
     position: fixed;
-    background: rgba(43, 53, 58, 0.2);
+    background: rgba(238, 238, 238, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(3px);
     /* Subtle blur when we scroll  */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -43,13 +44,6 @@
     font-size: 16px;
 }
 
-.mugshot {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    cursor: default;
-}
-
 .mugshotImageContainer {
     width: 27px;
     height: 27px;
@@ -65,14 +59,15 @@
     background-size: cover;
 }
 
-.mugshotName {
-    user-select: none;
+.mugshot {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    cursor: default;
 }
 
-.icon {
-    width: 15px;
-    margin-left: 25px;
-    cursor: pointer;
+.mugshotName {
+    text-decoration: none;
 }
 
 .right {
@@ -85,28 +80,14 @@
     overflow-y: hidden;
 }
 
-.contactButton {
-
-    border: none;
-    cursor: pointer;
-}
-
-.contactButton:hover {
-    color: #3498db;
+.button {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 @media (max-width: 600px) {
-    .blogs {
-        opacity: 1 !important;
-        /* Override fade effect on small screens */
-        transition: none !important;
-        /* Disable transition effect on small screens */
-    }
-
-    .contactButton {
-        margin-top: 5px;
-    }
-
     .nav {
         display: flex;
         max-width: 600px;
@@ -117,13 +98,6 @@
     .mugshotImageContainer {
         width: 20px;
         height: 20px;
-    }
-
-    .contactButton {
-        font-size: 1.15rem;
-        font-weight: 600;
-        height: 30px;
-        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     }
 
     .mugshotName {

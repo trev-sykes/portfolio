@@ -1,0 +1,45 @@
+.container {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.textContainer {
+    max-width: 900px;
+}
+
+.text {
+    text-align: left;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.name {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    font-weight: bold;
+    background-color: rgba(255, 255, 0, 0.336);
+}
+
+.ethereum {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(255, 0, 247, 0.132);
+}
+
+.bio {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(0, 255, 229, 0.33);
+}
+
+.github {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(60, 255, 0, 0.33);
+}

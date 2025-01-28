@@ -1,24 +1,27 @@
-import { useState, useEffect } from 'react';
-import { LucideSend } from 'lucide-react';
-import Contact from '../contact/Contact'; // Adjust the path as needed
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
+import Contact from '../contact/Contact';
 import styles from './Header.module.css';
-
-export default function Header() {
+interface HeaderProps {
+    handleStateChange?: Function;
+}
+const Header: React.FC<HeaderProps> = () => {
     const [scrolled, setScrolled] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
-    const [textColor, setTextColor] = useState('black'); // Default text color
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Track window width
-
+    const [textColor, setTextColor] = useState('black');
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [colorTheme, setColorTheme] = useState<any>('light');
     // Adjust scroll range dynamically based on screen size
-    const scrollRange = windowWidth < 600 ? { min: 0, max: 0 } : { min: 16, max: 284 };
+    const scrollRange = windowWidth < 600 ? { min: 0, max: 0 } : { min: 25, max: 270 };
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth); // Update window width on resize
+            setWindowWidth(window.innerWidth);
         };
 
         const handleScroll = () => {
-            const scrollY = window.scrollY; // Get the current scroll position
+            const scrollY = window.scrollY;
             const isScrolled = scrollY > 0;
             setScrolled(isScrolled);
 
@@ -30,15 +33,15 @@ export default function Header() {
             }
         };
 
-        window.addEventListener('resize', handleResize); // Listen for resize events
-        window.addEventListener('scroll', handleScroll); // Listen for scroll events
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('scroll', handleScroll);
 
         // Cleanup event listeners
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [windowWidth, scrollRange]); // Re-run effect when windowWidth or scrollRange changes
+    }, [windowWidth, scrollRange]);
 
     const toggleContactPopup = () => {
         setContactPopupVisible(!contactPopupVisible);
@@ -46,30 +49,95 @@ export default function Header() {
 
     return (
         <>
-            <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-                <nav className={styles.nav}>
-                    <div className={styles.left}>
-                        <div className={styles.imageContainer}>
-                            <div className={styles.mugshotImageContainer}>
-                                <div className={styles.mugshotImage} />
+            {windowWidth < 600 ? (
+                <>
+                    <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                        <nav className={styles.nav}>
+                            <div className={styles.left}>
+                                <div className={styles.imageContainer}>
+                                    <div className={styles.mugshotImageContainer}>
+                                        <div className={styles.mugshotImage} />
+                                    </div>
+                                    <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
+                                        portfolio
+                                    </Link>
+                                </div>
                             </div>
-                            <span className={styles.mugshotName} style={{ color: textColor }}>
-                                Trevor Sykes
-                            </span>
-                        </div>
-                    </div>
-                    <div className={styles.right}>
-                        <LucideSend
-                            className={styles.contactButton}
-                            onClick={toggleContactPopup}
-                            size={24}
-                            strokeWidth={2}
-                            color={textColor}
-                        />
-                    </div>
-                </nav>
-            </header>
-            {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+                            <div className={styles.right}>
+                                {/* Use Link instead of button for navigation */}
+                                <Link to="/" className={styles.button} style={{ color: textColor }}>
+                                    Home
+                                </Link>
+                                <Link to="/about" className={styles.button} style={{ color: textColor }}>
+                                    About
+                                </Link>
+                                <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                    Contact
+                                </button>
+                                {colorTheme == 'dark' ? (
+                                    <Moon
+                                        className={styles.button}
+                                        style={{ color: textColor }}
+                                        onClick={() => setColorTheme('light')}
+                                    />
+                                ) : (
+                                    <Sun
+                                        className={styles.button}
+                                        style={{ color: textColor }}
+                                        onClick={() => setColorTheme('dark')}
+                                    />
+                                )}
+                            </div>
+                        </nav>
+                    </header>
+                    {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+
+                </>
+            ) : (
+                <>
+                    <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                        <nav className={styles.nav}>
+                            <div className={styles.left}>
+                                <div className={styles.imageContainer}>
+                                    <div className={styles.mugshotImageContainer}>
+                                        <div className={styles.mugshotImage} />
+                                    </div>
+                                    <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
+                                        portfolio
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className={styles.right}>
+                                {/* Use Link instead of button for navigation */}
+                                <Link to="/about" className={styles.button} style={{ color: textColor }}>
+                                    About
+                                </Link>
+                                <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                    Contact
+                                </button>
+                                {colorTheme == 'dark' ? (
+                                    <Moon
+                                        className={styles.button}
+                                        style={{ color: textColor }}
+                                        onClick={() => setColorTheme('light')}
+                                    />
+                                ) : (
+                                    <Sun
+                                        className={styles.button}
+                                        style={{ color: textColor }}
+                                        onClick={() => setColorTheme('dark')}
+                                    />
+                                )}
+                            </div>
+                        </nav>
+                    </header>
+
+                    {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+                </>
+            )
+            }
+
         </>
     );
 }
+export default Header;

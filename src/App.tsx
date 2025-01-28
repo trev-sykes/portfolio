@@ -1,20 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/home/Home';
 import Loading from './components/loading/Loading';
-import Github from './components/github/GithubLink';
-import Header from './components/header/Header';
-import Banner from "../src/components/banner/Banner";
-import Footer from './components/footer/Footer';
-import { Skills } from './components/skills/Skills';
-// import { Goals } from './components/goals/Goals';
-import { AboutMe } from '../src/components/about/AboutMe';
-import { AboutMeHeader } from '../src/components/about/AboutMeHeader';
-import BlogComponent from './components/blog/BlogComponent';
-import ProjectsComponent from './components/projects/ProjectsComponent';
+import Skills from './components/skills/Skills';
 import { useRemoveKinKins } from './hooks/useClearKinKins';
 function App() {
   useRemoveKinKins();
   const [loading, setIsLoading] = useState(true);
-  const skillsSectionRef = useRef<HTMLDivElement>(null);
   const loadingStyle: React.CSSProperties = {
     transition: 'background 2s ease',
     background: 'linear-gradient(to left, yellow 100%, black)'
@@ -64,21 +56,16 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
+
       {loading && <Loading loadingStyle={loadingStyle} />}
       <div style={{ opacity: loading ? '0' : '1', transition: 'opacity 1s ease' }}>
-        <Github />
-        <Header />
-        <Banner />
-        <AboutMeHeader />
-        <AboutMe />
-        <ProjectsComponent />
-        <Skills skillsSectionRef={skillsSectionRef} />
-        {/* <Goals /> */}
-        <BlogComponent />
-        <Footer copyrightText="Trevor Sykes - 2024" />
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/about' element={<Skills />}></Route>
+        </Routes>
       </div>
-    </>
+    </Router >
   );
 }
 

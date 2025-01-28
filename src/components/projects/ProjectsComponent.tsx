@@ -105,11 +105,10 @@ const ProjectsComponent: React.FC = () => {
 
     return (
         <div className={styles.contain}>
-            <div className={`${styles.projects} `}>
-                <h1 ref={headingRef}>Top Projects</h1>
-            </div>
-
             <div className={styles.container}>
+                <div className={`${styles.projects} `}>
+                    <h2 ref={headingRef}>Top Projects</h2>
+                </div>
                 <div className={styles.projectContainer}>
                     {projects.slice().reverse().map((project, index) => (
                         (showAllProjects || index < 2) && (
@@ -146,80 +145,82 @@ const ProjectsComponent: React.FC = () => {
                                         Last Updated: {project.date?.lastUpdated ?? 'N/A'}
                                     </p>
                                 </div>
+                                <div className={styles.languagesLinksContainer} >
+                                    <div>
+                                        <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
 
-                                <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
+                                        {/* Safeguard for undefined techStack */}
+                                        < div className={styles.topics} >
+                                            {(project.techStack?.languages || []).map((language, topicIndex) => {
+                                                let topicClass = '';
+                                                switch (language) {
+                                                    case 'JavaScript':
+                                                        topicClass = styles.javascript;
+                                                        break;
+                                                    case 'HTML':
+                                                        topicClass = styles.html;
+                                                        break;
+                                                    case 'CSS':
+                                                        topicClass = styles.css;
+                                                        break;
+                                                    case 'Solidity':
+                                                        topicClass = styles.solidity;
+                                                        break;
+                                                    default:
+                                                        topicClass = '';
+                                                }
+                                                return (
+                                                    <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
+                                                        {language}
+                                                    </span>
+                                                );
+                                            })}
+                                        </div>
 
-                                {/* Safeguard for undefined techStack */}
-                                < div className={styles.topics} >
-                                    {(project.techStack?.languages || []).map((language, topicIndex) => {
-                                        let topicClass = '';
-                                        switch (language) {
-                                            case 'JavaScript':
-                                                topicClass = styles.javascript;
-                                                break;
-                                            case 'HTML':
-                                                topicClass = styles.html;
-                                                break;
-                                            case 'CSS':
-                                                topicClass = styles.css;
-                                                break;
-                                            case 'Solidity':
-                                                topicClass = styles.solidity;
-                                                break;
-                                            default:
-                                                topicClass = '';
-                                        }
-                                        return (
-                                            <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
-                                                {language}
-                                            </span>
-                                        );
-                                    })}
-                                </div>
-
-                                <div className={styles.languages}>
-                                    {(project.techStack?.frameworks || []).map((framework, topicIndex) => {
-                                        let frameworkClass = '';
-                                        switch (framework) {
-                                            case 'React':
-                                                frameworkClass = styles.react;
-                                                break;
-                                            case 'Vite':
-                                                frameworkClass = styles.vite;
-                                                break;
-                                            case 'Web3.js':
-                                                frameworkClass = styles.web3;
-                                                break;
-                                            default:
-                                                frameworkClass = '';
-                                        }
-                                        return (
-                                            <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
-                                                {framework}
-                                            </span>
-                                        );
-                                    })}
-                                </div>
-
-                                <div className={styles.linkContainer}>
-                                    <a
-                                        className={styles.readFullArticleButton}
-                                        onClick={() => handleReadFullArticle(projects.length - index - 1)}
-                                    >
-                                        Project Details
-                                    </a>
-                                    <a
-                                        href={project.links[0].url}
-                                        className={styles.visitSite}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >Visit Site</a>
-                                    <a
-                                        href={project.links[1].url}
-                                        className={styles.sourceCode}
-                                        target='_blank'
-                                        rel='noopen noreferrer'
-                                    >Source Code</a>
+                                        <div className={styles.languages}>
+                                            {(project.techStack?.frameworks || []).map((framework, topicIndex) => {
+                                                let frameworkClass = '';
+                                                switch (framework) {
+                                                    case 'React':
+                                                        frameworkClass = styles.react;
+                                                        break;
+                                                    case 'Vite':
+                                                        frameworkClass = styles.vite;
+                                                        break;
+                                                    case 'Web3.js':
+                                                        frameworkClass = styles.web3;
+                                                        break;
+                                                    default:
+                                                        frameworkClass = '';
+                                                }
+                                                return (
+                                                    <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
+                                                        {framework}
+                                                    </span>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className={styles.linkContainer}>
+                                        <a
+                                            className={styles.readFullArticleButton}
+                                            onClick={() => handleReadFullArticle(projects.length - index - 1)}
+                                        >
+                                            Project Details
+                                        </a>
+                                        <a
+                                            href={project.links[0].url}
+                                            className={styles.visitSite}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >Visit Site</a>
+                                        <a
+                                            href={project.links[1].url}
+                                            className={styles.sourceCode}
+                                            target='_blank'
+                                            rel='noopen noreferrer'
+                                        >Source Code</a>
+                                    </div>
                                 </div>
                             </div>
                         )

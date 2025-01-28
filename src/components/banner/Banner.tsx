@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
-import mugshotImage from '../../assets/logo1.webp';
+import mugshotImage from '../../assets/logo2.png';
 import styles from './Banner.module.css';
 
 /**
