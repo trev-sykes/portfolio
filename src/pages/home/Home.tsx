@@ -12,7 +12,7 @@ export const Home = () => {
         <>
             <Github />
             <Header />
-            <Banner />
+            <Banner section={'home'} />
             <AboutMeHeader />
             <Introduction />
             <ProjectsComponent />

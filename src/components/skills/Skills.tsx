@@ -1,3 +1,4 @@
+import Banner from '../banner/Banner';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import styles from './Skills.module.css';
@@ -6,6 +7,7 @@ export default function Skills() {
     return (
         <>
             <Header />
+            <Banner section={'about'} />
             <div className={styles.container}>
                 <section className={styles.hero}>
                     <h1 className={styles.name}>Trevor Sykes</h1>

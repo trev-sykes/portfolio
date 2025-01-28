@@ -1,3 +1,5 @@
+@import url('/src/index.css');
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -7,18 +9,17 @@
 }
 
 .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     border-radius: 1rem;
     padding: 3rem;
-    color: #fff;
+    color: #333;
     margin-bottom: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .name {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    background: linear-gradient(90deg, #124345 0%, #092945 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
@@ -26,7 +27,7 @@
 }
 
 .title {
-    color: #4facfe;
+    color: #045ba6;
     font-size: 1.25rem;
     margin-bottom: 2rem;
 }
@@ -34,7 +35,7 @@
 .introParagraph {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #e0e0e0;
+    color: #666;
     margin-bottom: 1.5rem;
 }
 
@@ -45,10 +46,10 @@
 }
 
 .link {
-    color: #4facfe;
+    color: #111;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 2px solid #4facfe;
+    border: 2px solid #085aa1;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
 }
@@ -59,10 +60,10 @@
 }
 
 .skillsContainer {
-    background: #fff;
+    background-color: #ffffff37;
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .skillSection {

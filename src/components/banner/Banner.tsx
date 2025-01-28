@@ -46,12 +46,14 @@ interface ShootingStar {
     trail: boolean;     // Whether to render a trailing effect
     collisionTime?: number;  // Timestamp of collision for animation effects
 }
-
+interface BannerProps {
+    section: string;
+}
 /**
  * Banner component that renders an animated space scene with debris and shooting stars.
  * Provides a dynamic background effect with collision detection and responsive behavior.
  */
-const Banner: React.FC = () => {
+const Banner: React.FC<BannerProps> = ({ section }) => {
     // Tracks viewport width for responsive adjustments
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -344,6 +346,9 @@ const Banner: React.FC = () => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
     }
+    const handEmojiStyles = {
+        fontSize: '5rem'
+    }
     const mugshotStyles: MugshotStyles = {
         width: '100%',
         height: '100%',
@@ -360,7 +365,10 @@ const Banner: React.FC = () => {
                     <canvas ref={canvasRef} style={canvasStyles}></canvas>
                 </div>
                 <div className={styles.mugshotContainer}>
-                    <div style={mugshotStyles} />
+                    {section == 'home' && (<div style={mugshotStyles} />)}
+                    {section == 'about' && (
+                        <p style={handEmojiStyles}>👋</p>
+                    )}
                 </div>
             </div>
         </div>
