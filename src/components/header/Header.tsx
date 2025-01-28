@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, MenuSquare, Minimize2 } from 'lucide-react';
 import Contact from '../contact/Contact';
 import styles from './Header.module.css';
 interface HeaderProps {
@@ -8,6 +8,7 @@ interface HeaderProps {
 }
 const Header: React.FC<HeaderProps> = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [textColor, setTextColor] = useState('black');
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -63,31 +64,21 @@ const Header: React.FC<HeaderProps> = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className={styles.right}>
-                                {/* Use Link instead of button for navigation */}
-                                <Link to="/" className={styles.button} style={{ color: textColor }}>
-                                    Home
-                                </Link>
-                                <Link to="/about" className={styles.button} style={{ color: textColor }}>
-                                    About
-                                </Link>
-                                <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
-                                    Contact
-                                </button>
-                                {colorTheme == 'dark' ? (
-                                    <Moon
-                                        className={styles.button}
-                                        style={{ color: textColor }}
-                                        onClick={() => setColorTheme('light')}
-                                    />
-                                ) : (
-                                    <Sun
-                                        className={styles.button}
-                                        style={{ color: textColor }}
-                                        onClick={() => setColorTheme('dark')}
-                                    />
-                                )}
-                            </div>
+                            {isClicked ? (
+                                <div className={styles.right}>
+                                    <Link to="/about" className={styles.button} style={{ color: textColor }}>
+                                        About
+                                    </Link>
+                                    <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                        Contact
+                                    </button>
+                                    <Minimize2 onClick={() => setIsClicked(false)} />
+                                </div>
+                            ) : (
+                                <>
+                                    <MenuSquare onClick={() => setIsClicked(true)} />
+                                </>
+                            )}
                         </nav>
                     </header>
                     {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
