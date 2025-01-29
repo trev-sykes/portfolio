@@ -1,17 +1,27 @@
+import { useEffect } from 'react';
 import Banner from '../banner/Banner';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import styles from './Skills.module.css';
-
-export default function Skills() {
+import Github from "../../components/github/GithubLink"
+interface SkillsProps {
+    handleRouteChange?: any;
+}
+const Skills: React.FC<SkillsProps> = ({ handleRouteChange }) => {
+    useEffect(() => {
+        if (handleRouteChange)
+            handleRouteChange();
+    }, [])
     return (
         <>
+            <Github />
             <Header />
             <Banner section={'about'} />
             <div className={styles.container}>
+                <h1 className={styles.title}>About</h1>
                 <section className={styles.hero}>
-                    <h1 className={styles.name}>Trevor Sykes</h1>
-                    <h2 className={styles.title}>DApp Developer & DeFi Architect</h2>
+                    <h2 className={styles.name}>Trevor Sykes</h2>
+                    <h3 className={styles.subTitle}>DApp Developer & DeFi Architect</h3>
 
                     <p className={styles.introParagraph}>
                         I'm passionate about coding, with a special focus on smart contracts and blockchain development. With hands-on experience in Foundry for writing and testing contracts, I create seamless decentralized applications that bridge the gap between users and blockchain technology.
@@ -33,11 +43,11 @@ export default function Skills() {
 
                 <div className={styles.skillsContainer}>
                     <section className={styles.skillSection}>
-                        <h3 className={styles.skillCategory}>Languages</h3>
+                        <h4 className={styles.skillCategory}>Languages</h4>
                         <div className={styles.skillGrid}>
                             <div className={styles.skillCard}>
                                 <span className={styles.experienceTag}>2 years experience</span>
-                                <h4 className={styles.skillName}>JavaScript</h4>
+                                <h5 className={styles.skillName}>JavaScript</h5>
                                 <p className={styles.skillDescription}>
                                     Proficient in building dynamic web applications and working with APIs. Extensive experience in developing Front-end interfaces with React, traditional HTML/CSS, and integrating data from various APIs.
                                 </p>
@@ -45,7 +55,7 @@ export default function Skills() {
 
                             <div className={styles.skillCard}>
                                 <span className={styles.experienceTag}>2 years experience</span>
-                                <h4 className={styles.skillName}>Solidity</h4>
+                                <h5 className={styles.skillName}>Solidity</h5>
                                 <p className={styles.skillDescription}>
                                     Specialized in smart contract development for dApps, with expertise in on-chain game economics, DeFi architectures, social graphs, and NFT creation.
                                 </p>
@@ -54,24 +64,24 @@ export default function Skills() {
                     </section>
 
                     <section className={styles.skillSection}>
-                        <h3 className={styles.skillCategory}>Frameworks & Libraries</h3>
+                        <h4 className={styles.skillCategory}>Frameworks & Libraries</h4>
                         <div className={styles.skillGrid}>
                             <div className={styles.skillCard}>
-                                <h4 className={styles.skillName}>Ethers.js & Web3.js</h4>
+                                <h5 className={styles.skillName}>Ethers.js & Web3.js</h5>
                                 <p className={styles.skillDescription}>
                                     Expert integration with EVM-compatible blockchain networks for decentralized applications.
                                 </p>
                             </div>
 
                             <div className={styles.skillCard}>
-                                <h4 className={styles.skillName}>React</h4>
+                                <h5 className={styles.skillName}>React</h5>
                                 <p className={styles.skillDescription}>
                                     Skilled in building responsive and interactive Front-end interfaces with modern React practices.
                                 </p>
                             </div>
 
                             <div className={styles.skillCard}>
-                                <h4 className={styles.skillName}>Foundry</h4>
+                                <h5 className={styles.skillName}>Foundry</h5>
                                 <p className={styles.skillDescription}>
                                     Advanced proficiency in writing, testing, and deploying smart contracts across Ethereum-based blockchains.
                                 </p>
@@ -84,3 +94,5 @@ export default function Skills() {
         </>
     );
 }
+
+export default Skills;

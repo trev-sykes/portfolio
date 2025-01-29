@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
-import mugshotImage from '../../assets/logo2.png';
+import mugshotImage from '../../assets/logo_final.png';
 import styles from './Banner.module.css';
 
 /**
@@ -15,6 +15,7 @@ interface ImageStyles {
     backgroundPosition: string;
     backgroundRepeat: string;
 }
+
 interface CanvasStyles extends ImageStyles {
 }
 interface MugshotStyles extends ImageStyles {
@@ -230,7 +231,7 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
     }, []);
     /**
      * Renders explosion effect when shooting stars collide.
-     * Creates a circular burst effect with fade-out animation.
+     * Creates a circular burst effect with fade-out animaition.
      */
     const drawExplosion = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
         ctx.beginPath();
@@ -295,7 +296,7 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
                 // Set explosion effect duration
                 if (shootingStar.collisionTime) {
                     const timeElapsed = Date.now() - shootingStar.collisionTime;
-                    if (timeElapsed < 50) { // Explosion lasts 500 milliseconds
+                    if (timeElapsed < 1000) { // Explosion lasts 500 milliseconds
                         drawExplosion(ctx, shootingStar.x, shootingStar.y);
                     } else {
                         shootingStar.color = 'rgba(255, 255, 255, 0.0)'; // Reset color after explosion
@@ -346,20 +347,28 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
     }
-    const handEmojiStyles = {
-        fontSize: '5rem'
+    const handEmojiStyles: any = {
+        fontSize: '4.75rem',
+        userSelect: 'none',
+        textAlign: 'center',
+        marginTop: '0',
+        marginBottom: '0'
+    }
+    const containerStyles: any = {
+        marginTop: '54px',
+        marginBottom: section == 'about' ? '10px' : '75px'
     }
     const mugshotStyles: MugshotStyles = {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.15) 70%), url(${mugshotImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${mugshotImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         borderRadius: '50%'
     }
     return (
-        <div className={styles.container}>
+        <div style={containerStyles}>
             <div className={styles.bannerContainer}>
                 <div className={styles.canvasContainer}>
                     <canvas ref={canvasRef} style={canvasStyles}></canvas>

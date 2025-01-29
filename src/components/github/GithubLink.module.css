@@ -5,36 +5,39 @@
     overflow: hidden;
     border-radius: 50%;
     background: rgb(136, 136, 136);
-    z-index: 1000;
+    z-index: 1;
     cursor: pointer;
     top: 50%;
     right: 8%;
-  }
-  
-  .fixed {
+}
+
+.fixed {
     position: fixed;
-    transform: translateY(-350px); /* Adjust this value based on your requirements */
-  }
-  
-  /* ... rest of your styles */
-  
+    transform: translateY(-350px);
+    /* Adjust this value based on your requirements */
+}
+
+/* ... rest of your styles */
+
 .githubLink {
     width: 30px;
     z-index: 1000;
 }
+
 .githubSvg {
     fill: #818181;
     stroke: rgb(255, 255, 255);
 
 }
+
 @media screen and (max-width: 1466px) {
-    .githubContainer{
+    .githubContainer {
         display: none;
     }
 }
+
 @media screen and (min-width: 14680px) {
     .githubContainer {
         display: none;
+    }
 }
-}
-  

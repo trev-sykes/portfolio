@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { Sun, Moon, MenuSquare, Minimize2 } from 'lucide-react';
 import Contact from '../contact/Contact';
 import styles from './Header.module.css';
+import TransitionLayout from '../transitionLayout/TransitionLayout';
 interface HeaderProps {
+    triggerLoad?: Function;
     handleStateChange?: Function;
 }
 const Header: React.FC<HeaderProps> = () => {
@@ -49,86 +51,88 @@ const Header: React.FC<HeaderProps> = () => {
     };
 
     return (
-        <>
-            {windowWidth < 600 ? (
-                <>
-                    <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
-                        <nav className={styles.nav}>
-                            <div className={styles.left}>
-                                <div className={styles.imageContainer}>
-                                    <div className={styles.mugshotImageContainer}>
-                                        <div className={styles.mugshotImage} />
+        <TransitionLayout >
+            <>
+                {windowWidth < 600 ? (
+                    <>
+                        <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                            <nav className={styles.nav}>
+                                <div className={styles.left}>
+                                    <div className={styles.imageContainer}>
+                                        <div className={styles.mugshotImageContainer}>
+                                            <div className={styles.mugshotImage} />
+                                        </div>
+                                        <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
+                                            portfolio
+                                        </Link>
                                     </div>
-                                    <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
-                                        portfolio
-                                    </Link>
                                 </div>
-                            </div>
-                            {isClicked ? (
+                                {isClicked ? (
+                                    <div className={styles.right}>
+                                        <Link to="/about" className={styles.button} style={{ color: textColor }}>
+                                            About
+                                        </Link>
+                                        <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                            Contact
+                                        </button>
+                                        <Minimize2 onClick={() => setIsClicked(false)} />
+                                    </div>
+                                ) : (
+                                    <>
+                                        <MenuSquare onClick={() => setIsClicked(true)} />
+                                    </>
+                                )}
+                            </nav>
+                        </header>
+                        {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+
+                    </>
+                ) : (
+                    <>
+                        <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                            <nav className={styles.nav}>
+                                <div className={styles.left}>
+                                    <div className={styles.imageContainer}>
+                                        <div className={styles.mugshotImageContainer}>
+                                            <div className={styles.mugshotImage} />
+                                        </div>
+                                        <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
+                                            portfolio
+                                        </Link>
+                                    </div>
+                                </div>
                                 <div className={styles.right}>
+                                    {/* Use Link instead of button for navigation */}
                                     <Link to="/about" className={styles.button} style={{ color: textColor }}>
                                         About
                                     </Link>
                                     <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
                                         Contact
                                     </button>
-                                    <Minimize2 onClick={() => setIsClicked(false)} />
+                                    {colorTheme == 'dark' ? (
+                                        <Moon
+                                            className={styles.button}
+                                            style={{ color: textColor }}
+                                            onClick={() => setColorTheme('light')}
+                                        />
+                                    ) : (
+                                        <Sun
+                                            className={styles.button}
+                                            style={{ color: textColor }}
+                                            onClick={() => setColorTheme('dark')}
+                                        />
+                                    )}
                                 </div>
-                            ) : (
-                                <>
-                                    <MenuSquare onClick={() => setIsClicked(true)} />
-                                </>
-                            )}
-                        </nav>
-                    </header>
-                    {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+                            </nav>
+                        </header>
 
-                </>
-            ) : (
-                <>
-                    <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
-                        <nav className={styles.nav}>
-                            <div className={styles.left}>
-                                <div className={styles.imageContainer}>
-                                    <div className={styles.mugshotImageContainer}>
-                                        <div className={styles.mugshotImage} />
-                                    </div>
-                                    <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
-                                        portfolio
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className={styles.right}>
-                                {/* Use Link instead of button for navigation */}
-                                <Link to="/about" className={styles.button} style={{ color: textColor }}>
-                                    About
-                                </Link>
-                                <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
-                                    Contact
-                                </button>
-                                {colorTheme == 'dark' ? (
-                                    <Moon
-                                        className={styles.button}
-                                        style={{ color: textColor }}
-                                        onClick={() => setColorTheme('light')}
-                                    />
-                                ) : (
-                                    <Sun
-                                        className={styles.button}
-                                        style={{ color: textColor }}
-                                        onClick={() => setColorTheme('dark')}
-                                    />
-                                )}
-                            </div>
-                        </nav>
-                    </header>
+                        {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
+                    </>
+                )
+                }
 
-                    {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
-                </>
-            )
-            }
-
-        </>
+            </>
+        </TransitionLayout>
     );
 }
 export default Header;

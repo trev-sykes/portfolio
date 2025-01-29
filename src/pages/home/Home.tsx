@@ -6,8 +6,15 @@ import { Introduction } from "../../components/introduction/Introduction"
 import ProjectsComponent from "../../components/projects/ProjectsComponent"
 import BlogComponent from "../../components/blog/BlogComponent"
 import Footer from "../../components/footer/Footer"
-
-export const Home = () => {
+import { useEffect } from "react"
+interface HomeProps {
+    handleRouteChange?: any;
+}
+const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
+    useEffect(() => {
+        if (handleRouteChange)
+            handleRouteChange();
+    }, [])
     return (
         <>
             <Github />
@@ -21,3 +28,4 @@ export const Home = () => {
         </>
     )
 }
+export default Home

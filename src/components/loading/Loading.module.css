@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100000000;
 }
 
 .bitcoin {
@@ -14,27 +15,32 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: yellow; /* Base color */
+    background: yellow;
+    /* Base color */
     color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: inset 1px 1px 10px black;
-    animation: hueAnimation 1.25s linear ;
-    filter: hue-rotate(0deg); /* Initial hue rotation */
+    animation: hueAnimation 1.25s linear;
+    filter: hue-rotate(0deg);
+    /* Initial hue rotation */
 }
 
 .bitcoin::before {
-    content: '\20BF'; /* Bitcoin symbol */
+    content: '\20BF';
+    /* Bitcoin symbol */
 }
 
 @keyframes hueAnimation {
     0% {
         filter: hue-rotate(0deg);
     }
+
     50% {
         filter: hue-rotate(170deg);
     }
+
     100% {
         filter: hue-rotate(0deg);
     }

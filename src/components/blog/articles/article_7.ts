@@ -1,4 +1,4 @@
-import img from '../../../assets/zk-proofs.png'
+import img from '../../../assets/article_7.png'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 
 const blogPreview: BlogPreview = {
