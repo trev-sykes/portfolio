@@ -7,13 +7,13 @@
     background: rgb(136, 136, 136);
     z-index: 1;
     cursor: pointer;
-    top: 50%;
+    top: 500px;
     right: 8%;
 }
 
 .fixed {
     position: fixed;
-    transform: translateY(-350px);
+    transform: translateY(-445px);
     /* Adjust this value based on your requirements */
 }
 

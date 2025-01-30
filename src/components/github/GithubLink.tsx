@@ -18,7 +18,7 @@ export default function GithubLink() {
       const scrollY = window.scrollY || window.pageYOffset;
 
       // Change the threshold value (54) as needed
-      setIsFixed(scrollY > 350);
+      setIsFixed(scrollY > 445);
     };
 
     window.addEventListener('scroll', handleScroll);

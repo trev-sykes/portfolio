@@ -1,5 +1,5 @@
-import Banner from "../../components/banner/Banner"
-import Header from "../../components/header/Header"
+import Banner from "../../components/hero/Hero"
+import Header from "../../components/navigation/Navigation"
 import BlogComponent from "../../components/blog/BlogComponent"
 const Blogs = () => {
     return (

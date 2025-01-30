@@ -1,0 +1,77 @@
+@import '../../index.css';
+
+.container {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding-top: 40px;
+    max-width: var(--max-width);
+    overflow: hidden;
+    transition: opacity 0.3s ease-out;
+    cursor: default;
+    user-select: none;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    padding-bottom: 5px;
+    user-select: none;
+}
+
+.divider {
+    height: 3px;
+    border-radius: 10px 2px 10px 2px;
+    background-color: #56e1e1;
+    width: 85px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: colorChange 5s ease infinite forwards;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+
+    /* Container */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Title */
+    .title {
+        font-size: 1.75rem;
+        /* Smaller font size on mobile */
+        margin-bottom: 15px;
+    }
+
+    /* Dividers */
+    .divider {
+        width: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@keyframes colorChange {
+    0% {
+        background-color: #56e1e1;
+    }
+
+    25% {
+        background-color: #4bd0d0;
+    }
+
+    50% {
+        background-color: #339a9a;
+    }
+
+    75% {
+        background-color: #3ba9a9;
+    }
+
+    100% {
+        background-color: #48bfbf;
+    }
+}

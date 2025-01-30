@@ -2,9 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import { projects } from './project';
 import ProjectFullPage from './ProjectsFullPage';
 import styles from './ProjectsComponent.module.css';
+import { Maximize2, ExternalLink, Github } from 'lucide-react';
 
+interface ProjectsCompnentProps {
+    section: string;
+}
 
-const ProjectsComponent: React.FC = () => {
+const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
@@ -48,9 +52,11 @@ const ProjectsComponent: React.FC = () => {
             } else {
                 if (rect.top < windowHeight && rect.bottom >= 0) {
                     const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
-                    project.style.opacity = visibility.toString();
+                    if (project)
+                        project.style.opacity = visibility.toString();
                 } else {
-                    project.style.opacity = '0';
+                    if (project)
+                        project.style.opacity = '0';
                 }
             }
         });
@@ -104,136 +110,147 @@ const ProjectsComponent: React.FC = () => {
     };
 
     return (
-        <div className={styles.contain}>
-            <div className={styles.container}>
+        <div className={styles.container}>
+            {section == 'home' && (
                 <div className={`${styles.projects} `}>
                     <h2 ref={headingRef}>Top Projects</h2>
                 </div>
-                <div className={styles.projectContainer}>
-                    {projects.slice().reverse().map((project, index) => (
-                        (showAllProjects || index < 2) && (
-                            <div
-                                key={index}
-                                className={`${styles.projectPreview} ${styles.fadeIn} `}
-                                ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
-                            >
-                                <img src={project.images.thumbnail} alt={project.title} className={styles.image} loading='lazy' />
-                                <h2 className={styles.projectTitle}>{project.title}</h2>
-                                <p className={styles.description}>
-                                    {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
-                                    {project.description.length > 100 && (
-                                        <button
-                                            className={`${styles.readMoreButton} ${expandedProjects.includes(index) ? styles.readLessActive : ''} `}
-                                            onClick={() => handleReadFullDescription(index)}
-                                        >
-                                            {expandedProjects.includes(index) ? '...Read less' : '...Read more'}
-                                        </button>
-                                    )}
+            )}
+            {section == 'projects' && (
+                <div className={`${styles.projects} `}>
+                    <h2 ref={headingRef}></h2>
+                </div>
+            )}
+            <div className={styles.projectContainer}>
+                {projects.slice().reverse().map((project, index) => (
+                    (showAllProjects || index < 2) && (
+                        <div
+                            key={index}
+                            className={`${styles.projectPreview} ${styles.fadeIn} `}
+                            ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
+                        >
+                            <img src={project.images.thumbnail} alt={project.title} className={styles.image} loading='lazy' />
+                            <h2 className={styles.projectTitle}>{project.title}</h2>
+                            <p className={styles.description}>
+                                {expandedProjects.includes(index) ? project.description : project.description.substring(0, 100)}
+                                {project.description.length > 100 && (
+                                    <button
+                                        className={`${styles.readMoreButton} ${expandedProjects.includes(index) ? styles.readLessActive : ''} `}
+                                        onClick={() => handleReadFullDescription(index)}
+                                    >
+                                        {expandedProjects.includes(index) ? '...Read less' : '...Read more'}
+                                    </button>
+                                )}
+                            </p>
+
+                            {/* Date Section */}
+                            <div className={styles.dateContainer}>
+                                <p className={`${styles.dateItem} ${styles.started} `}>
+                                    Started: {project.date?.started ?? 'N/A'}
                                 </p>
+                                <div className={styles.separator}> </div>
+                                <p className={`${styles.dateItem} ${styles.completed} `}>
+                                    Completed: {project.date?.completed ?? 'N/A'}
+                                </p>
+                                <div className={styles.separator}> </div>
+                                <p className={`${styles.dateItem} ${styles.lastUpdated} `}>
+                                    Last Updated: {project.date?.lastUpdated ?? 'N/A'}
+                                </p>
+                            </div>
+                            <div className={styles.languagesLinksContainer} >
+                                <div>
+                                    <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
 
-                                {/* Date Section */}
-                                <div className={styles.dateContainer}>
-                                    <p className={`${styles.dateItem} ${styles.started} `}>
-                                        Started: {project.date?.started ?? 'N/A'}
-                                    </p>
-                                    <div className={styles.separator}> </div>
-                                    <p className={`${styles.dateItem} ${styles.completed} `}>
-                                        Completed: {project.date?.completed ?? 'N/A'}
-                                    </p>
-                                    <div className={styles.separator}> </div>
-                                    <p className={`${styles.dateItem} ${styles.lastUpdated} `}>
-                                        Last Updated: {project.date?.lastUpdated ?? 'N/A'}
-                                    </p>
+                                    {/* Safeguard for undefined techStack */}
+                                    < div className={styles.topics} >
+                                        {(project.techStack?.languages || []).map((language, topicIndex) => {
+                                            let topicClass = '';
+                                            switch (language) {
+                                                case 'JavaScript':
+                                                    topicClass = styles.javascript;
+                                                    break;
+                                                case 'HTML':
+                                                    topicClass = styles.html;
+                                                    break;
+                                                case 'CSS':
+                                                    topicClass = styles.css;
+                                                    break;
+                                                case 'Solidity':
+                                                    topicClass = styles.solidity;
+                                                    break;
+                                                default:
+                                                    topicClass = '';
+                                            }
+                                            return (
+                                                <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
+                                                    {language}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+
+                                    <div className={styles.languages}>
+                                        {(project.techStack?.frameworks || []).map((framework, topicIndex) => {
+                                            let frameworkClass = '';
+                                            switch (framework) {
+                                                case 'React':
+                                                    frameworkClass = styles.react;
+                                                    break;
+                                                case 'Vite':
+                                                    frameworkClass = styles.vite;
+                                                    break;
+                                                case 'Web3.js':
+                                                    frameworkClass = styles.web3;
+                                                    break;
+                                                default:
+                                                    frameworkClass = '';
+                                            }
+                                            return (
+                                                <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
+                                                    {framework}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                                <div className={styles.languagesLinksContainer} >
-                                    <div>
-                                        <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
-
-                                        {/* Safeguard for undefined techStack */}
-                                        < div className={styles.topics} >
-                                            {(project.techStack?.languages || []).map((language, topicIndex) => {
-                                                let topicClass = '';
-                                                switch (language) {
-                                                    case 'JavaScript':
-                                                        topicClass = styles.javascript;
-                                                        break;
-                                                    case 'HTML':
-                                                        topicClass = styles.html;
-                                                        break;
-                                                    case 'CSS':
-                                                        topicClass = styles.css;
-                                                        break;
-                                                    case 'Solidity':
-                                                        topicClass = styles.solidity;
-                                                        break;
-                                                    default:
-                                                        topicClass = '';
-                                                }
-                                                return (
-                                                    <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
-                                                        {language}
-                                                    </span>
-                                                );
-                                            })}
-                                        </div>
-
-                                        <div className={styles.languages}>
-                                            {(project.techStack?.frameworks || []).map((framework, topicIndex) => {
-                                                let frameworkClass = '';
-                                                switch (framework) {
-                                                    case 'React':
-                                                        frameworkClass = styles.react;
-                                                        break;
-                                                    case 'Vite':
-                                                        frameworkClass = styles.vite;
-                                                        break;
-                                                    case 'Web3.js':
-                                                        frameworkClass = styles.web3;
-                                                        break;
-                                                    default:
-                                                        frameworkClass = '';
-                                                }
-                                                return (
-                                                    <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
-                                                        {framework}
-                                                    </span>
-                                                );
-                                            })}
-                                        </div>
+                                <div className={styles.linkContainer}>
+                                    <div
+                                        className={styles.readFullArticleButton}
+                                        onClick={() => handleReadFullArticle(projects.length - index - 1)}
+                                    >
+                                        Read
+                                        <Maximize2
+                                        />
                                     </div>
-                                    <div className={styles.linkContainer}>
-                                        <a
-                                            className={styles.readFullArticleButton}
-                                            onClick={() => handleReadFullArticle(projects.length - index - 1)}
-                                        >
-                                            Project Details
-                                        </a>
-                                        <a
-                                            href={project.links[0].url}
-                                            className={styles.visitSite}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >Visit Site</a>
-                                        <a
-                                            href={project.links[1].url}
-                                            className={styles.sourceCode}
-                                            target='_blank'
-                                            rel='noopen noreferrer'
-                                        >Source Code</a>
-                                    </div>
+                                    <a
+                                        href={project.links[0].url}
+                                        className={styles.visitSite}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Visit
+                                        <ExternalLink
+                                        />
+                                    </a>
+                                    <a
+                                        href={project.links[1].url}
+                                        className={styles.sourceCode}
+                                        target='_blank'
+                                        rel='noopen noreferrer'
+                                    >Source<Github /></a>
                                 </div>
                             </div>
-                        )
-                    ))}
-                    {selectedProject !== null && showFullPage && (
-                        <ProjectFullPage selectedProject={selectedProject} onClose={handleCloseFullView} />
-                    )}
-                    {!showAllProjects ? (
-                        <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More...</button>
-                    ) : (
-                        <button className={`${styles.viewProjects} ${styles.viewLess} `} onClick={handleShowAllBlogs}>View Less</button>
-                    )}
-                </div >
+                        </div>
+                    )
+                ))}
+                {selectedProject !== null && showFullPage && (
+                    <ProjectFullPage selectedProject={selectedProject} onClose={handleCloseFullView} />
+                )}
+                {!showAllProjects ? (
+                    <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More...</button>
+                ) : (
+                    <button className={`${styles.viewProjects} ${styles.viewLess} `} onClick={handleShowAllBlogs}>View Less</button>
+                )}
             </div >
         </div >
     );

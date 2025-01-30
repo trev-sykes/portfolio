@@ -1,0 +1,93 @@
+.container {
+    max-width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.hero {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #333;
+    margin-bottom: 3rem;
+}
+
+.name {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    font-weight: bold;
+    background-color: rgba(255, 255, 0, 0.336);
+    border-radius: 55px 2px 45px 0px;
+}
+
+.ethereum {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(255, 0, 247, 0.132);
+    border-radius: 55px 2px 45px 0px;
+}
+
+.github {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(60, 255, 0, 0.33);
+    border-radius: 55px 2px 45px 0px;
+}
+
+
+.leftHero {
+    margin-left: 10%;
+    text-align: left;
+}
+
+.rightHero {
+    max-width: 50%;
+}
+
+.heroImgContainer {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.heroImg {
+    border-radius: 6px;
+}
+
+.paragraph {
+    margin: 15px 0;
+
+}
+
+.about {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(60, 255, 0, 0.33);
+    border-radius: 55px 2px 45px 0px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        /* Stack text and image vertically on smaller screens */
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .leftHero,
+    .heroImgContainer {
+        max-width: 100%;
+        /* Make both sections full width on small screens */
+        text-align: center;
+    }
+}

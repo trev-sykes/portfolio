@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 import Home from './pages/home/Home';
-import Skills from './components/skills/Skills';
+import About from "./pages/about/About";
 import { useRemoveKinKins } from './hooks/useClearKinKins';
 import TransitionLayout from './components/transitionLayout/TransitionLayout';
+import Projects from './pages/projects/Projects';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <TransitionLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Skills />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/projects' element={<Projects />} />
         </Routes>
       </TransitionLayout>
     </Router>

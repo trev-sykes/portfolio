@@ -1,8 +1,8 @@
 import Github from "../../components/github/GithubLink"
-import { AboutMeHeader } from "../../components/about/AboutMeHeader"
-import Banner from "../../components/banner/Banner"
-import Header from "../../components/header/Header"
-import { Introduction } from "../../components/introduction/Introduction"
+import Hero from "../../components/hero/Hero"
+import Navigation from "../../components/navigation/Navigation"
+import HeroTitle from "../../components/heroTitle/HeroTitle";
+import { HomeIntro } from "../../components/homeIntro/HomeIntro"
 import ProjectsComponent from "../../components/projects/ProjectsComponent"
 import BlogComponent from "../../components/blog/BlogComponent"
 import Footer from "../../components/footer/Footer"
@@ -18,14 +18,14 @@ const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
     return (
         <>
             <Github />
-            <Header />
-            <Banner section={'home'} />
-            <AboutMeHeader />
-            <Introduction />
-            <ProjectsComponent />
+            <Navigation />
+            <Hero section={'home'} />
+            <HeroTitle title={'Home'} />
+            <HomeIntro />
             <BlogComponent />
+            <ProjectsComponent section={'home'} />
             <Footer copyrightText="Trevor Sykes - 2025" />
         </>
     )
 }
-export default Home
+export default Home;

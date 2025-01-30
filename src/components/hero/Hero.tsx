@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import canvasImage from '../../assets/banner.jpeg';
 import mugshotImage from '../../assets/logo_final.png';
-import styles from './Banner.module.css';
+import styles from './Hero.module.css';
 
 /**
  * Defines the structure for image styling properties.
@@ -47,14 +47,14 @@ interface ShootingStar {
     trail: boolean;     // Whether to render a trailing effect
     collisionTime?: number;  // Timestamp of collision for animation effects
 }
-interface BannerProps {
+interface HeroProps {
     section: string;
 }
 /**
  * Banner component that renders an animated space scene with debris and shooting stars.
  * Provides a dynamic background effect with collision detection and responsive behavior.
  */
-const Banner: React.FC<BannerProps> = ({ section }) => {
+const Hero: React.FC<HeroProps> = ({ section }) => {
     // Tracks viewport width for responsive adjustments
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -347,13 +347,15 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
     }
-    const handEmojiStyles: any = {
+    const emojiStyles: any = {
         fontSize: '4.75rem',
         userSelect: 'none',
         textAlign: 'center',
-        marginTop: section == 'about' ? '25px' : '0',
-        marginBottom: '0'
+        marginTop: section == 'about' || section == 'projects' ? '25px' : '0',
+        marginBottom: '0',
+        overFlow: 'hidden'
     }
+
     const containerStyles: any = {
         marginTop: '54px',
         marginBottom: section == 'about' ? '10px' : '75px'
@@ -376,7 +378,14 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
                 <div className={styles.mugshotContainer}>
                     {section == 'home' && (<div style={mugshotStyles} />)}
                     {section == 'about' && (
-                        <p style={handEmojiStyles}>👋</p>
+                        <div className={styles.emoji}>
+                            <p style={emojiStyles}>👋</p>
+                        </div>
+                    )}
+                    {section == 'projects' && (
+                        <div className={styles.emoji}>
+                            <p style={emojiStyles}>🖥️</p>
+                        </div>
                     )}
                 </div>
             </div>
@@ -384,4 +393,4 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
     );
 };
 
-export default Banner;
+export default Hero;

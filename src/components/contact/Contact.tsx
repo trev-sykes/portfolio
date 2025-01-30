@@ -82,15 +82,11 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
             });
 
             const responseText = await response.text();
-
+            console.log('Response text', typeof (responseText));
+            console.log('Response text text:', responseText)
             let responseData;
-            try {
-                responseData = JSON.parse(responseText);
-            } catch (e) {
-                console.error('Error parsing response as JSON:', e);
-                responseData = responseText; // Fallback to text response
-            }
-
+            if (responseText == 'ok')
+                responseData = 'Message Sent!';
             if (response.ok) {
                 setSuccess(true);
                 setFrom_Name('');
@@ -103,7 +99,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
                     setVisible(false);
                 }, 2000);
             } else {
-                const errorMessage = responseData?.message || 'Failed to send message';
+                const errorMessage = responseData || 'Failed to send message';
                 console.error('Error response:', responseData);
                 setError(errorMessage);
                 throw new Error(errorMessage);
@@ -119,7 +115,7 @@ const ContactPopup: React.FC<Contact> = ({ onClose }) => {
     return (
         <div className={`${styles.overlay} ${visible ? styles.visible : ''}`}>
             <div className={styles.popup}>
-                {/* <button className={styles.close} onClick={() => setVisible(false)}>×</button> */}
+
                 <Minimize2 className={styles.close} onClick={() => setVisible(false)} />
                 {!success ? (
                     <>

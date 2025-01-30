@@ -33,11 +33,16 @@
   max-width: calc(50% - 20px);
   margin-right: 20px;
   margin-bottom: 20px;
-  border: 1px solid rgba(204, 204, 204, 0.5);
+  border-radius: 15px;
   padding: 20px;
   cursor: pointer;
   box-sizing: border-box;
   height: 490px;
+  transition: all 200ms ease;
+}
+
+.blogPreview:hover {
+  scale: 99.6%;
 }
 
 .blogPreview::before {

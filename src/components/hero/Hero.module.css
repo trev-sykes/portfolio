@@ -26,6 +26,9 @@
 
 }
 
+.emoji {
+    overflow: hidden !important;
+}
 
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
@@ -35,9 +38,14 @@
         border-radius: 15px;
     }
 
+    .emoji {
+        transform: translateY(-25px);
+    }
+
     .mugshotContainer {
         width: 100px;
         height: 100px;
         margin-top: 100px;
+        overflow: hidden;
     }
 }
