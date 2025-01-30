@@ -351,7 +351,7 @@ const Banner: React.FC<BannerProps> = ({ section }) => {
         fontSize: '4.75rem',
         userSelect: 'none',
         textAlign: 'center',
-        marginTop: '0',
+        marginTop: section == 'about' ? '25px' : '0',
         marginBottom: '0'
     }
     const containerStyles: any = {
