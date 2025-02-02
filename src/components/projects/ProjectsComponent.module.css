@@ -202,8 +202,13 @@
   transform: translateY(1050%);
 }
 
-.viewProjects.viewLess {
-  transform: translateY(0);
+.viewProjects.viewLessOdd {
+  transform: translateY(1050%);
+}
+
+.viewProjects.viewLessEven {
+  transform: translateY(0%);
+
 }
 
 

@@ -168,11 +168,14 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                                                 case 'Solidity':
                                                     topicClass = styles.solidity;
                                                     break;
+                                                case 'Typescript':
+                                                    topicClass = styles.typescript;
+                                                    break;
                                                 default:
                                                     topicClass = '';
                                             }
                                             return (
-                                                <span key={topicIndex} className={`${styles.topic} ${topicClass} `}>
+                                                <span key={topicIndex} className={`${styles.topic} ${topicClass}`}>
                                                     {language}
                                                 </span>
                                             );
@@ -191,6 +194,12 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                                                     break;
                                                 case 'Web3.js':
                                                     frameworkClass = styles.web3;
+                                                    break;
+                                                case 'Foundry':
+                                                    frameworkClass = styles.foundry;
+                                                    break;
+                                                case 'Ethers.js':
+                                                    frameworkClass = styles.ethers;
                                                     break;
                                                 default:
                                                     frameworkClass = '';
@@ -235,7 +244,7 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                 {!showAllProjects ? (
                     <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More...</button>
                 ) : (
-                    <button className={`${styles.viewProjects} ${styles.viewLess} `} onClick={handleShowAllBlogs}>View Less</button>
+                    <button className={`${styles.viewProjects} ${projects.length % 2 == 0 ? styles.viewLessEven : styles.viewLessOdd}`} onClick={handleShowAllBlogs}>View Less</button>
                 )}
             </div >
         </div >

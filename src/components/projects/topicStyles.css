@@ -79,6 +79,11 @@
     color: #e6e6e6;
 }
 
+.topic.typescript {
+    background: rgb(48, 119, 198);
+    color: rgb(248, 251, 253);
+}
+
 .languages {
     display: flex;
     align-items: center;
@@ -110,4 +115,14 @@
 .language.web3 {
     background: lightgreen;
     color: rgb(125, 0, 106);
+}
+
+.language.foundry {
+    background: rgb(254, 247, 48);
+    color: black;
+}
+
+.language.ethers {
+    background: rgb(100, 114, 199);
+    color: #fff;
 }
