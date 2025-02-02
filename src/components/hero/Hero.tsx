@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import canvasImage from '../../assets/banner.jpeg';
-import mugshotImage from '../../assets/logo_final.png';
+import canvasImage from '../../assets/hero.jpeg';
+import homepageMugshotImage from '../../assets/logo.png';
+import projectpageMugshotImage from "../../assets/project_hero.png";
 import styles from './Hero.module.css';
 
 /**
@@ -18,8 +19,12 @@ interface ImageStyles {
 
 interface CanvasStyles extends ImageStyles {
 }
-interface MugshotStyles extends ImageStyles {
+interface HomepageMugshotStyles extends ImageStyles {
     borderRadius: string;
+}
+interface ProjectpageMugshotStyles extends ImageStyles {
+    borderRadius: string;
+    transform: string;
 }
 /**
  * Represents a particle in the space debris field.
@@ -360,14 +365,24 @@ const Hero: React.FC<HeroProps> = ({ section }) => {
         marginTop: '54px',
         marginBottom: section == 'about' ? '10px' : '75px'
     }
-    const mugshotStyles: MugshotStyles = {
+    const homepageMugshotStyles: HomepageMugshotStyles = {
         width: '100%',
         height: '100%',
-        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${mugshotImage})`,
+        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${homepageMugshotImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         borderRadius: '50%'
+    }
+    const projectpageMugshotStyles: ProjectpageMugshotStyles = {
+        width: '100%',
+        height: '100%',
+        backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${projectpageMugshotImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        borderRadius: '0%',
+        transform: 'translateY(-25px)',
     }
     return (
         <div style={containerStyles}>
@@ -376,16 +391,14 @@ const Hero: React.FC<HeroProps> = ({ section }) => {
                     <canvas ref={canvasRef} style={canvasStyles}></canvas>
                 </div>
                 <div className={styles.mugshotContainer}>
-                    {section == 'home' && (<div style={mugshotStyles} />)}
+                    {section == 'home' && (<div style={homepageMugshotStyles} />)}
                     {section == 'about' && (
                         <div className={styles.emoji}>
                             <p style={emojiStyles}>👋</p>
                         </div>
                     )}
                     {section == 'projects' && (
-                        <div className={styles.emoji}>
-                            <p style={emojiStyles}>🖥️</p>
-                        </div>
+                        <div style={projectpageMugshotStyles} />
                     )}
                 </div>
             </div>

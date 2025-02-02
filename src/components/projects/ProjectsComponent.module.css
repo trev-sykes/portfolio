@@ -1,4 +1,5 @@
 @import "../../index.css";
+@import "./topicStyles.css";
 
 .container {
   max-width: 1100px;
@@ -11,7 +12,6 @@
 }
 
 .projects {
-
   margin-top: var(--project-margin-top);
   padding: var(--project-padding);
   opacity: 1;
@@ -39,17 +39,16 @@
   padding: 20px;
   cursor: default;
   box-sizing: border-box;
+  background-color: #c1c1c13d;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
   height: 600px;
   opacity: 1;
-  transition: opacity 0.6s ease-out, background-color 100ms ease-out, box-shadow 100ms ease-out;
+  transition: scale 250ms ease, opacity 0.6s ease-out, background-color 100ms ease-out, box-shadow 100ms ease-out;
   /* Smooth transition for fading in */
 }
 
-
-
 .projectPreview:hover {
-  background-color: #c1c1c13d;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  scale: 99.6%;
 }
 
 .projectPreview::before {
@@ -82,34 +81,6 @@
 
 .projectPreview p {
   margin-bottom: 5px;
-}
-
-.dateContainer {
-  width: 100%;
-  font-size: .85rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-
-.dateItem {
-  font-size: .85rem;
-  border-radius: 9px;
-  user-select: none;
-}
-
-.dateItem.started {
-  color: rgb(142, 108, 20);
-}
-
-.dateItem.completed {
-  color: rgb(142, 20, 142);
-}
-
-.dateItem.lastUpdated {
-  color: rgb(20, 142, 138);
 }
 
 .separator {
@@ -150,91 +121,6 @@
   cursor: pointer;
 }
 
-.date {
-  color: var(--date-color);
-}
-
-.topics {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.topic {
-  text-align: center;
-  display: inline-block;
-  margin-right: 5px;
-  padding: 2px 5px;
-  border-radius: 50px 25px 50px 25px;
-  user-select: none;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.languageHeader {
-  margin-bottom: 5px;
-  margin-top: 30px;
-}
-
-.topic.javascript {
-  background-color: #f0db4f;
-  /* Yellow */
-  color: #000;
-  width: 100px;
-}
-
-.topic.html {
-  background-color: #c16f04;
-  /* Yellow */
-  color: #ffffff;
-}
-
-.topic.css {
-  background-color: rgb(39, 89, 234);
-  /* Yellow */
-  color: #c1c1c1;
-}
-
-.topic.solidity {
-  background-color: rgb(42, 37, 124);
-  /* Yellow */
-  color: #e6e6e6;
-}
-
-.languages {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 30px;
-}
-
-.language {
-  display: inline-block;
-  margin-right: 5px;
-  padding: 2px 5px;
-  border-radius: 25px 50px 25px 50px;
-  user-select: none;
-  font-weight: 700;
-
-}
-
-.language.react {
-  background: rgb(87, 197, 221);
-  color: #474747;
-
-}
-
-.language.vite {
-  background: purple;
-  color: yellow;
-}
-
-.language.web3 {
-  background: lightgreen;
-  color: rgb(125, 0, 106);
-}
-
 .linkContainer {
   display: flex;
   flex-direction: column;
@@ -264,11 +150,62 @@
   scale: 1;
   margin-bottom: 10px;
   right: 0;
+  border-radius: 15px 15px 6px 6px;
 }
 
 .fadeInVisible {
   opacity: 0;
 }
+
+.sourceCode {
+  text-decoration: none;
+  color: #e74c3c;
+}
+
+.sourceCode:hover {
+  color: #9b3e34;
+}
+
+.visitSite {
+  text-decoration: none;
+  color: rgb(24, 136, 30);
+}
+
+.visitSite:hover {
+  color: rgb(41, 179, 48);
+}
+
+.readFullProjectLink {
+  text-decoration: none;
+  color: rgb(34, 255, 0);
+}
+
+
+.readFullArticleButton {
+  color: #3498db;
+  margin: 0;
+  cursor: pointer;
+}
+
+.readFullArticleButton:hover {
+  color: #4fb0f1;
+}
+
+.viewProjects {
+  background: var(--button-background);
+  color: var(--button-color);
+  max-height: 30px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 auto;
+  transform: translateY(1050%);
+}
+
+.viewProjects.viewLess {
+  transform: translateY(0);
+}
+
 
 @media (max-width: 600px) {
   .container {
@@ -348,47 +285,8 @@
     padding: 0;
     transform: translateY(-3px);
   }
-}
 
-.sourceCode {
-  text-decoration: none;
-  color: #e74c3c;
-}
-
-.sourceCode:hover {
-  color: #9b3e34;
-}
-
-.visitSite {
-  text-decoration: none;
-  color: rgb(24, 136, 30);
-}
-
-.visitSite:hover {
-  color: rgb(41, 179, 48);
-}
-
-.readFullProjectLink {
-  text-decoration: none;
-  color: rgb(34, 255, 0);
-}
-
-
-.readFullArticleButton {
-  color: #3498db;
-  margin: 0;
-  cursor: pointer;
-}
-
-.readFullArticleButton:hover {
-  color: #4fb0f1;
-}
-
-.viewProjects {
-  background: var(--button-background);
-  color: var(--button-color);
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin: 0 auto;
+  .viewProjects {
+    transform: translateY(0);
+  }
 }

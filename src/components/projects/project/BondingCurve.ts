@@ -1,10 +1,10 @@
 // Importing interfaces and image
 import { FullProject } from '../projectInterfaces'
-import img from '../../../assets/bonding-curve.png'
+import img from '../../../assets/bonding_curve.png'
 import gif from "../../../assets/tokenizedAssetSimulator.gif"
 // Example implementation
 const bondingCurveSimulator: FullProject = {
-    title: 'Bonding Curve Simulator',
+    title: 'Bonding-Curve-Simulator',
     shortDescription: 'Interactive visualization of tokenomics and market behavior using bonding curves',
     description: 'A dynamic, interactive visualization of price fluctuations using a Bonding Curve algorithm.',
     date: {

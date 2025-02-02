@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Sun, Moon, MenuSquare, Minimize2 } from 'lucide-react';
 import Contact from '../contact/Contact';
 import styles from './Navigation.module.css';
@@ -9,14 +9,23 @@ interface NavigationProps {
     triggerLoad?: Function;
     handleStateChange?: Function;
 }
+
 const Navigation: React.FC<NavigationProps> = () => {
+    const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
+    const [active, setActive] = useState('home');
     const [isClicked, setIsClicked] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [textColor, setTextColor] = useState('black');
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [colorTheme, setColorTheme] = useState<any>('light');
-    // Adjust scroll range dynamically based on screen size
+
+    // Update active state based on current path
+    useEffect(() => {
+        const path = location.pathname.slice(1) || 'home';
+        setActive(path);
+    }, [location]);
+
     const scrollRange = windowWidth < 600 ? { min: 0, max: 0 } : { min: 25, max: 270 };
 
     useEffect(() => {
@@ -29,18 +38,16 @@ const Navigation: React.FC<NavigationProps> = () => {
             const isScrolled = scrollY > 0;
             setScrolled(isScrolled);
 
-            // Change text color when scroll position is within the adjusted range
             if (scrollY > scrollRange.min && scrollY <= scrollRange.max) {
-                setTextColor('white'); // Change to white when within this range
+                setTextColor('white');
             } else {
-                setTextColor('black'); // Revert to black when outside this range
+                setTextColor('black');
             }
         };
 
         window.addEventListener('resize', handleResize);
         window.addEventListener('scroll', handleScroll);
 
-        // Cleanup event listeners
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
@@ -51,8 +58,18 @@ const Navigation: React.FC<NavigationProps> = () => {
         setContactPopupVisible(!contactPopupVisible);
     };
 
+    const renderLink = (to: string, label: string) => (
+        <Link
+            to={to}
+            className={`${styles.button} ${active === to.slice(1) ? styles.active : ''}`}
+            style={{ color: textColor }}
+        >
+            {label}
+        </Link>
+    );
+
     return (
-        <TransitionLayout >
+        <TransitionLayout>
             <>
                 {windowWidth < 600 ? (
                     <>
@@ -70,26 +87,18 @@ const Navigation: React.FC<NavigationProps> = () => {
                                 </div>
                                 {isClicked ? (
                                     <div className={styles.right}>
-                                        <Link to="/about" className={styles.button} style={{ color: textColor }}>
-                                            About
-                                        </Link>
-                                        <Link to="/about" className={styles.button} style={{ color: textColor }}>
-                                            Projects
-                                        </Link>
+                                        {renderLink('/about', 'About')}
+                                        {renderLink('/projects', 'Projects')}
                                         <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
                                             Contact
                                         </button>
                                         <Minimize2 onClick={() => setIsClicked(false)} />
                                     </div>
                                 ) : (
-                                    <>
-                                        <MenuSquare onClick={() => setIsClicked(true)} />
-                                    </>
+                                    <MenuSquare onClick={() => setIsClicked(true)} />
                                 )}
                             </nav>
                         </header>
-                        {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
-
                     </>
                 ) : (
                     <>
@@ -106,25 +115,20 @@ const Navigation: React.FC<NavigationProps> = () => {
                                     </div>
                                 </div>
                                 <div className={styles.right}>
-                                    {/* Use Link instead of button for navigation */}
-                                    <Link to="/about" className={styles.button} style={{ color: textColor }}>
-                                        About
-                                    </Link>
-                                    <Link to="/projects" className={styles.button} style={{ color: textColor }}>
-                                        Projects
-                                    </Link>
-                                    <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                    {renderLink('/about', 'About')}
+                                    {renderLink('/projects', 'Projects')}
+                                    <div className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
                                         Contact
-                                    </button>
-                                    {colorTheme == 'dark' ? (
+                                    </div>
+                                    {colorTheme === 'dark' ? (
                                         <Moon
-                                            className={styles.button}
+                                            className={`${styles.button} ${styles.toggleTheme}`}
                                             style={{ color: textColor }}
                                             onClick={() => setColorTheme('light')}
                                         />
                                     ) : (
                                         <Sun
-                                            className={styles.button}
+                                            className={`${styles.button} ${styles.toggleTheme}`}
                                             style={{ color: textColor }}
                                             onClick={() => setColorTheme('dark')}
                                         />
@@ -132,14 +136,12 @@ const Navigation: React.FC<NavigationProps> = () => {
                                 </div>
                             </nav>
                         </header>
-
-                        {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
                     </>
-                )
-                }
-
+                )}
+                {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
             </>
         </TransitionLayout>
     );
-}
+};
+
 export default Navigation;

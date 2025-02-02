@@ -3,7 +3,6 @@ import Hero from "../../components/hero/Hero"
 import Navigation from "../../components/navigation/Navigation"
 import HeroTitle from "../../components/heroTitle/HeroTitle";
 import { HomeIntro } from "../../components/homeIntro/HomeIntro"
-import ProjectsComponent from "../../components/projects/ProjectsComponent"
 import BlogComponent from "../../components/blog/BlogComponent"
 import Footer from "../../components/footer/Footer"
 import { useEffect } from "react"
@@ -23,7 +22,6 @@ const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
             <HeroTitle title={'Home'} />
             <HomeIntro />
             <BlogComponent />
-            <ProjectsComponent section={'home'} />
             <Footer copyrightText="Trevor Sykes - 2025" />
         </>
     )

@@ -1,5 +1,5 @@
 .container {
-    max-width: 900px;
+    max-width: 1100px;
     height: 400px;
     margin: 0 auto;
     padding: 1rem;
@@ -10,7 +10,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     border-radius: 1rem;
     padding: 1rem;
     color: #333;
@@ -71,6 +71,13 @@
     border-radius: 6px;
     font-size: 1.12rem;
     background-color: rgba(60, 255, 0, 0.33);
+    border-radius: 55px 2px 45px 0px;
+}
+
+.projectsLink {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(229, 255, 0, 0.33);
     border-radius: 55px 2px 45px 0px;
 }
 

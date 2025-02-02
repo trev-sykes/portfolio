@@ -1,6 +1,6 @@
 // Importing interfaces and image
 import { FullProject } from '../projectInterfaces'
-import img from '../../../assets/landing-template.png'
+import img from '../../../assets/landing_template.png'
 import gif from "../../../assets/landingPage.gif"
 
 const landingTemplate: FullProject = {

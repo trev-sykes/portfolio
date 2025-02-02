@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import styles from './ProjectsFullPage.module.css';
 import { Minimize2 } from 'lucide-react';
-import { projects } from './project';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
+import { projects } from './project'; // Assuming projects is an array containing your project data
 import CodeBlockFormatter from '../codeBlockFormatter/CodeBlockFormatter';
 
-interface Props {
-  selectedProject: number | null; // Matches parent component logic
-  onClose: () => void;
-}
+const ProjectFullPage: React.FC = () => {
+  // Extract the project name from the URL
+  const { projectName } = useParams<{ projectName: string }>();
+  const navigate = useNavigate(); // We can use navigate to go back if needed
 
-const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
   useEffect(() => {
+    console.log('projectName-', projectName?.split(' ').join('%20'));
     const handleScroll = (e: WheelEvent) => e.stopPropagation();
     document.addEventListener('wheel', handleScroll, { passive: false });
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -21,16 +22,27 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
     };
   }, []);
 
-  if (selectedProject === null) return null;
+  // Find the project based on the title in the URL
+  const project = projects.find(
+    (p) => {
+      console.log("EncoddedURI:", encodeURIComponent(p.title));
+      console.log("Project-Name", projectName);
+      if (p.title == projectName)
+        return encodeURIComponent(p.title == projectName)
+    }
+  );
 
-  const project = projects[selectedProject];
-  if (!project) return null; // Guard for undefined project
+  if (!project) return <div>Project not found</div>; // Handle case where project doesn't exist
+
+  const handleClose = () => {
+    navigate('/projects'); // Navigate back to the projects page when closed
+  };
 
   return (
-    <div id={`project-${selectedProject}`} className={styles.container}>
+    <div id={`project-${project.title}`} className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.titleHeader}>{project.title}</h1>
-        <Minimize2 className={styles.min} strokeWidth={3} onClick={onClose} size={24} />
+        <Minimize2 className={styles.min} strokeWidth={3} onClick={handleClose} size={24} />
       </div>
 
       <div className={styles.content}>
@@ -111,19 +123,20 @@ const ProjectFullPage: React.FC<Props> = ({ selectedProject, onClose }) => {
             ))}
           </div>
         )}
+
+        {/* Learnings Section */}
         {project.learnings && project.learnings.length > 0 && (
           <div className={styles.learnings}>
             <h2>Learnings</h2>
-            <ul >
+            <ul>
               {project.learnings.map((frag, index) => (
-                <li key={index} >{frag}</li>
+                <li key={index}>{frag}</li>
               ))}
             </ul>
           </div>
         )}
-
       </div>
-    </div >
+    </div>
   );
 };
 

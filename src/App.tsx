@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import About from "./pages/about/About";
 import { useRemoveKinKins } from './hooks/useClearKinKins';
 import TransitionLayout from './components/transitionLayout/TransitionLayout';
 import Projects from './pages/projects/Projects';
-
+import ProjectFullPage from './components/projects/ProjectsFullPage'; // Import ProjectFullPage
 
 function App() {
   useRemoveKinKins();
@@ -16,6 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/projects' element={<Projects />} />
+          {/* Define a route for individual projects */}
+          <Route path="/projects/:projectName" element={<ProjectFullPage />} />
         </Routes>
       </TransitionLayout>
     </Router>

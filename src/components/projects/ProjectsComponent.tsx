@@ -1,18 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { projects } from './project';
-import ProjectFullPage from './ProjectsFullPage';
 import styles from './ProjectsComponent.module.css';
-import { Maximize2, ExternalLink, Github } from 'lucide-react';
+import { Maximize2, ExternalLink, Github, } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ProjectsCompnentProps {
     section: string;
 }
 
 const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
+
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
-    const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
-    const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const projectRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
@@ -26,11 +25,6 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
         }
     };
 
-    const handleCloseFullView = () => {
-        setSelectedProject(null);
-        setShowFullPage(false);
-        document.body.style.overflow = '';
-    };
 
     const handleResize = () => {
         setViewportWidth(window.innerWidth);
@@ -48,7 +42,8 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
             const windowHeight = window.innerHeight;
 
             if (viewportWidth < 600) {
-                project.style.opacity = '1';
+                if (project)
+                    project.style.opacity = '1';
             } else {
                 if (rect.top < windowHeight && rect.bottom >= 0) {
                     const visibility = 1 - Math.max(0, (windowHeight + rect.top - 1450) / windowHeight);
@@ -104,11 +99,6 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
         };
     }, [viewportWidth]);
 
-    const handleReadFullArticle = (index: number) => {
-        setSelectedProject(index);
-        setShowFullPage(true);
-    };
-
     return (
         <div className={styles.container}>
             {section == 'home' && (
@@ -123,7 +113,7 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
             )}
             <div className={styles.projectContainer}>
                 {projects.slice().reverse().map((project, index) => (
-                    (showAllProjects || index < 2) && (
+                    (showAllProjects || index < 3) && (
                         <div
                             key={index}
                             className={`${styles.projectPreview} ${styles.fadeIn} `}
@@ -214,14 +204,13 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                                     </div>
                                 </div>
                                 <div className={styles.linkContainer}>
-                                    <div
+                                    <Link
+                                        to={`/projects/${encodeURIComponent(project.title)}`}  // Corrected path
                                         className={styles.readFullArticleButton}
-                                        onClick={() => handleReadFullArticle(projects.length - index - 1)}
                                     >
                                         Read
-                                        <Maximize2
-                                        />
-                                    </div>
+                                        <Maximize2 />
+                                    </Link>
                                     <a
                                         href={project.links[0].url}
                                         className={styles.visitSite}
@@ -243,9 +232,6 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                         </div>
                     )
                 ))}
-                {selectedProject !== null && showFullPage && (
-                    <ProjectFullPage selectedProject={selectedProject} onClose={handleCloseFullView} />
-                )}
                 {!showAllProjects ? (
                     <button className={styles.viewProjects} onClick={handleShowAllBlogs}>View More...</button>
                 ) : (

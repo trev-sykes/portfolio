@@ -1,10 +1,10 @@
 // Importing interfaces and image
 import { FullProject } from '../projectInterfaces'
-import img from '../../../assets/roll-six-win.png'
-import gif from "../../../assets/roll-six-win.gif"
+import img from '../../../assets/roll_six_win.png'
+import gif from "../../../assets/rollSixWin.gif"
 
 const rollSixWin: FullProject = {
-  title: 'Roll Six Win',
+  title: 'Roll-Six-Win',
   shortDescription: 'Decentralized dice game with provably fair gameplay on Polygon',
   description: 'A blockchain-based dice game built on the Polygon network that utilizes Chainlink VRF for verifiable randomness.',
   date: {
