@@ -37,7 +37,7 @@ const BlockchainBenefits = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h3 className={styles.title}>What Can Blockchain Do For You?</h3>
+                <h3 className={styles.title}>Curious about the possibilities?</h3>
                 <div className={styles.divider}></div>
             </div>
 

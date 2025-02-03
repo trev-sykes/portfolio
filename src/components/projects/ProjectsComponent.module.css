@@ -71,6 +71,16 @@
   /* Remove right margin for the last element in each row */
 }
 
+.projectPreview,
+a {
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: default;
+}
+
 .projectPreview h2 {
   margin-top: 0;
 }
@@ -232,6 +242,7 @@
     max-width: 300px;
     margin: 0 auto;
   }
+
 
   .projectPreview {
     flex: 1 1 auto;

@@ -86,13 +86,15 @@ const Navigation: React.FC<NavigationProps> = () => {
                                     </div>
                                 </div>
                                 {isClicked ? (
-                                    <div className={styles.right}>
-                                        {renderLink('/about', 'About')}
-                                        {renderLink('/projects', 'Projects')}
-                                        <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
-                                            Contact
-                                        </button>
-                                        <Minimize2 onClick={() => setIsClicked(false)} />
+                                    <div className={styles.menuContainer}>
+                                        <div className={styles.right}>
+                                            {renderLink('/about', 'About')}
+                                            {renderLink('/projects', 'Projects')}
+                                            <button className={styles.button} style={{ color: textColor }} onClick={toggleContactPopup}>
+                                                Contact
+                                            </button>
+                                            <Minimize2 onClick={() => setIsClicked(false)} />
+                                        </div>
                                     </div>
                                 ) : (
                                     <MenuSquare onClick={() => setIsClicked(true)} />
@@ -105,14 +107,14 @@ const Navigation: React.FC<NavigationProps> = () => {
                         <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
                             <nav className={styles.nav}>
                                 <div className={styles.left}>
-                                    <div className={styles.imageContainer}>
-                                        <div className={styles.mugshotImageContainer}>
-                                            <div className={styles.mugshotImage} />
+                                    <Link to="/" className={styles.mugshotName} >
+                                        <div className={styles.imageContainer}>
+                                            <div className={styles.mugshotImageContainer}>
+                                                <div className={styles.mugshotImage} />
+                                            </div>
+                                            <p className={styles.mugshotName} style={{ color: textColor }}>portfolio</p>
                                         </div>
-                                        <Link to="/" className={styles.mugshotName} style={{ color: textColor }}>
-                                            portfolio
-                                        </Link>
-                                    </div>
+                                    </Link>
                                 </div>
                                 <div className={styles.right}>
                                     {renderLink('/about', 'About')}
@@ -140,7 +142,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                 )}
                 {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
             </>
-        </TransitionLayout>
+        </TransitionLayout >
     );
 };
 

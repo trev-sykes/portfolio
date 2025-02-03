@@ -62,8 +62,8 @@ const AboutMain: React.FC = () => {
         <div className={styles.container}>
             <div className={styles.card}>
                 <section className={styles.expertise}>
-                    <div className={styles.left}>
-                        <h3 className={styles.title}>Expertise</h3>
+                    <div className={styles.expertiseLeft}>
+                        <h3 className={styles.leftTitle}>Expertise</h3>
                         <p className={`${styles.paragraph} ${styles.first} ${hovered == 'solidity' ? styles.activeHover : ''}`}>
                             I specialize in building smart contracts with Solidity and creating front-end interfaces using React.
                         </p>
@@ -84,10 +84,12 @@ const AboutMain: React.FC = () => {
 
 
                     <div className={styles.expertiseRight}>
-                        <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('solidity')} style={ethereumLogoStyles} title="1+ years of experience" />
-                        <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('react')} style={reactLogoStyles} title="2+ years of experience" />
-                        <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('foundry')} style={foundryLogoStyles} title="1+ years of experience" />
-                        <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('css')} style={cssLogoStyles} title="2+ years of experience" />
+                        <div className={styles.expertiseRightImageContainer}>
+                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('solidity')} style={ethereumLogoStyles} title="1+ years of experience" />
+                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('react')} style={reactLogoStyles} title="2+ years of experience" />
+                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('foundry')} style={foundryLogoStyles} title="1+ years of experience" />
+                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('css')} style={cssLogoStyles} title="2+ years of experience" />
+                        </div>
                     </div>
                 </section>
                 <BlockchainBenefits />

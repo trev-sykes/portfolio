@@ -48,3 +48,5 @@
     background-color: rgba(60, 255, 0, 0.33);
     border-radius: 55px 2px 45px 0px;
 }
+
+@media (max-width: 600px) {}

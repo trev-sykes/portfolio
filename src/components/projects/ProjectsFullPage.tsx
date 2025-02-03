@@ -11,7 +11,7 @@ const ProjectFullPage: React.FC = () => {
   const navigate = useNavigate(); // We can use navigate to go back if needed
 
   useEffect(() => {
-    console.log('projectName-', projectName?.split(' ').join('%20'));
+
     const handleScroll = (e: WheelEvent) => e.stopPropagation();
     document.addEventListener('wheel', handleScroll, { passive: false });
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -25,8 +25,6 @@ const ProjectFullPage: React.FC = () => {
   // Find the project based on the title in the URL
   const project = projects.find(
     (p) => {
-      console.log("EncoddedURI:", encodeURIComponent(p.title));
-      console.log("Project-Name", projectName);
       if (p.title == projectName)
         return encodeURIComponent(p.title == projectName)
     }
