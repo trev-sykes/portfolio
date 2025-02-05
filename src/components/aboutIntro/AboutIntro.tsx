@@ -1,19 +1,11 @@
-import styles from './AboutIntro.module.css';
+import { Link } from 'react-router-dom';
+import { useViewportSize } from '../../hooks/useViewportSize';
 import mugshot from '../../assets/mugshot_small.png';
 import mugshotMobile from "../../assets/mugshot_large.jpeg"
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import styles from './AboutIntro.module.css';
 
 export const AboutIntro: React.FC = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    useEffect(() => {
-        const handleWidthChange = () => {
-            setWidth(window.innerWidth);
-        }
-        window.addEventListener('resize', handleWidthChange);
-
-        return () => window.removeEventListener('resize', handleWidthChange);
-    }, [])
+    const viewportSize = useViewportSize();
     return (
         <div className={styles.container}>
             <section className={styles.hero}>
@@ -26,7 +18,7 @@ export const AboutIntro: React.FC = () => {
                 </div>
                 <div className={styles.rightHero}>
                     <div className={styles.heroImgContainer}>
-                        <img className={styles.heroImg} src={width > 600 ? mugshot : mugshotMobile} alt="Mugshot" />
+                        <img className={styles.heroImg} src={viewportSize.width > 600 ? mugshot : mugshotMobile} alt="Mugshot" />
                     </div>
                 </div>
             </section>

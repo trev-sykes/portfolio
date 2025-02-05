@@ -49,4 +49,11 @@
     border-radius: 55px 2px 45px 0px;
 }
 
+.projects {
+    border-radius: 6px;
+    font-size: 1.12rem;
+    background-color: rgba(229, 255, 0, 0.33);
+    border-radius: 55px 2px 45px 0px;
+}
+
 @media (max-width: 600px) {}

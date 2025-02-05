@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sun, Moon, MenuSquare, Minimize2 } from 'lucide-react';
 import Contact from '../contact/Contact';
-import styles from './Navigation.module.css';
 import TransitionLayout from '../transitionLayout/TransitionLayout';
+import { useViewportSize } from '../../hooks/useViewportSize';
+import { useWindowScroll } from '../../hooks/useWindowScroll';
+import styles from './Navigation.module.css';
 
 interface NavigationProps {
     triggerLoad?: Function;
@@ -11,13 +13,13 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = () => {
+    const viewportSize = useViewportSize();
+    const { scrollPosition } = useWindowScroll();
     const location = useLocation();
-    const [scrolled, setScrolled] = useState(false);
     const [active, setActive] = useState('home');
     const [isClicked, setIsClicked] = useState(false);
     const [contactPopupVisible, setContactPopupVisible] = useState(false);
     const [textColor, setTextColor] = useState('black');
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [colorTheme, setColorTheme] = useState<any>('light');
 
     // Update active state based on current path
@@ -26,33 +28,16 @@ const Navigation: React.FC<NavigationProps> = () => {
         setActive(path);
     }, [location]);
 
-    const scrollRange = windowWidth < 600 ? { min: 0, max: 0 } : { min: 25, max: 270 };
+    const scrollRange = viewportSize.width < 600 ? { min: 0, max: 0 } : { min: 25, max: 270 };
 
     useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const isScrolled = scrollY > 0;
-            setScrolled(isScrolled);
-
-            if (scrollY > scrollRange.min && scrollY <= scrollRange.max) {
-                setTextColor('white');
-            } else {
-                setTextColor('black');
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [windowWidth, scrollRange]);
+        const scrollY = scrollPosition.y;
+        if (scrollY > scrollRange.min && scrollY <= scrollRange.max) {
+            setTextColor('white');
+        } else {
+            setTextColor('black');
+        }
+    }, [viewportSize.width, scrollPosition]);
 
     const toggleContactPopup = () => {
         setContactPopupVisible(!contactPopupVisible);
@@ -71,9 +56,9 @@ const Navigation: React.FC<NavigationProps> = () => {
     return (
         <TransitionLayout>
             <>
-                {windowWidth < 600 ? (
+                {viewportSize.width < 600 ? (
                     <>
-                        <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                        <header className={`${styles.container} ${scrollPosition.y > 0 ? styles.scrolled : ''}`}>
                             <nav className={styles.nav}>
                                 <div className={styles.left}>
                                     <div className={styles.imageContainer}>
@@ -104,7 +89,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     </>
                 ) : (
                     <>
-                        <header className={`${styles.container} ${scrolled ? styles.scrolled : ''}`}>
+                        <header className={`${styles.container} ${scrollPosition.y > 0 ? styles.scrolled : ''}`}>
                             <nav className={styles.nav}>
                                 <div className={styles.left}>
                                     <Link to="/" className={styles.mugshotName} >

@@ -6,10 +6,17 @@ import { HomeIntro } from "../../components/homeIntro/HomeIntro"
 import BlogComponent from "../../components/blog/BlogComponent"
 import Footer from "../../components/footer/Footer"
 import { useEffect } from "react"
+import { useWindowScroll } from "../../hooks/useWindowScroll";
 interface HomeProps {
     handleRouteChange?: any;
 }
 const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
+    const { scrollPosition, resetWindowPosition } = useWindowScroll();
+    useEffect(() => {
+        if (scrollPosition.y > 0)
+            resetWindowPosition();
+    }, []);
+
     useEffect(() => {
         if (handleRouteChange)
             handleRouteChange();

@@ -17,6 +17,7 @@
   opacity: 1;
   border-bottom: .5px solid black;
   margin-bottom: 15px;
+  overflow: hidden !important;
 }
 
 .projectContainer {
@@ -30,9 +31,7 @@
   overflow: hidden !important;
   position: relative;
   flex: 0 0 calc(50% - 20px);
-  /* Two elements per row */
   max-width: calc(50% - 20px);
-  /* Two elements per row */
   margin-right: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -44,7 +43,8 @@
   height: 600px;
   opacity: 1;
   transition: scale 250ms ease, opacity 0.6s ease-out, background-color 100ms ease-out, box-shadow 100ms ease-out;
-  /* Smooth transition for fading in */
+  display: flex;
+  flex-direction: column;
 }
 
 .projectPreview:hover {
@@ -58,39 +58,47 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: radial-gradient(circle at center, rgba(96, 34, 111, 0.1) 0%, rgba(0, 0, 0, 0.05) 70%); */
   z-index: 1;
-  /* Ensure this is below the content */
   pointer-events: none;
-  /* Ensure the overlay does not interfere with interactions */
 }
 
+.projectPreview>div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden !important;
+}
 
 .projectPreview:last-child {
   margin-right: 0;
-  /* Remove right margin for the last element in each row */
+  overflow: hidden !important;
 }
 
 .projectPreview,
 a {
   color: var(--text-color);
+  overflow: hidden !important;
 }
 
 a {
   text-decoration: none;
   color: default;
+  overflow: hidden !important;
 }
 
 .projectPreview h2 {
   margin-top: 0;
+  overflow: hidden !important;
 }
 
 .projectTitle {
   margin-bottom: 10px;
+  overflow: hidden !important;
 }
 
 .projectPreview p {
   margin-bottom: 5px;
+  overflow: hidden !important;
 }
 
 .separator {
@@ -101,6 +109,13 @@ a {
   margin: 0 5px 0 5px;
   padding: 0;
   transform: translateY(-3px);
+  overflow: hidden !important;
+}
+
+.description {
+  flex-grow: 1;
+  overflow: auto;
+  overflow: hidden !important;
 }
 
 .languagesLinksContainer {
@@ -109,6 +124,21 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
+  overflow: hidden !important;
+}
+
+.languagesLinksContainerLeft {
+  width: 350%;
+  overflow: hidden !important;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden !important;
 }
 
 .readMoreButton {
@@ -117,11 +147,12 @@ a {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  overflow: hidden !important;
 }
 
 .readLessActive {
   color: var(--read-less-color);
-  /* Change to red */
+  overflow: hidden !important;
 }
 
 .readFullProjectButton {
@@ -129,14 +160,17 @@ a {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  overflow: hidden !important;
 }
 
 .linkContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
   margin-bottom: 0;
+  overflow: hidden !important;
 }
 
 .gitLink {
@@ -147,38 +181,40 @@ a {
   padding: 0 5px 0 5px;
   margin-top: 15px;
   cursor: pointer;
-
+  overflow: hidden !important;
 }
-
-/* Add styles for other topics here */
 
 .image {
   width: 100%;
   max-height: 300px;
-  /* Adjust this as needed */
   object-fit: cover;
   scale: 1;
   margin-bottom: 10px;
   right: 0;
   border-radius: 15px 15px 6px 6px;
+  overflow: hidden !important;
 }
 
 .fadeInVisible {
   opacity: 0;
+  overflow: hidden !important;
 }
 
 .sourceCode {
   text-decoration: none;
   color: #e74c3c;
+  overflow: hidden !important;
 }
 
 .sourceCode:hover {
   color: #9b3e34;
+  overflow: hidden !important;
 }
 
 .visitSite {
   text-decoration: none;
   color: rgb(24, 136, 30);
+  overflow: hidden !important;
 }
 
 .visitSite:hover {
@@ -188,13 +224,14 @@ a {
 .readFullProjectLink {
   text-decoration: none;
   color: rgb(34, 255, 0);
+  overflow: hidden !important;
 }
-
 
 .readFullArticleButton {
   color: #3498db;
   margin: 0;
   cursor: pointer;
+  overflow: hidden !important;
 }
 
 .readFullArticleButton:hover {
@@ -210,24 +247,23 @@ a {
   cursor: pointer;
   margin: 0 auto;
   transform: translateY(1050%);
+  overflow: hidden !important;
 }
 
 .viewProjects.viewLessOdd {
   transform: translateY(1050%);
+  overflow: hidden !important;
 }
 
 .viewProjects.viewLessEven {
   transform: translateY(0%);
-
+  overflow: hidden !important;
 }
 
-
-@media (max-width: 600px) {
+@media (max-width: 738px) {
   .container {
     max-width: 100%;
-    /* Allow the container to use full width */
     padding: 0 10px;
-    /* Optional: Add some padding for better spacing on smaller screens */
     margin: 0 auto;
   }
 
@@ -238,24 +274,21 @@ a {
 
   .projectContainer {
     flex-direction: column;
-    /* Stack blog previews vertically */
     max-width: 300px;
     margin: 0 auto;
   }
 
-
   .projectPreview {
     flex: 1 1 auto;
-    /* Allow items to grow and shrink as needed */
     max-width: 100%;
-    /* Ensure items take up full width of the container */
     margin-right: 0;
-    /* Remove right margin */
     margin-bottom: 20px;
-    /* Keep space between items */
-    box-sizing: border-box;
-    /* Ensure padding and border are included in width/height calculations */
     height: auto;
+    min-height: 500px;
+  }
+
+  .projectPreview>div {
+    min-height: 100%;
   }
 
   .description {
@@ -264,32 +297,38 @@ a {
 
   .topics {
     font-size: .9rem;
+    width: 100%;
   }
 
   .dateContainer {
+    display: none;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    overflow: hidden !important;
   }
-
 
   .dateItem {
     font-size: .7rem;
     user-select: none;
+    overflow: hidden !important;
   }
 
   .dateItem.started {
     color: rgb(142, 108, 20);
+    overflow: hidden !important;
   }
 
   .dateItem.completed {
     color: rgb(142, 20, 142);
+    overflow: hidden !important;
   }
 
   .dateItem.lastUpdated {
     color: rgb(20, 142, 138);
+    overflow: hidden !important;
   }
 
   .separator {
@@ -300,6 +339,7 @@ a {
     margin: 0 5px 0 5px;
     padding: 0;
     transform: translateY(-3px);
+    overflow: hidden !important;
   }
 
   .viewProjects {

@@ -92,7 +92,7 @@
 }
 
 .language {
-    display: inline-block;
+    display: inline;
     margin-right: 5px;
     padding: 2px 5px;
     border-radius: 25px 50px 25px 50px;

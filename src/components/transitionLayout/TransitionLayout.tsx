@@ -14,7 +14,7 @@ const TransitionLayout = ({ children }: { children: React.ReactNode }) => {
     const navigate = useNavigate();
 
     const loadingStyle: LoadingStyleProps = {
-        transition: 'background 2s ease',
+        transition: 'background 1s ease',
         background: 'linear-gradient(to left, yellow 100%, black)',
     };
 
@@ -23,7 +23,7 @@ const TransitionLayout = ({ children }: { children: React.ReactNode }) => {
         const timer = setTimeout(() => {
             setIsLoading(false);
             setContentOpacity(1);
-        }, 2000);
+        }, 1250);
         return () => clearTimeout(timer);
     }, []);
     useEffect(() => {
@@ -59,7 +59,7 @@ const TransitionLayout = ({ children }: { children: React.ReactNode }) => {
                 window.removeEventListener('wheel', handleScroll);
                 window.removeEventListener('touchmove', handleScroll);
                 window.removeEventListener('scroll', handleScroll);
-            }, 2000);
+            }, 2500);
         };
 
         setupPage();

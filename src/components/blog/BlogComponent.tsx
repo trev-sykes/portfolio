@@ -1,32 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
 // import Typewriter from 'typewriter-effect';
-import { magazine } from './articles';
-import styles from './BlogComponent.module.css';
 import BlogFullPage from './BlogFullPage';
+import { magazine } from './articles';
+import { useViewportSize } from '../../hooks/useViewportSize';
+import styles from './BlogComponent.module.css';
 
 const BlogComponent = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+    const viewportSize = useViewportSize();
     const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [animatingBlog, setAnimatingBlog] = useState<number | null>(null);
-    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
     const [showAllBlogs, setShowAllBlogs] = useState(false);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleWidth = () => {
-            setWidth(window.innerWidth);
-        }
-        window.addEventListener('resize', handleWidth);
-        return () => {
-            window.removeEventListener('resize', handleWidth);
-        }
-    }, [])
-    const handleResize = () => {
-        setViewportWidth(window.innerWidth);
-    };
+
 
     const handleScroll = () => {
         typewriterStarted;
@@ -43,7 +32,7 @@ const BlogComponent = () => {
                 toJSON: () => ({
                     x: 146,
                     y: 50,
-                    width: 440,
+                    viewportWidth: 440,
                     height: 240,
                     top: 50,
                     right: 586,
@@ -55,9 +44,9 @@ const BlogComponent = () => {
                 rect = blog.getBoundingClientRect();
             }
 
-            const windowHeight = window.innerHeight;
+            const windowHeight = viewportSize.height;
 
-            if (viewportWidth < 600) {
+            if (viewportSize.width < 600) {
                 if (blog) {
                     blog.style.opacity = '1';
                 }
@@ -101,12 +90,10 @@ const BlogComponent = () => {
         });
 
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
         handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
             blogRefs.current.forEach((blog) => {
                 if (blog) {
                     observer.unobserve(blog);
@@ -116,7 +103,7 @@ const BlogComponent = () => {
                 observer.unobserve(headingRef.current);
             }
         };
-    }, [viewportWidth]);
+    }, [viewportSize.width]);
 
     const handleViewAllBlogs = () => {
         setShowAllBlogs(true);
@@ -173,7 +160,7 @@ const BlogComponent = () => {
                                 <div>
                                     <h2 className={styles.title}>{blog.title}</h2>
                                     <p className={styles.description}>
-                                        {width > 600 ? blog.description.substring(0, 100) : blog.description.substring(0, 50)}...
+                                        {viewportSize.width > 600 ? blog.description.substring(0, 100) : blog.description.substring(0, 50)}...
                                     </p>
                                     <p className={styles.date}>{blog.date}</p>
                                     <div className={styles.topics}>
@@ -285,15 +272,15 @@ const BlogComponent = () => {
                                     </div>
                                 </div>
                                 <div className={styles.imageContainer}>
-                                    {width > 999 ?
+                                    {viewportSize.width > 999 ?
                                         (
-                                            <div style={{ position: 'absolute', bottom: '2.5%', left: '2.5%', backgroundImage: `url(${blog.imageUrl})`, width: '95%', height: '50%', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '15px' }} />
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '50%', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
                                         )
-                                        : width > 800 ? (
-                                            <div style={{ position: 'absolute', bottom: '2.5%', left: '2.5%', backgroundImage: `url(${blog.imageUrl})`, width: '95%', height: '150px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '15px' }} />
+                                        : viewportSize.width > 800 ? (
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '150px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
                                         )
                                             : (
-                                                <div style={{ position: 'absolute', bottom: '2.5%', left: '2.5%', backgroundImage: `url(${blog.imageUrl})`, width: '95%', height: '100px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '15px' }} />
+                                                <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '100px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
                                             )
                                     }
                                 </div>

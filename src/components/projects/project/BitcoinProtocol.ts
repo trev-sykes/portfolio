@@ -6,7 +6,7 @@ import gif from "../../../assets/bitcoinProtocol.gif"
 const bitcoinProtocol: FullProject = {
     title: 'Bitcoin-Stablecoin-Protocol',
     shortDescription: 'A DApp for a bitcoin-backed stablecoin.',
-    description: 'A stablecoin protocol that includes over-collateralization, minting and burning, liquidations with a liquidation bonus.',
+    description: 'A stablecoin protocol liquidation bonuses and much more.',
     date: {
         started: '2024-12-17',
         completed: '2025-02-02',
