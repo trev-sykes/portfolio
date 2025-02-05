@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Github, } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, ArrowLeft } from 'lucide-react';
 import { projects } from './project';
 import { useViewportSize } from '../../hooks/useViewportSize';
 import styles from './ProjectsComponent.module.css';
@@ -282,19 +282,52 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                         </Link >
                     )
                 ))}
-                {!showAllProjects ? (
-                    <div className={styles.buttonContainer}>
-                        <button className={styles.viewProjects} onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            handleShowAllBlogs(e);
-                        }}>View More...</button>
-                    </div>
-                ) : (
-                    <div className={styles.buttonContainer}>
-                        <button className={styles.hideProjects} onClick={handleShowAllBlogs}>View Less</button>
-                    </div>
-                )}
+                <>
+                    {viewportSize.width > 738 && (
+                        <>
+                            {!showAllProjects ? (
+                                <div className={styles.buttonContainer}>
+                                    <ArrowRight
+                                        className={styles.arrowLeftRight}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                            handleShowAllBlogs(e);
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <div className={styles.buttonContainer}>
+                                    <ArrowLeft
+                                        className={styles.arrowLeftRight}
+                                        onClick={handleShowAllBlogs}
+                                    />
+
+                                </div>
+                            )}
+                        </>
+                    )
+
+                    }
+                    {viewportSize.width <= 738 && (
+                        <>
+                            {!showAllProjects ? (
+                                <div className={styles.buttonContainer}>
+                                    <button className={styles.viewProjects} onClick={(e) => {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                        handleShowAllBlogs(e);
+                                    }}>View More...</button>
+                                </div>
+                            ) : (
+                                <div className={styles.buttonContainer}>
+                                    <button className={styles.hideProjects} onClick={handleShowAllBlogs}>View Less</button>
+                                </div>
+                            )}
+                        </>
+                    )
+                    }
+                </>
             </div >
         </div >
     );

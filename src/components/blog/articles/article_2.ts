@@ -5,7 +5,7 @@ const blogPreview: BlogPreview = {
     title: 'CoinGecko API Tutorial',
     description: `Learn how to build a crypto price fetching tool using the CoinGecko API. This guide walks through setting up your environment, API integration, and building a user-friendly interface.`,
     date: 'February 4, 2024',
-    topic: ['Cryptocurrency', 'Web Development', 'API Integration', 'JavaScript', 'Tutorial'],
+    topic: ['Cryptocurrency', 'API Integration', 'JavaScript', 'Tutorial'],
     imageUrl: img
 };
 
