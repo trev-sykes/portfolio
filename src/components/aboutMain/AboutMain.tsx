@@ -5,7 +5,9 @@ import cssLogo from '../../assets/css_logo.webp';
 import reactLogo from '../../assets/react_logo.webp';
 import { useState } from 'react';
 import BlockchainBenefits from './blockchainBenefits/BlockChainBenefits';
+import { useViewportSize } from '../../hooks/useViewportSize';
 const AboutMain: React.FC = () => {
+    const viewportSize = useViewportSize();
     const [hovered, setHovered] = useState<any>();
     const handleMouseEnter = (state: any) => {
         setHovered(state);
@@ -83,14 +85,16 @@ const AboutMain: React.FC = () => {
                     </div>
 
 
-                    <div className={styles.expertiseRight}>
-                        <div className={styles.expertiseRightImageContainer}>
-                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('solidity')} style={ethereumLogoStyles} title="1+ years of experience" />
-                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('react')} style={reactLogoStyles} title="2+ years of experience" />
-                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('foundry')} style={foundryLogoStyles} title="1+ years of experience" />
-                            <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('css')} style={cssLogoStyles} title="2+ years of experience" />
+                    {viewportSize.width > 970 && (
+                        <div className={styles.expertiseRight}>
+                            <div className={styles.expertiseRightImageContainer}>
+                                <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('solidity')} style={ethereumLogoStyles} title="1+ years of experience" />
+                                <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('react')} style={reactLogoStyles} title="2+ years of experience" />
+                                <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('foundry')} style={foundryLogoStyles} title="1+ years of experience" />
+                                <div onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter('css')} style={cssLogoStyles} title="2+ years of experience" />
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </section>
                 <BlockchainBenefits />
                 {/* 
@@ -101,8 +105,8 @@ const AboutMain: React.FC = () => {
                     <p className={styles.paragraph}></p>
                     <p></p>
                 </section> */}
-            </div>
-        </div>
+            </div >
+        </div >
 
     )
 }

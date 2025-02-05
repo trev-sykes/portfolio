@@ -283,13 +283,17 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                     )
                 ))}
                 {!showAllProjects ? (
-                    <button className={styles.viewProjects} onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        handleShowAllBlogs(e);
-                    }}>View More...</button>
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.viewProjects} onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            handleShowAllBlogs(e);
+                        }}>View More...</button>
+                    </div>
                 ) : (
-                    <button className={`${styles.viewProjects} ${projects.length % 2 == 0 ? styles.viewLessEven : styles.viewLessOdd}`} onClick={handleShowAllBlogs}>View Less</button>
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.hideProjects} onClick={handleShowAllBlogs}>View Less</button>
+                    </div>
                 )}
             </div >
         </div >

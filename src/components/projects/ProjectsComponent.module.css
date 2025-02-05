@@ -238,26 +238,28 @@ a {
   color: #4fb0f1;
 }
 
-.viewProjects {
-  background: var(--button-background);
+.hideProjects {
+  background: var(--read-less-background);
   color: var(--button-color);
-  max-height: 30px;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   margin: 0 auto;
-  transform: translateY(1050%);
-  overflow: hidden !important;
 }
 
-.viewProjects.viewLessOdd {
-  transform: translateY(1050%);
-  overflow: hidden !important;
+.viewProjects {
+  background: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 auto;
 }
 
-.viewProjects.viewLessEven {
-  transform: translateY(0%);
-  overflow: hidden !important;
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 @media (max-width: 738px) {
