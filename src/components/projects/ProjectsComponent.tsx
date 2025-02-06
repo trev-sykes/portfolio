@@ -122,21 +122,21 @@ const ProjectsComponent: React.FC = () => {
                                 </p>
 
                                 {/* Date Section */}
-                                {viewportSize.width > 1084 && (
-                                    <div className={styles.dateContainer}>
-                                        <p className={`${styles.dateItem} ${styles.started}`}>
-                                            Started: {project.date?.started ?? 'N/A'}
-                                        </p>
-                                        <div className={styles.separator}></div>
-                                        <p className={`${styles.dateItem} ${styles.completed}`}>
-                                            Completed: {project.date?.completed ?? 'N/A'}
-                                        </p>
-                                        <div className={styles.separator}></div>
-                                        <p className={`${styles.dateItem} ${styles.lastUpdated}`}>
-                                            Last Updated: {project.date?.lastUpdated ?? 'N/A'}
-                                        </p>
-                                    </div>
-                                )}
+                                {/* {viewportSize.width > 1084 && (
+                                    // <div className={styles.dateContainer}>
+                                    //     <p className={`${styles.dateItem} ${styles.started}`}>
+                                    //         Started: {project.date?.started ?? 'N/A'}
+                                    //     </p>
+                                    //     <div className={styles.separator}></div>
+                                    //     <p className={`${styles.dateItem} ${styles.completed}`}>
+                                    //         Completed: {project.date?.completed ?? 'N/A'}
+                                    //     </p>
+                                    //     <div className={styles.separator}></div>
+                                    //     <p className={`${styles.dateItem} ${styles.lastUpdated}`}>
+                                    //         Last Updated: {project.date?.lastUpdated ?? 'N/A'}
+                                    //     </p>
+                                    // </div>
+                                )} */}
 
                                 <div className={styles.languagesLinksContainer}>
                                     <div className={styles.languagesLinksContainerLeft}>

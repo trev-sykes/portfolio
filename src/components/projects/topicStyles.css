@@ -41,17 +41,17 @@
 .topic {
     text-align: center;
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 3px;
     padding: 2px 5px;
-    border-radius: 50px 25px 50px 25px;
+    border-radius: 3px;
     user-select: none;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .languageHeader {
     margin-bottom: 5px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .topic.javascript {
@@ -93,9 +93,9 @@
 
 .language {
     display: inline;
-    margin-right: 5px;
+    margin-right: 3px;
     padding: 2px 5px;
-    border-radius: 25px 50px 25px 50px;
+    border-radius: 3;
     user-select: none;
     font-weight: 700;
 
