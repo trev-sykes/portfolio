@@ -6,7 +6,6 @@ import cred from "../../assets/peer-link-logo-nobg-big.png";
 import rollSix from "../../assets/bet-button.png"
 import landingPage from "../../assets/landingPage.png"
 import styles from './Hero.module.css';
-import landingTemplate from '../projects/project/landingTemplate';
 
 interface HeroProps {
     section: string;
