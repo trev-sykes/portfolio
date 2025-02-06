@@ -4,7 +4,7 @@ import img from '../../../assets/landing_template.png'
 import gif from "../../../assets/landingPage.gif"
 
 const landingTemplate: FullProject = {
-    title: 'Landing-Template',
+    title: 'Landing Template',
     shortDescription: 'Modern, animated landing page template for small businesses',
     description: 'A versatile landing page template featuring smooth CSS transitions and dynamic animations.',
     date: {
