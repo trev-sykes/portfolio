@@ -4,7 +4,7 @@ import img from '../../../assets/bitcoin_protocol.png'
 import gif from "../../../assets/bitcoinProtocol.gif"
 // Example implementation
 const bitcoinProtocol: FullProject = {
-    title: 'Bitcoin-Stablecoin-Protocol',
+    title: 'Bitcoin Stablecoin Protocol',
     shortDescription: 'A DApp for a bitcoin-backed stablecoin.',
     description: 'A stablecoin protocol liquidation bonuses and much more.',
     date: {
