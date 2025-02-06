@@ -8,15 +8,5 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
-    ],
-    "routes": [
-        {
-            "src": "/projects/(.*)",
-            "dest": "/index.html"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        }
     ]
 }
