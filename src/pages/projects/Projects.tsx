@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
             <Navigation />
             <Hero section={'projects'} />
             <HeroTitle title={'Projects'} />
-            <ProjectsComponent section={'projects'} />
+            <ProjectsComponent />
             <Footer copyrightText="Trevor Sykes - 2025" />
         </>
     )
