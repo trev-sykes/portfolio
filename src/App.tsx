@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:projectName" element={<ProjectFullPage />} />
+          <Route path="/:projectName" element={<ProjectFullPage />} />
         </Routes>
 
       </TransitionLayout>

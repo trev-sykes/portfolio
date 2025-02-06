@@ -97,7 +97,7 @@ const ProjectsComponent: React.FC = () => {
                     (showAllProjects || index < 3) && (
                         <Link
                             key={index}
-                            to={`/projects/${encodeURIComponent(project.title)}`}
+                            to={`/${encodeURIComponent(project.title)}`}
                             className={`${styles.projectPreview} ${styles.fadeIn}`}
                         >
                             <div
