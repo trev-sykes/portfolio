@@ -23,7 +23,12 @@ const ProjectFullPage: React.FC = () => {
   }, []);
 
   // Find the project based on the title in the URL
-  const project = projects.find(p => p.title === decodeURIComponent(projectName || ''));
+  const project = projects.find(
+    (p) => {
+      if (p.title == projectName)
+        return encodeURIComponent(p.title == projectName)
+    }
+  );
 
   if (!project) return <div>Project not found</div>; // Handle case where project doesn't exist
 
