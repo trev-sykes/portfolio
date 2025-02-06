@@ -1,7 +1,7 @@
 // Importing interfaces and image
 import { FullProject, TechStack, Dependency, ProjectLink, CodeBlock } from '../projectInterfaces';
-import img from '../../../assets/crypto-scope.png';
-import gif from "../../../assets/crypto-scope.png";
+import img from '../../../assets/crypto_scope.png';
+import gif from "../../../assets/crypto_scope.png";
 
 // Defining the tech stack (languages, frameworks, tools, and databases)
 const techStack: TechStack = {

@@ -1,4 +1,4 @@
-import img from '../../../assets/article_6.jpg'
+import img from '../../../assets/article_8.jpg'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 
 const blogPreview: BlogPreview = {

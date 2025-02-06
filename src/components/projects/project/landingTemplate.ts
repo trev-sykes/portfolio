@@ -1,12 +1,12 @@
 // Importing interfaces and image
 import { FullProject } from '../projectInterfaces'
-import img from '../../../assets/landing-template.png'
+import img from '../../../assets/landing_template.png'
 import gif from "../../../assets/landingPage.gif"
 
 const landingTemplate: FullProject = {
     title: 'Landing-Template',
     shortDescription: 'Modern, animated landing page template for small businesses',
-    description: 'A versatile landing page template featuring smooth CSS transitions and dynamic animations, designed to provide small businesses with a professional web presence.',
+    description: 'A versatile landing page template featuring smooth CSS transitions and dynamic animations.',
     date: {
         started: '2023-04-01',
         completed: '2023-04-23',

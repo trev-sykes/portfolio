@@ -4,9 +4,9 @@ import img from '../../../assets/peer-link.png'
 import gif from "../../../assets/peerlink.gif"
 
 const peerLink: FullProject = {
-    title: 'PeerLink',
+    title: 'Peer-Link',
     shortDescription: 'Decentralized social network built on Ethereum blockchain',
-    description: 'PeerLink is a decentralized social network that enables users to add friends and create groups directly on the blockchain, providing complete control over social connections and data.',
+    description: 'PeerLink is a social-graph allowing users with a web3 wallet to sign up and connect.',
     date: {
         started: '2024-09-01',
         completed: '2024-10-05',

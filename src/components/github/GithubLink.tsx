@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useWindowScroll } from '../../hooks/useWindowScroll';
 import styles from './GithubLink.module.css';
 
 export default function GithubLink() {
+  const { scrollPosition } = useWindowScroll();
   const [isHovered, setIsHovered] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
@@ -12,13 +14,10 @@ export default function GithubLink() {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-
-      // Change the threshold value (54) as needed
-      setIsFixed(scrollY > 350);
+      const scrollY = scrollPosition.y;
+      setIsFixed(scrollY > 445);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -26,7 +25,7 @@ export default function GithubLink() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [scrollPosition]);
 
   return (
     <>

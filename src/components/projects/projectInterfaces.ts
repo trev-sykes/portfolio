@@ -1,9 +1,12 @@
 // projectInterfaces.ts
+
+type deployedTypes = 'Ethereum Sepolia' | 'Arbitrum Sepolia' | 'Optimism Sepolia' | 'Ethereum Mainnet' | 'Arbitrum Mainnet' | 'Optimism Mainnet' | 'Polygon' | 'zk-sync era';
 export interface TechStack {
     languages: string[];
     frameworks: string[];
     tools?: string[];  // Adding tools section for things like Git, AWS, etc.
     databases?: string[];  // For any databases used
+    deployedTo?: deployedTypes[];
 }
 
 export interface ProjectLink {

@@ -1,8 +1,8 @@
-import img from '../../../assets/zk-proofs.png'
+import img from '../../../assets/article_7.png'
 import { Blog, BlogPreview, FullArticle } from '../articleInterfaces'
 
 const blogPreview: BlogPreview = {
-    title: `ZK Proofs in Blockchain Technology`,
+    title: `ZK Proofs On Chain`,
     description: `Zero-Knowledge Proofs (ZKPs) are becoming a cornerstone in blockchain technology, offering potential solutions for both scalability and privacy. This article explores the role of ZKPs in shaping the future of decentralized systems.`,
     date: 'November 24, 2024',
     topic: ['Blockchain', 'Privacy', 'Scalability', 'Zero-Knowledge Proofs', 'Cryptography'],

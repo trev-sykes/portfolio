@@ -1,31 +1,25 @@
 @import "../../index.css";
-
-.contain {
-  margin-bottom: 55px;
-}
+@import "./topicStyles.css";
 
 .container {
+  width: 100%;
   max-width: 1100px;
-  height: auto;
   margin: 0 auto;
+  height: auto;
   cursor: default;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden !important;
 }
 
-.projects {
-  text-align: center;
-  margin-top: var(--project-margin-top);
-  padding: var(--project-padding);
-  margin-bottom: var(--project-margin-bottom);
-  opacity: 1;
-}
-
-
 
 .projectContainer {
-  width: 100%;
+  width: 100% !important;
+  max-width: 1100px;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   overflow: hidden !important;
 }
@@ -33,36 +27,24 @@
 .projectPreview {
   overflow: hidden !important;
   position: relative;
-  flex: 0 0 calc(50% - 20px);
-  /* Two elements per row */
-  max-width: calc(50% - 20px);
-  /* Two elements per row */
-  margin-right: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
+  flex: 0 0 calc(50% - 40px);
+  max-width: calc(50% - 40px);
+  margin-right: 40px;
+  margin-bottom: 40px;
+  border-radius: 15px;
   padding: 20px;
   cursor: default;
   box-sizing: border-box;
-  height: 700px;
+  background-color: #c1c1c13d;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  height: 600px;
   opacity: 1;
-  background: radial-gradient(circle at center, rgba(211, 177, 220, 0.15) 0%, rgba(0, 0, 0, 0.05) 70%);
-  /* Ensure that elements are initially invisible */
-  transition: opacity 0.6s ease-out;
-  /* Smooth transition for fading in */
+  transition: scale 250ms ease, opacity 0.6s ease-out, background-color 100ms ease-out, box-shadow 100ms ease-out;
 }
 
-.blogPreview {
-  position: relative;
-  flex: 0 0 calc(50% - 20px);
-  max-width: calc(50% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(204, 204, 204, 0.5);
-  padding: 20px;
-  cursor: pointer;
-  box-sizing: border-box;
+.projectPreview:hover {
+  scale: 99.6%;
 }
-
 
 .projectPreview::before {
   content: '';
@@ -71,56 +53,47 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(96, 34, 111, 0.1) 0%, rgba(0, 0, 0, 0.05) 70%);
   z-index: 1;
-  /* Ensure this is below the content */
   pointer-events: none;
-  /* Ensure the overlay does not interfere with interactions */
+}
+
+.projectPreview>div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden !important;
 }
 
 .projectPreview:last-child {
-  margin-right: 0;
-  /* Remove right margin for the last element in each row */
+  margin-right: 0 !important;
+  overflow: hidden !important;
+}
+
+.projectPreview,
+a {
+  color: var(--text-color);
+  overflow: hidden !important;
+}
+
+a {
+  text-decoration: none;
+  color: default;
+  overflow: hidden !important;
 }
 
 .projectPreview h2 {
   margin-top: 0;
+  overflow: hidden !important;
 }
 
 .projectTitle {
   margin-bottom: 10px;
+  overflow: hidden !important;
 }
 
 .projectPreview p {
   margin-bottom: 5px;
-}
-
-.dateContainer {
-  width: 100%;
-  font-size: .85rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-
-.dateItem {
-  font-size: .85rem;
-  border-radius: 9px;
-  user-select: none;
-}
-
-.dateItem.started {
-  color: rgb(142, 108, 20);
-}
-
-.dateItem.completed {
-  color: rgb(142, 20, 142);
-}
-
-.dateItem.lastUpdated {
-  color: rgb(20, 142, 138);
+  overflow: hidden !important;
 }
 
 .separator {
@@ -131,6 +104,36 @@
   margin: 0 5px 0 5px;
   padding: 0;
   transform: translateY(-3px);
+  overflow: hidden !important;
+}
+
+.description {
+  flex-grow: 1;
+  overflow: auto;
+  overflow: hidden !important;
+}
+
+.languagesLinksContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  overflow: hidden !important;
+}
+
+.languagesLinksContainerLeft {
+  width: 350%;
+  overflow: hidden !important;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden !important;
 }
 
 .readMoreButton {
@@ -139,11 +142,12 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  overflow: hidden !important;
 }
 
 .readLessActive {
   color: var(--read-less-color);
-  /* Change to red */
+  overflow: hidden !important;
 }
 
 .readFullProjectButton {
@@ -151,100 +155,17 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-}
-
-.date {
-  color: var(--date-color);
-}
-
-.topics {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.topic {
-  text-align: center;
-  display: inline-block;
-  margin-right: 5px;
-  padding: 2px 5px;
-  border-radius: 50px 25px 50px 25px;
-  user-select: none;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.languageHeader {
-  margin-bottom: 5px;
-  margin-top: 30px;
-}
-
-.topic.javascript {
-  background-color: #f0db4f;
-  /* Yellow */
-  color: #000;
-  width: 100px;
-}
-
-.topic.html {
-  background-color: #c16f04;
-  /* Yellow */
-  color: #ffffff;
-}
-
-.topic.css {
-  background-color: rgb(39, 89, 234);
-  /* Yellow */
-  color: #c1c1c1;
-}
-
-.topic.solidity {
-  background-color: rgb(42, 37, 124);
-  /* Yellow */
-  color: #e6e6e6;
-}
-
-.languages {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 30px;
-}
-
-.language {
-  display: inline-block;
-  margin-right: 5px;
-  padding: 2px 5px;
-  border-radius: 25px 50px 25px 50px;
-  user-select: none;
-  font-weight: 700;
-
-}
-
-.language.react {
-  background: rgb(87, 197, 221);
-  color: #474747;
-
-}
-
-.language.vite {
-  background: purple;
-  color: yellow;
-}
-
-.language.web3 {
-  background: lightgreen;
-  color: rgb(125, 0, 106);
+  overflow: hidden !important;
 }
 
 .linkContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   margin-bottom: 0;
+  overflow: hidden !important;
 }
 
 .gitLink {
@@ -255,31 +176,122 @@
   padding: 0 5px 0 5px;
   margin-top: 15px;
   cursor: pointer;
-
+  overflow: hidden !important;
 }
-
-/* Add styles for other topics here */
 
 .image {
   width: 100%;
   max-height: 300px;
-  /* Adjust this as needed */
   object-fit: cover;
-  scale: .8;
+  scale: 1;
   margin-bottom: 10px;
   right: 0;
+  border-radius: 15px 15px 7.5px 7.5px;
+  overflow: hidden !important;
 }
 
 .fadeInVisible {
   opacity: 0;
+  overflow: hidden !important;
 }
 
-@media (max-width: 600px) {
+.sourceCode {
+  text-decoration: none;
+  color: #e74c3c;
+  overflow: hidden !important;
+}
+
+.sourceCode:hover {
+  color: #9b3e34;
+  overflow: hidden !important;
+}
+
+.visitSite {
+  text-decoration: none;
+  color: rgb(24, 136, 30);
+  overflow: hidden !important;
+}
+
+.visitSite:hover {
+  color: rgb(41, 179, 48);
+}
+
+.readFullProjectLink {
+  text-decoration: none;
+  color: rgb(34, 255, 0);
+  overflow: hidden !important;
+}
+
+.readFullArticleButton {
+  color: #3498db;
+  margin: 0;
+  cursor: pointer;
+  overflow: hidden !important;
+}
+
+.readFullArticleButton:hover {
+  color: #4fb0f1;
+}
+
+.hideProjects {
+  background: var(--read-less-background);
+  color: var(--button-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.viewProjects {
+  background: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .projectContainer {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 835px) {
+  .projectContainer {
+    margin-left: 30px;
+  }
+
+  .projectPreview {
+    overflow: hidden !important;
+    position: relative;
+    flex: 0 0 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: #c1c1c13d;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 600px;
+    opacity: 1;
+    transition: scale 250ms ease, opacity 0.6s ease-out, background-color 100ms ease-out, box-shadow 100ms ease-out;
+  }
+}
+
+@media (max-width: 738px) {
   .container {
     max-width: 100%;
-    /* Allow the container to use full width */
     padding: 0 10px;
-    /* Optional: Add some padding for better spacing on smaller screens */
     margin: 0 auto;
   }
 
@@ -290,23 +302,21 @@
 
   .projectContainer {
     flex-direction: column;
-    /* Stack blog previews vertically */
     max-width: 300px;
     margin: 0 auto;
   }
 
   .projectPreview {
     flex: 1 1 auto;
-    /* Allow items to grow and shrink as needed */
     max-width: 100%;
-    /* Ensure items take up full width of the container */
     margin-right: 0;
-    /* Remove right margin */
-    margin-bottom: 20px;
-    /* Keep space between items */
-    box-sizing: border-box;
-    /* Ensure padding and border are included in width/height calculations */
+    margin-bottom: 50px;
     height: auto;
+    min-height: 300px;
+  }
+
+  .projectPreview>div {
+    min-height: 100%;
   }
 
   .description {
@@ -315,32 +325,38 @@
 
   .topics {
     font-size: .9rem;
+    width: 100%;
   }
 
   .dateContainer {
+    display: none;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    overflow: hidden !important;
   }
-
 
   .dateItem {
     font-size: .7rem;
     user-select: none;
+    overflow: hidden !important;
   }
 
   .dateItem.started {
     color: rgb(142, 108, 20);
+    overflow: hidden !important;
   }
 
   .dateItem.completed {
     color: rgb(142, 20, 142);
+    overflow: hidden !important;
   }
 
   .dateItem.lastUpdated {
     color: rgb(20, 142, 138);
+    overflow: hidden !important;
   }
 
   .separator {
@@ -351,48 +367,10 @@
     margin: 0 5px 0 5px;
     padding: 0;
     transform: translateY(-3px);
+    overflow: hidden !important;
   }
-}
 
-.sourceCode {
-  text-decoration: none;
-  color: #e74c3c;
-}
-
-.sourceCode:hover {
-  color: #9b3e34;
-}
-
-.visitSite {
-  text-decoration: none;
-  color: rgb(24, 136, 30);
-}
-
-.visitSite:hover {
-  color: rgb(41, 179, 48);
-}
-
-.readFullProjectLink {
-  text-decoration: none;
-  color: rgb(34, 255, 0);
-}
-
-
-.readFullArticleButton {
-  color: #3498db;
-  margin: 0;
-  cursor: pointer;
-}
-
-.readFullArticleButton:hover {
-  color: #4fb0f1;
-}
-
-.viewProjects {
-  background: var(--button-background);
-  color: var(--button-color);
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin: 0 auto;
+  .viewProjects {
+    transform: translateY(0);
+  }
 }

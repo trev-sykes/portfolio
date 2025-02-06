@@ -1,31 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
-import Typewriter from 'typewriter-effect';
-import { magazine } from './articles';
-import styles from './BlogComponent.module.css';
+// import Typewriter from 'typewriter-effect';
 import BlogFullPage from './BlogFullPage';
+import { magazine } from './articles';
+import { useViewportSize } from '../../hooks/useViewportSize';
+import styles from './BlogComponent.module.css';
 
 const BlogComponent = () => {
+    const viewportSize = useViewportSize();
     const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
     const [showFullPage, setShowFullPage] = useState<boolean>(false);
     const [animatingBlog, setAnimatingBlog] = useState<number | null>(null);
-    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-    const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
     const [typewriterStarted, setTypewriterStarted] = useState<boolean>(false);
     const [showAllBlogs, setShowAllBlogs] = useState(false);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
 
-    const handleReadFullDescription = (index: number) => {
-        if (!expandedBlogs.includes(index)) {
-            setExpandedBlogs([...expandedBlogs, index]);
-        } else {
-            setExpandedBlogs(expandedBlogs.filter((item) => item !== index));
-        }
-    };
 
-    const handleResize = () => {
-        setViewportWidth(window.innerWidth);
-    };
 
     const handleScroll = () => {
         typewriterStarted;
@@ -42,7 +32,7 @@ const BlogComponent = () => {
                 toJSON: () => ({
                     x: 146,
                     y: 50,
-                    width: 440,
+                    viewportWidth: 440,
                     height: 240,
                     top: 50,
                     right: 586,
@@ -54,9 +44,9 @@ const BlogComponent = () => {
                 rect = blog.getBoundingClientRect();
             }
 
-            const windowHeight = window.innerHeight;
+            const windowHeight = viewportSize.height;
 
-            if (viewportWidth < 600) {
+            if (viewportSize.width < 600) {
                 if (blog) {
                     blog.style.opacity = '1';
                 }
@@ -100,12 +90,10 @@ const BlogComponent = () => {
         });
 
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
         handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
             blogRefs.current.forEach((blog) => {
                 if (blog) {
                     observer.unobserve(blog);
@@ -115,7 +103,7 @@ const BlogComponent = () => {
                 observer.unobserve(headingRef.current);
             }
         };
-    }, [viewportWidth]);
+    }, [viewportSize.width]);
 
     const handleViewAllBlogs = () => {
         setShowAllBlogs(true);
@@ -140,25 +128,26 @@ const BlogComponent = () => {
     animatingBlog;
     return (
         <>
-            <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
-                <h1 ref={headingRef}>
-                    <Typewriter
-                        onInit={(typewriter) => {
-                            typewriter
-                                .typeString('Bitcoi')
-                                .pauseFor(350)
-                                .deleteAll()
-                                .typeString('Blogs')
-                                .start();
-                        }}
-                        options={{
-                            cursor: '',
-                            deleteSpeed: 7000,
-                        }}
-                    />
-                </h1>
-            </div>
             <div className={styles.container}>
+                <div className={`${styles.blogs} ${typewriterStarted ? styles.fadeInVisible : ''}`}>
+                    <h2 className={styles.typewriter} ref={headingRef}>
+                        {/* <Typewriter
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .typeString('Bitcoi')
+                                    .pauseFor(350)
+                                    .deleteAll()
+                                    .typeString('Blogs')
+                                    .start();
+                            }}
+                            options={{
+                                cursor: '',
+                                deleteSpeed: 7000,
+                            }}
+                        /> */}
+                        Blogs
+                    </h2>
+                </div>
                 <div className={styles.blogContainer}>
                     {magazine.slice().reverse().map((blog, index) => (
                         (showAllBlogs || index < 2) && (
@@ -166,134 +155,135 @@ const BlogComponent = () => {
                                 key={index}
                                 className={`${styles.blogPreview} ${styles.open}`}
                                 ref={(el) => (blogRefs.current[index] = el as HTMLDivElement)}
+                                onClick={() => handleReadFullArticle(magazine.length - index - 1)}
                             >
-                                <h2 className={styles.title}>{blog.title}</h2>
-                                <p className={styles.description}>
-                                    {expandedBlogs.includes(index) ? blog.description : blog.description.substring(0, 100)}
-                                    {blog.description.length > 100 && (
-                                        <button
-                                            className={`${styles.readMoreButton} ${expandedBlogs.includes(index) ? styles.readLessActive : ''}`}
-                                            onClick={() => handleReadFullDescription(index)}
-                                        >
-                                            {expandedBlogs.includes(index) ? '...Read less' : '...Read more'}
-                                        </button>
-                                    )}
-                                </p>
-                                <p className={styles.date}>{blog.date}</p>
-                                <div className={styles.topics}>
-                                    {blog.topic.map((topic, topicIndex) => {
-                                        let topicClass = '';
-                                        switch (topic) {
-                                            case 'JavaScript':
-                                                topicClass = styles.javascript;
-                                                break;
-                                            case 'HTML Canvas':
-                                                topicClass = styles.htmlcanvas;
-                                                break;
-                                            case 'Game Development':
-                                                topicClass = styles.gamedev;
-                                                break;
-                                            case 'Phaser 3':
-                                                topicClass = styles.phaserthree;
-                                                break;
-                                            case 'Cryptocurrency':
-                                                topicClass = styles.cryptocurrency;
-                                                break;
-                                            case 'API Integration':
-                                                topicClass = styles.apiintegration;
-                                                break;
-                                            case 'Web Development':
-                                                topicClass = styles.webdevelopment;
-                                                break;
-                                            case 'Blockchain':
-                                                topicClass = styles.blockchain;
-                                                break;
-                                            case 'Smart Contracts':
-                                                topicClass = styles.smartcontracts;
-                                                break;
-                                            case 'Decentralized Applications':
-                                                topicClass = styles.decentralizedapplications;
-                                                break;
-                                            case 'Dapp Development':
-                                                topicClass = styles.dappdevelopment;
-                                                break;
-                                            case 'Market Trends':
-                                                topicClass = styles.markettrends;
-                                                break;
-                                            case 'Solidity':
-                                                topicClass = styles.solidity;
-                                                break;
-                                            case 'Tutorial':
-                                                topicClass = styles.tutorial;
-                                                break;
-                                            case 'Ethereum':
-                                                topicClass = styles.ethereum;
-                                                break;
-                                            case `L2's`:
-                                                topicClass = styles.ltwo;
-                                                break;
-                                            case 'AI':
-                                                topicClass = styles.ai;
-                                                break;
-                                            case 'Tokenomics':
-                                                topicClass = styles.tokenomics;
-                                                break;
-                                            case 'RWA':
-                                                topicClass = styles.rwa;
-                                                break;
-                                            case 'Privacy':
-                                                topicClass = styles.privacy;
-                                                break;
-                                            case 'Scalability':
-                                                topicClass = styles.scalability;
-                                                break;
-                                            case 'Zero-Knowledge Proofs':
-                                                topicClass = styles.zkProofs;
-                                                break;
-                                            case 'Cryptography':
-                                                topicClass = styles.cryptography;
-                                                break;
-                                            case 'DeFi':
-                                                topicClass = styles.defi;
-                                                break;
-                                            case 'Finance':
-                                                topicClass = styles.finance;
-                                                break;
-                                            case 'Decentralization':
-                                                topicClass = styles.decentralization;
-                                                break;
-                                            case 'AMM':
-                                                topicClass = styles.amm;
-                                                break;
-                                            case 'DApp':
-                                                topicClass = styles.dapp;
-                                                break;
-                                            case 'Web3':
-                                                topicClass = styles.web3;
-                                                break;
-                                            case 'Bitcoin ETF':
-                                                topicClass = styles.bitcoinEtf;
-                                                break;
-                                            case 'Market Analysis':
-                                                topicClass = styles.marketAnalysis;
-                                                break;
-                                            default:
-                                                topicClass = '';
-                                        }
-                                        return (
-                                            <span key={topicIndex} className={`${styles.topic} ${topicClass}`}>
-                                                {topic}
-                                            </span>
-                                        );
-                                    })}
+                                <div>
+                                    <h2 className={styles.title}>{blog.title}</h2>
+                                    <p className={styles.description}>
+                                        {viewportSize.width > 600 ? blog.description.substring(0, 100) : blog.description.substring(0, 50)}...
+                                    </p>
+                                    <p className={styles.date}>{blog.date}</p>
+                                    <div className={styles.topics}>
+                                        {blog.topic.map((topic, topicIndex) => {
+                                            let topicClass = '';
+                                            switch (topic) {
+                                                case 'JavaScript':
+                                                    topicClass = styles.javascript;
+                                                    break;
+                                                case 'HTML Canvas':
+                                                    topicClass = styles.htmlcanvas;
+                                                    break;
+                                                case 'Game Development':
+                                                    topicClass = styles.gamedev;
+                                                    break;
+                                                case 'Phaser 3':
+                                                    topicClass = styles.phaserthree;
+                                                    break;
+                                                case 'Cryptocurrency':
+                                                    topicClass = styles.cryptocurrency;
+                                                    break;
+                                                case 'API Integration':
+                                                    topicClass = styles.apiintegration;
+                                                    break;
+                                                case 'Web Development':
+                                                    topicClass = styles.webdevelopment;
+                                                    break;
+                                                case 'Blockchain':
+                                                    topicClass = styles.blockchain;
+                                                    break;
+                                                case 'Smart Contracts':
+                                                    topicClass = styles.smartcontracts;
+                                                    break;
+                                                case 'Decentralized Applications':
+                                                    topicClass = styles.decentralizedapplications;
+                                                    break;
+                                                case 'Dapp Development':
+                                                    topicClass = styles.dappdevelopment;
+                                                    break;
+                                                case 'Market Trends':
+                                                    topicClass = styles.markettrends;
+                                                    break;
+                                                case 'Solidity':
+                                                    topicClass = styles.solidity;
+                                                    break;
+                                                case 'Tutorial':
+                                                    topicClass = styles.tutorial;
+                                                    break;
+                                                case 'Ethereum':
+                                                    topicClass = styles.ethereum;
+                                                    break;
+                                                case `L2's`:
+                                                    topicClass = styles.ltwo;
+                                                    break;
+                                                case 'AI':
+                                                    topicClass = styles.ai;
+                                                    break;
+                                                case 'Tokenomics':
+                                                    topicClass = styles.tokenomics;
+                                                    break;
+                                                case 'RWA':
+                                                    topicClass = styles.rwa;
+                                                    break;
+                                                case 'Privacy':
+                                                    topicClass = styles.privacy;
+                                                    break;
+                                                case 'Scalability':
+                                                    topicClass = styles.scalability;
+                                                    break;
+                                                case 'Zero-Knowledge Proofs':
+                                                    topicClass = styles.zkProofs;
+                                                    break;
+                                                case 'Cryptography':
+                                                    topicClass = styles.cryptography;
+                                                    break;
+                                                case 'DeFi':
+                                                    topicClass = styles.defi;
+                                                    break;
+                                                case 'Finance':
+                                                    topicClass = styles.finance;
+                                                    break;
+                                                case 'Decentralization':
+                                                    topicClass = styles.decentralization;
+                                                    break;
+                                                case 'AMM':
+                                                    topicClass = styles.amm;
+                                                    break;
+                                                case 'DApp':
+                                                    topicClass = styles.dapp;
+                                                    break;
+                                                case 'Web3':
+                                                    topicClass = styles.web3;
+                                                    break;
+                                                case 'Bitcoin ETF':
+                                                    topicClass = styles.bitcoinEtf;
+                                                    break;
+                                                case 'Market Analysis':
+                                                    topicClass = styles.marketAnalysis;
+                                                    break;
+                                                default:
+                                                    topicClass = '';
+                                            }
+                                            return (
+                                                <span key={topicIndex} className={`${styles.topic} ${topicClass}`}>
+                                                    {topic}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                                <img src={blog.imageUrl} alt={blog.title} className={styles.image} />
-                                <button
-                                    className={styles.readFullArticleButton}
-                                    onClick={() => handleReadFullArticle(magazine.length - index - 1)}
-                                >
-                                    Read full article
-                                </button>
+                                <div className={styles.imageContainer}>
+                                    {viewportSize.width > 999 ?
+                                        (
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '50%', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
+                                        )
+                                        : viewportSize.width > 800 ? (
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '150px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
+                                        )
+                                            : (
+                                                <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '100px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
+                                            )
+                                    }
+                                </div>
                             </div>
                         )
                     ))}
