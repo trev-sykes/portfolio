@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/projects/:slug",
-            "destination": "/projects/[slug]"
+            "destination": "/index.html"
         },
         {
             "source": "/(.*)",
