@@ -14,11 +14,11 @@ function App() {
       <TransitionLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/projects' element={<Projects />} />
-          {/* Define a route for individual projects */}
-          <Route path="/projects/:projectName" element={<ProjectFullPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectFullPage />} />
         </Routes>
+
       </TransitionLayout>
     </Router>
   );
