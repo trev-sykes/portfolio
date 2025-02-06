@@ -1,11 +1,11 @@
 @import "../../index.css";
 
 .blogs {
-  margin-top: var(--project-margin-top);
   padding: var(--project-padding);
-  margin-bottom: 15px;
+  margin: 0 25px 50px 25px;
   opacity: 1;
   border-bottom: .5px solid black;
+
 }
 
 .title {
@@ -24,6 +24,8 @@
 .blogContainer {
   width: 100%;
   display: flex;
+  justify-content: center;
+  padding: 15px;
   flex-wrap: wrap;
 }
 
@@ -37,6 +39,7 @@
   padding: 20px;
   cursor: pointer;
   box-sizing: border-box;
+  justify-content: flex-start;
   height: 450px;
   transition: all 500ms ease;
 }
@@ -102,6 +105,10 @@
   margin-top: 5px;
 }
 
+.typewriter {
+  text-align: left;
+  padding: 15px;
+}
 
 .topics {
   margin-bottom: 10px;
@@ -285,9 +292,9 @@
   }
 
   .blogs {
+    max-width: 200px;
+    margin: 0 auto;
     margin-bottom: 50px;
-    margin-top: 20px;
-    border-bottom: 1px solid black;
   }
 
   .blogContainer {

@@ -8,8 +8,8 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ title }) => {
             <h1 className={styles.title}>
                 {title}
             </h1>
-            <div className={styles.divider} ></div>
-        </div>
+            <div className={`${styles.divider} ${title.toLocaleLowerCase().trim() == 'projects' && styles.projectDivider}`} ></div>
+        </div >
     )
 }
 export default HeroTitle;

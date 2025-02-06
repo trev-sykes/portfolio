@@ -274,13 +274,13 @@ const BlogComponent = () => {
                                 <div className={styles.imageContainer}>
                                     {viewportSize.width > 999 ?
                                         (
-                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '50%', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '50%', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
                                         )
                                         : viewportSize.width > 800 ? (
-                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '150px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
+                                            <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '150px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
                                         )
                                             : (
-                                                <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '100px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px;' }} />
+                                                <div style={{ position: 'absolute', bottom: '0', left: '0', backgroundImage: `url(${blog.imageUrl})`, width: '100%', height: '100px', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', borderRadius: '7.5px 7.5px 15px 15px' }} />
                                             )
                                     }
                                 </div>

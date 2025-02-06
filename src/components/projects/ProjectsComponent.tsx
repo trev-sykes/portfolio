@@ -5,18 +5,15 @@ import { projects } from './project';
 import { useViewportSize } from '../../hooks/useViewportSize';
 import styles from './ProjectsComponent.module.css';
 
-interface ProjectsCompnentProps {
-    section: string;
-}
 
-const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
+
+const ProjectsComponent: React.FC = () => {
     const viewportSize = useViewportSize();
 
     const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
     const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
     const projectRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
-
 
     const handleReadFullDescription = (event: React.MouseEvent, index: number) => {
         event.stopPropagation();  // Stop propagation to the parent onClick
@@ -31,8 +28,6 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
         e.stopPropagation();
         setShowAllProjects(!showAllProjects);
     };
-
-    useEffect(() => { }, [showAllProjects]);
 
     const handleScroll = () => {
         projectRefs.current.forEach((project) => {
@@ -97,26 +92,15 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
 
     return (
         <div className={styles.container}>
-            {section == 'home' && (
-                <div className={`${styles.projects} `}>
-                    <h2 ref={headingRef}>Top Projects</h2>
-                </div>
-            )}
-            {section == 'projects' && (
-                <div className={`${styles.projects} `}>
-                    <h2 ref={headingRef}></h2>
-                </div>
-            )}
             <div className={styles.projectContainer}>
                 {projects.slice().reverse().map((project, index) => (
                     (showAllProjects || index < 3) && (
                         <Link
                             key={index}
                             to={`/projects/${encodeURIComponent(project.title)}`}
-                            className={`${styles.projectPreview} ${styles.fadeIn} `}
+                            className={`${styles.projectPreview} ${styles.fadeIn}`}
                         >
                             <div
-                                key={index}
                                 ref={(el) => (projectRefs.current[index] = el as HTMLDivElement)}
                             >
                                 <img src={project.images.thumbnail} alt={project.title} className={styles.image} loading='lazy' />
@@ -134,32 +118,31 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                                         >
                                             {expandedProjects.includes(index) ? '...Read less' : '...Read more'}
                                         </button>
-
                                     )}
                                 </p>
 
                                 {/* Date Section */}
-                                {viewportSize.width > 1084 &&
-                                    (<div className={styles.dateContainer}>
-                                        <p className={`${styles.dateItem} ${styles.started} `}>
+                                {viewportSize.width > 1084 && (
+                                    <div className={styles.dateContainer}>
+                                        <p className={`${styles.dateItem} ${styles.started}`}>
                                             Started: {project.date?.started ?? 'N/A'}
                                         </p>
-                                        <div className={styles.separator}> </div>
-                                        <p className={`${styles.dateItem} ${styles.completed} `}>
+                                        <div className={styles.separator}></div>
+                                        <p className={`${styles.dateItem} ${styles.completed}`}>
                                             Completed: {project.date?.completed ?? 'N/A'}
                                         </p>
-                                        <div className={styles.separator}> </div>
-                                        <p className={`${styles.dateItem} ${styles.lastUpdated} `}>
+                                        <div className={styles.separator}></div>
+                                        <p className={`${styles.dateItem} ${styles.lastUpdated}`}>
                                             Last Updated: {project.date?.lastUpdated ?? 'N/A'}
                                         </p>
-                                    </div>)
-                                }
-                                <div className={styles.languagesLinksContainer} >
+                                    </div>
+                                )}
+
+                                <div className={styles.languagesLinksContainer}>
                                     <div className={styles.languagesLinksContainerLeft}>
                                         <h4 className={styles.languageHeader}>Languages/Frameworks</h4>
 
-                                        {/* Safeguard for undefined techStack */}
-                                        < div className={styles.topics} >
+                                        <div className={styles.topics}>
                                             {(project.techStack?.languages || []).map((language, topicIndex) => {
                                                 let topicClass = '';
                                                 switch (language) {
@@ -212,124 +195,113 @@ const ProjectsComponent: React.FC<ProjectsCompnentProps> = ({ section }) => {
                                                         frameworkClass = '';
                                                 }
                                                 return (
-                                                    <span key={topicIndex} className={`${styles.language} ${frameworkClass} `}>
+                                                    <span key={topicIndex} className={`${styles.language} ${frameworkClass}`}>
                                                         {framework}
                                                     </span>
                                                 );
                                             })}
                                         </div>
                                     </div>
-                                    {viewportSize.width > 795 ?
-                                        (
-
-                                            <div className={styles.linkContainer}>
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        e.preventDefault();
-                                                        window.open(project.links[0].url, "_blank");
-                                                    }}
-                                                    className={styles.visitSite}
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    Visit
-                                                    <ExternalLink
-                                                    />
-                                                </div>
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        e.preventDefault();
-                                                        window.open(project.links[1].url, "_blank");
-                                                    }}
-                                                    className={styles.sourceCode}
-                                                    rel='noopen noreferrer'
-                                                >Source<Github />
-                                                </div>
-
-                                            </div>) : (
-                                            <div className={styles.linkContainer}>
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        e.preventDefault();
-                                                        window.open(project.links[0].url, "_blank");
-                                                    }}
-                                                    className={styles.visitSite}
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <ExternalLink
-                                                    />
-                                                </div>
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        e.preventDefault();
-                                                        window.open(project.links[1].url, "_blank");
-                                                    }}
-                                                    className={styles.sourceCode}
-                                                    rel='noopen noreferrer'
-                                                ><Github />
-                                                </div>
-
+                                    {viewportSize.width > 835 ? (
+                                        <div className={styles.linkContainer}>
+                                            <div
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    e.preventDefault();
+                                                    window.open(project.links[0].url, "_blank");
+                                                }}
+                                                className={styles.visitSite}
+                                                rel="noopener noreferrer"
+                                            >
+                                                Visit
+                                                <ExternalLink />
                                             </div>
-
-                                        )
-                                    }
-
+                                            <div
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    e.preventDefault();
+                                                    window.open(project.links[1].url, "_blank");
+                                                }}
+                                                className={styles.sourceCode}
+                                                rel="noopener noreferrer"
+                                            >
+                                                Source <Github />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className={styles.linkContainer}>
+                                            <div
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    e.preventDefault();
+                                                    window.open(project.links[0].url, "_blank");
+                                                }}
+                                                className={styles.visitSite}
+                                                rel="noopener noreferrer"
+                                            >
+                                                <ExternalLink />
+                                            </div>
+                                            <div
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    e.preventDefault();
+                                                    window.open(project.links[1].url, "_blank");
+                                                }}
+                                                className={styles.sourceCode}
+                                                rel="noopener noreferrer"
+                                            >
+                                                <Github />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                        </Link >
+                        </Link>
                     )
                 ))}
-                <>
-                    {viewportSize.width > 738 && (
-                        <>
-                            {!showAllProjects ? (
-                                <div className={styles.buttonContainer}>
-                                    <ArrowRight
-                                        className={styles.arrowLeftRight}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            e.preventDefault();
-                                            handleShowAllBlogs(e);
-                                        }}
-                                    />
-                                </div>
-                            ) : (
-                                <div className={styles.buttonContainer}>
-                                    <ArrowLeft
-                                        className={styles.arrowLeftRight}
-                                        onClick={handleShowAllBlogs}
-                                    />
 
-                                </div>
-                            )}
-                        </>
-                    )
+                {viewportSize.width > 738 && (
+                    <div className={styles.buttonContainer}>
+                        {!showAllProjects ? (
+                            <ArrowRight
+                                className={styles.arrowLeftRight}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    handleShowAllBlogs(e);
+                                }}
+                            />
+                        ) : (
+                            <ArrowLeft
+                                className={styles.arrowLeftRight}
+                                onClick={handleShowAllBlogs}
+                            />
+                        )}
+                    </div>
+                )}
 
-                    }
-                    {viewportSize.width <= 738 && (
-                        <>
-                            {!showAllProjects ? (
-                                <div className={styles.buttonContainer}>
-                                    <button className={styles.viewProjects} onClick={(e) => {
-                                        e.stopPropagation();
-                                        e.preventDefault();
-                                        handleShowAllBlogs(e);
-                                    }}>View More...</button>
-                                </div>
-                            ) : (
-                                <div className={styles.buttonContainer}>
-                                    <button className={styles.hideProjects} onClick={handleShowAllBlogs}>View Less</button>
-                                </div>
-                            )}
-                        </>
-                    )
-                    }
-                </>
-            </div >
-        </div >
+                {viewportSize.width <= 738 && (
+                    <div className={styles.buttonContainer}>
+                        {!showAllProjects ? (
+                            <button
+                                className={styles.viewProjects}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    handleShowAllBlogs(e);
+                                }}
+                            >
+                                View More...
+                            </button>
+                        ) : (
+                            <button className={styles.hideProjects} onClick={handleShowAllBlogs}>
+                                View Less
+                            </button>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 

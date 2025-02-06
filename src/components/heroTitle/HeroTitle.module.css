@@ -27,7 +27,10 @@
     margin-left: auto;
     margin-right: auto;
     animation: colorChange 5s ease infinite forwards;
-    margin-bottom: 0;
+}
+
+.projectDivider {
+    margin-bottom: 50px;
 }
 
 /* Responsive adjustments for mobile */

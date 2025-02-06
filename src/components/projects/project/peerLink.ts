@@ -1,6 +1,6 @@
 // Importing interfaces and image
 import { FullProject } from '../projectInterfaces'
-import img from '../../../assets/peer_link.png'
+import img from '../../../assets/peer-link.png'
 import gif from "../../../assets/peerlink.gif"
 
 const peerLink: FullProject = {
