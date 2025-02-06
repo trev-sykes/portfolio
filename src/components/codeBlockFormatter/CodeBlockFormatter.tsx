@@ -1,5 +1,5 @@
 import { Copy } from 'lucide-react';
-import styles from "./CodeBlockFormatter.module.css";
+import styles from './CodeBlockFormatter.module.css';
 
 interface CodeBlockFormatterProps {
     code: string;
@@ -13,19 +13,21 @@ const CodeBlockFormatter: React.FC<CodeBlockFormatterProps> = ({ code, language 
 
     return (
         <div className={styles.container}>
-            <div className="flex items-center justify-between px-4 py-2 bg-gray-800">
-                <span className="text-sm text-gray-400">{language}</span>
+            <div className={styles.header}>
+                <span className={styles.language}>{language}</span>
                 <button
                     onClick={copyToClipboard}
-                    className="p-1 rounded hover:bg-gray-700 transition-colors"
+                    className={styles.button}
                     title="Copy code"
                 >
-                    <Copy className="h-4 w-4 text-gray-400" />
+                    <Copy className="h-4 w-4" />
                 </button>
             </div>
-            <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-gray-300 font-mono">{code}</code>
-            </pre>
+            <div className={styles.codeWrapper}>
+                <pre>
+                    <code className={styles.code}>{code}</code>
+                </pre>
+            </div>
         </div>
     );
 };

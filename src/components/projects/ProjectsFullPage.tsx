@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import styles from './ProjectsFullPage.module.css';
-import { Minimize2 } from 'lucide-react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
+// import { Minimize2 } from 'lucide-react';
+import { useParams } from 'react-router-dom'; // Import useParams and useNavigate
 import { projects } from './project'; // Assuming projects is an array containing your project data
 import CodeBlockFormatter from '../codeBlockFormatter/CodeBlockFormatter';
 
 const ProjectFullPage: React.FC = () => {
   // Extract the project name from the URL
   const { projectName } = useParams<{ projectName: string }>();
-  const navigate = useNavigate(); // We can use navigate to go back if needed
+  // const navigate = useNavigate(); // We can use navigate to go back if needed
 
   useEffect(() => {
 
@@ -32,15 +32,15 @@ const ProjectFullPage: React.FC = () => {
 
   if (!project) return <div>Project not found</div>; // Handle case where project doesn't exist
 
-  const handleClose = () => {
-    navigate('/projects'); // Navigate back to the projects page when closed
-  };
+  // const handleClose = () => {
+  //   navigate('/projects'); // Navigate back to the projects page when closed
+  // };
 
   return (
     <div id={`project-${project.title}`} className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.titleHeader}>{project.title}</h1>
-        <Minimize2 className={styles.min} strokeWidth={3} onClick={handleClose} size={24} />
+        {/* <h1 className={styles.titleHeader}>{project.title}</h1> */}
+        {/* <Minimize2 className={styles.min} strokeWidth={3} onClick={handleClose} size={24} /> */}
       </div>
 
       <div className={styles.content}>

@@ -4,7 +4,7 @@ import About from "./pages/about/About";
 import { useRemoveKinKins } from './hooks/useClearKinKins';
 import TransitionLayout from './components/transitionLayout/TransitionLayout';
 import Projects from './pages/projects/Projects';
-import ProjectFullPage from './components/projects/ProjectsFullPage';
+import ProjectDescription from './pages/projectDescription/ProjectDescription';
 
 function App() {
   useRemoveKinKins();
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/:projectName" element={<ProjectFullPage />} />
+          <Route path="/:projectName" element={<ProjectDescription />} />
         </Routes>
 
       </TransitionLayout>
