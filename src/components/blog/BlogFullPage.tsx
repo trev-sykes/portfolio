@@ -59,10 +59,12 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
             </div>
 
             <div className={styles.content}>
-                <div
-                    className={styles.image}
-                    style={{ backgroundImage: `url(${article.imageUrl})` }}
-                />
+                <div className={styles.imageContainer}>
+                    <div
+                        className={styles.image}
+                        style={{ backgroundImage: `url(${article.imageUrl})` }}
+                    />
+                </div>
                 <p className={styles.date}>Published on {article.date}</p>
                 {article.sections.map((section, index) => (
                     <div key={index} id={section.title.replace(/\s+/g, '-')}>
