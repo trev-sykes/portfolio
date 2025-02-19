@@ -175,12 +175,31 @@
         display: none;
     }
 
+    .button {
+        color: var(--text-color);
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        margin-right: 5px;
+        cursor: pointer;
+        padding: 5px;
+        transition: background-color 150ms ease;
+        background-color: rgb(238, 238, 238);
+        border-radius: 6px;
+    }
+
 }
-
-
 
 @media (max-width: 479px) {
     .subSectionSmall {
         display: none;
+    }
+}
+
+@media (max-width: 435px) {
+    .button {
+
+        font-size: .9rem;
+        margin-right: 1px;
     }
 }
