@@ -1,7 +1,11 @@
 {
     "rewrites": [
         {
-            "source": "/:projectName",
+            "source": "/projects/:projectName",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/blogs/:blogName",
             "destination": "/index.html"
         },
         {

@@ -6,8 +6,8 @@ import { Section } from './articleInterfaces';
 import CodeBlockFormatter from '../codeBlockFormatter/CodeBlockFormatter';
 
 interface Props {
-    selectedBlog: number | null;
-    onClose: () => void;
+    selectedBlog?: number | null;
+    onClose?: () => void;
 }
 
 const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
@@ -27,7 +27,7 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
         return null;
     }
 
-    const article = magazine[selectedBlog];
+    const article = selectedBlog && magazine[selectedBlog];
 
     const renderSection = (section: Section) => {
         return (
@@ -47,33 +47,37 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
     };
 
     return (
-        <div id={`blog-${selectedBlog}`} className={styles.container}>
-            <div className={styles.header}>
-                <h1 className={styles.titleHeader}>{article.titleHeader}</h1>
-                <Minimize2
-                    className={styles.min}
-                    strokeWidth={3}
-                    onClick={onClose}
-                    size={24}
-                />
-            </div>
-
-            <div className={styles.content}>
-                <div className={styles.imageContainer}>
-                    <div
-                        className={styles.image}
-                        style={{ backgroundImage: `url(${article.imageUrl})` }}
-                    />
-                </div>
-                <p className={styles.date}>Published on {article.date}</p>
-                {article.sections.map((section, index) => (
-                    <div key={index} id={section.title.replace(/\s+/g, '-')}>
-                        <h2 className={styles.sectionTitle}>{section.title}</h2>
-                        {renderSection(section)}
+        <>
+            {selectedBlog && article &&
+                <div id={`blog-${selectedBlog}`} className={styles.container}>
+                    <div className={styles.header}>
+                        <h1 className={styles.titleHeader}>{article.titleHeader}</h1>
+                        <Minimize2
+                            className={styles.min}
+                            strokeWidth={3}
+                            onClick={onClose}
+                            size={24}
+                        />
                     </div>
-                ))}
-            </div>
-        </div>
+
+                    <div className={styles.content}>
+                        <div className={styles.imageContainer}>
+                            <div
+                                className={styles.image}
+                                style={{ backgroundImage: `url(${article.imageUrl})` }}
+                            />
+                        </div>
+                        <p className={styles.date}>Published on {article.date}</p>
+                        {article.sections.map((section, index) => (
+                            <div key={index} id={section.title.replace(/\s+/g, '-')}>
+                                <h2 className={styles.sectionTitle}>{section.title}</h2>
+                                {renderSection(section)}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            }
+        </>
     );
 };
 

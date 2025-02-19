@@ -1,8 +1,10 @@
 @import "../../index.css";
 
 .blogs {
+  width: 1100px;
   padding: var(--project-padding);
-  margin: 0 25px 50px 25px;
+  margin: 0 auto;
+  margin-bottom: 50px;
   opacity: 1;
   border-bottom: .5px solid black;
 
@@ -13,7 +15,7 @@
 }
 
 .container {
-  max-width: 1100px;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   display: flex;
@@ -23,10 +25,11 @@
 
 .blogContainer {
   width: 100%;
+  max-width: 1100px;
   display: flex;
-  justify-content: center;
-  padding: 15px;
+  align-items: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .blogPreview {
@@ -65,8 +68,7 @@
 }
 
 .blogPreview:last-child {
-  margin-right: 0;
-  /* Remove right margin for the last element in each row */
+  margin-right: 0 !important;
 }
 
 
@@ -273,6 +275,12 @@
 
 .topic.marketAnalysis {
   background: #ffc8f4;
+}
+
+@media (max-width: 1100px) {
+  .blogContainer {
+    margin-left: 10px;
+  }
 }
 
 @media (max-width: 900px) {

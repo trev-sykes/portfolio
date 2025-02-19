@@ -60,14 +60,9 @@ const Navigation: React.FC<NavigationProps> = ({ subSection }) => {
                                 {isClicked ? (
                                     <div className={styles.menuContainer}>
                                         <div className={styles.right}>
-                                            {subSection && (<Link
-                                                to={`/${subSection}`}
-                                                className={`${styles.button} ${active === subSection.slice(1) ? styles.active : ''} ${subSection && styles.subSectionSmall}`}
-                                            >
-                                                {`${subSection}`}
-                                            </Link>)}
                                             {renderLink('/about', 'About')}
                                             {renderLink('/projects', 'Projects')}
+                                            {renderLink('/blogs', 'Blogs')}
                                             <button className={styles.button} onClick={toggleContactPopup}>
                                                 Contact
                                             </button>
@@ -95,14 +90,15 @@ const Navigation: React.FC<NavigationProps> = ({ subSection }) => {
                                     </Link>
                                 </div>
                                 <div className={styles.right}>
-                                    {subSection && (<Link
-                                        to={`/${subSection}`}
+                                    {viewportSize.width > 1000 && subSection && (<Link
+                                        to={`/blogs/${subSection}`}
                                         className={`${styles.button} ${active === subSection.slice(1) ? styles.active : ''} ${subSection && styles.subSection}`}
                                     >
                                         {`${subSection}`}
                                     </Link>)}
                                     {renderLink('/about', 'About')}
                                     {renderLink('/projects', 'Projects')}
+                                    {renderLink('/blogs', 'Blogs')}
                                     <div className={styles.button} onClick={toggleContactPopup}>
                                         Contact
                                     </div>

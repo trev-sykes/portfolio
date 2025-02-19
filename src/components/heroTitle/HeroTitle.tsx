@@ -8,7 +8,8 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ title }) => {
             <h1 className={styles.title}>
                 {title}
             </h1>
-            <div className={`${styles.divider} ${title.toLocaleLowerCase().trim() == 'projects' && styles.projectDivider}`} ></div>
+            {title.toLocaleLowerCase().trim() == 'projects' && < div className={`${styles.divider} ${styles.projectDivider}`} ></div>}
+            {title.toLocaleLowerCase().trim() == 'blogs' && < div className={`${styles.divider} ${styles.projectDivider}`} ></div>}
         </div >
     )
 }

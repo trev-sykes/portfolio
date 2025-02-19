@@ -31,6 +31,11 @@ const Hero: React.FC<HeroProps> = ({ section }) => {
                             backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${projectpageMugshotImage})`
                         }} />
                     )}
+                    {section == 'blogs' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
                     {section == 'Bonding Curve Simulator' && (
                         <div className={styles.projectPageMugshot} style={{
                             backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${projectpageMugshotImage})`
@@ -55,6 +60,46 @@ const Hero: React.FC<HeroProps> = ({ section }) => {
                         <div className={styles.projectPageMugshotLP} style={{
                             backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${landingPage})`
                         }} />
+                    )}
+                    {section == '2024: A Year of Transformation in Crypto and Blockchain' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'AI Meets Crypto' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'Understanding the Relationship Between L2s and Ethereum' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == `The Evolution of DeFi: From Ethereum's Genesis to Modern Financial Infrastructure` && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'The State of Crypto: February 2024 Market Analysis' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'Building a Lottery DApp: A Technical Overview' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'CoinGecko API Tutorial' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
+                    )}
+                    {section == 'Phaser 3 Platformer Game Tutorial' && (
+                        <div className={styles.emoji}>
+                            <p className={styles.emojiStyles} style={{ marginTop: '25px' }}>🖋️</p>
+                        </div>
                     )}
                 </div>
             </div>

@@ -1,0 +1,114 @@
+/* BlogDescriptionFullPage.module.css */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.titleHeader {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.min {
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.min:hover {
+    color: #1a1a1a;
+}
+
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.image:hover {
+    transform: scale(1.02);
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.sectionTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 2rem 0 1rem;
+}
+
+.sectionContent {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .titleHeader {
+        font-size: 2rem;
+    }
+
+    .imageContainer {
+        height: 300px;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .sectionContent {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titleHeader {
+        font-size: 1.75rem;
+    }
+
+    .imageContainer {
+        height: 200px;
+    }
+}

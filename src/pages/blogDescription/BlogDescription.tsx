@@ -1,26 +1,34 @@
-import { useEffect } from "react";
-import BlogComponent from "../../components/blog/BlogComponent"
-import { useWindowScroll } from "../../hooks/useWindowScroll";
 import GithubLink from "../../components/github/GithubLink";
 import Navigation from "../../components/navigation/Navigation";
 import Hero from "../../components/hero/Hero";
 import HeroTitle from "../../components/heroTitle/HeroTitle";
 import Footer from "../../components/footer/Footer";
-const Blogs = () => {
+import { useParams } from 'react-router-dom';
+import { useWindowScroll } from "../../hooks/useWindowScroll";
+import { useEffect } from "react";
+import BlogDescriptionFullPage from "../../components/blog/BlogDescriptIonFullPage";
+
+const BlogDescription: React.FC = () => {
+    const { blogName } = useParams<{ blogName: string }>();
     const { scrollPosition, resetWindowPosition } = useWindowScroll();
     useEffect(() => {
         if (scrollPosition.y > 0)
             resetWindowPosition();
     }, []);
+
     return (
         <>
             <GithubLink />
-            <Navigation />
-            <Hero section={'blogs'} />
-            <HeroTitle title={'blogs'} />
-            <BlogComponent isUsingDescription={true} />
+            < Navigation subSection={`${blogName}`
+            } />
+            < Hero section={`${blogName}`} />
+            < HeroTitle title={`${blogName}`} />
+            <BlogDescriptionFullPage />
             <Footer copyrightText="Trevor Sykes - 2025" />
+
         </>
+
     )
+
 }
-export default Blogs
+export default BlogDescription;
