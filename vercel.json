@@ -1,7 +1,7 @@
 {
     "rewrites": [
         {
-            "source": "/:projectName",
+            "source": "/projects/:projectName",
             "destination": "/index.html"
         },
         {
