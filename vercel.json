@@ -1,33 +1,16 @@
 {
     "rewrites": [
         {
-            "source": "/projects",
+            "source": "/:projectName",
             "destination": "/index.html"
         },
         {
-            "source": "/blogs",
+            "source": "/:blogName",
             "destination": "/index.html"
         },
         {
-            "source": "/about",
+            "source": "/:path*",
             "destination": "/index.html"
-        },
-        {
-            "source": "/:blogName*",
-            "destination": "/index.html"
-        }
-    ],
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "headers": [
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "no-cache, no-store, must-revalidate"
-                }
-            ]
         }
     ]
 }
