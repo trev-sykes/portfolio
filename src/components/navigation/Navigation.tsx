@@ -90,12 +90,12 @@ const Navigation: React.FC<NavigationProps> = ({ subSection }) => {
                                     </Link>
                                 </div>
                                 <div className={styles.right}>
-                                    {viewportSize.width > 1000 && subSection && (<Link
-                                        to={`/blogs/${subSection}`}
-                                        className={`${styles.button} ${active === subSection.slice(1) ? styles.active : ''} ${subSection && styles.subSection}`}
-                                    >
-                                        {`${subSection}`}
-                                    </Link>)}
+                                    {viewportSize.width > 1000 && subSection && (
+                                        <div
+                                            className={`${styles.button} ${active === subSection.slice(1) ? styles.active : ''} ${subSection && styles.subSection}`}
+                                        >
+                                            {`${subSection}`}
+                                        </div>)}
                                     {renderLink('/about', 'About')}
                                     {renderLink('/projects', 'Projects')}
                                     {renderLink('/blogs', 'Blogs')}
