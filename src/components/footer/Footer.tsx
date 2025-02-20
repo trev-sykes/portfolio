@@ -1,33 +1,36 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import logo from "../../assets/logo.png";
+// import { FaLinkedin, FaGithub } from "react-icons/";
+import { LinkedinIcon, Github } from 'lucide-react';
 
 interface FooterProps {
   copyrightText: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ copyrightText }) => {
-  const portfolioStyles = {
-    width: '30px',
-    height: '30px',
-    backgroundImage: `radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(227, 183, 227,.05) 70%), url(${logo})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    borderRadius: '0%',
-  }
   return (
     <footer className={styles.container}>
       <div className={styles.card}>
+        {/* Left Section - Logo */}
         <div className={styles.left}>
-          <p> &copy; {copyrightText}</p>
-          <div style={portfolioStyles} />
+          <div className={styles.logo} style={{ backgroundImage: `url(${logo})` }} />
+          <span className={styles.logoText}>Portfolio</span>
         </div>
+
+        {/* Right Section - Social Links */}
         <div className={styles.right}>
-          <a href="https://www.linkedin.com/in/trevsykes/" target='_blank' rel='nonreferrer'>Linkedin</a>
-          <a href="https://www.linkedin.com/in/trevsykes/" target='_blank' rel='nonreferrer'>Github</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <LinkedinIcon className={styles.icon} />
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Github className={styles.icon} />
+          </a>
         </div>
       </div>
+
+      {/* Copyright Text */}
+      <div className={styles.copyright}>© {copyrightText}</div>
     </footer>
   );
 };

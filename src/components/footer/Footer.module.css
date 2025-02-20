@@ -1,8 +1,10 @@
 .container {
   width: 100%;
-  min-height: 54px;
-  padding: 15px;
-  margin-top: 15px;
+  min-height: 60px;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ededed, #ececec);
+  text-align: center;
+  margin-top: 20px;
 }
 
 .card {
@@ -10,29 +12,48 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
 .left {
-  flex: 1;
-  text-align: left;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
+}
+
+.logo {
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.logoText {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .right {
-  flex: 1;
-  text-align: right;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-around;
+  gap: 15px;
 }
 
-.right a {
-  text-decoration: none;
+.icon {
+  font-size: 1.5rem;
   color: black;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+  color: #00aced;
+  /* Stylish hover effect */
+  transform: scale(1.2);
+}
+
+.copyright {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
