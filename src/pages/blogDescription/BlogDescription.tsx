@@ -6,7 +6,7 @@ import Footer from "../../components/footer/Footer";
 import { useParams } from 'react-router-dom';
 import { useWindowScroll } from "../../hooks/useWindowScroll";
 import { useEffect } from "react";
-import BlogDescriptionFullPage from "../../components/blog/BlogDescriptIonFullPage";
+// import BlogDescriptionFullPage from "../../components/blog/BlogDescriptIonFullPage";
 
 const BlogDescription: React.FC = () => {
     const { blogName } = useParams<{ blogName: string }>();
