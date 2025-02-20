@@ -23,7 +23,7 @@ const BlogDescription: React.FC = () => {
             } />
             < Hero section={`${blogName}`} />
             < HeroTitle title={`${blogName}`} />
-            <BlogDescriptionFullPage />
+            {/* <BlogDescriptionFullPage /> */}
             <Footer copyrightText="Trevor Sykes - 2025" />
 
         </>
