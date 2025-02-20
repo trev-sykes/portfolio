@@ -13,10 +13,21 @@
             "destination": "/index.html"
         },
         {
-            "source": "/:path(.*)",
+            "source": "/:blogName*",
             "destination": "/index.html"
         }
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "no-cache, no-store, must-revalidate"
+                }
+            ]
+        }
+    ]
 }
