@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom'; // Import useParams and useNavigat
 const BlogDescriptionFullPage: React.FC = () => {
     // Extract the project name from the URL
     const { blogName } = useParams<{ blogName: string }>();
+    console.log("Blog name: ", blogName);
     // const navigate = useNavigate(); // We can use navigate to go back if needed
     const renderSection = (section: Section) => {
         return (
@@ -42,9 +43,9 @@ const BlogDescriptionFullPage: React.FC = () => {
     // Find the project based on the title in the URL
     const project = magazine.find(
         (p) => {
-            console.log("Finding");
-            console.log("p.title", p.title);
-            console.log("blogName", blogName);
+            // console.log("Finding");
+            // console.log("p.title", p.title);
+            // console.log("blogName", blogName);
             if (p.title == blogName)
                 return encodeURIComponent(p.title == blogName)
         }
