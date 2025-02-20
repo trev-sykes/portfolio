@@ -9,7 +9,19 @@
             "destination": "/index.html"
         },
         {
-            "source": "/:path*",
+            "source": "/projects",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/blogs",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/about",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/(.*)",
             "destination": "/index.html"
         }
     ]

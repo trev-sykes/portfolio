@@ -51,7 +51,7 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
             {selectedBlog && article &&
                 <div id={`blog-${selectedBlog}`} className={styles.container}>
                     <div className={styles.header}>
-                        <h1 className={styles.titleHeader}>{article.titleHeader}</h1>
+                        <h1 className={styles.titleHeader}>{article.title}</h1>
                         <Minimize2
                             className={styles.min}
                             strokeWidth={3}
@@ -69,8 +69,8 @@ const BlogFullPage: React.FC<Props> = ({ selectedBlog, onClose }) => {
                         </div>
                         <p className={styles.date}>Published on {article.date}</p>
                         {article.sections.map((section, index) => (
-                            <div key={index} id={section.title.replace(/\s+/g, '-')}>
-                                <h2 className={styles.sectionTitle}>{section.title}</h2>
+                            <div key={index} id={section.sectionTitle.replace(/\s+/g, '-')}>
+                                <h2 className={styles.sectionTitle}>{section.sectionTitle}</h2>
                                 {renderSection(section)}
                             </div>
                         ))}

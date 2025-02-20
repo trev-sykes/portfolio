@@ -1,12 +1,3 @@
-// Define a base interface for common properties
-interface BaseArticle {
-    title: string;
-    description: string;
-    date: string;
-    topic: string[];
-    imageUrl: string;
-}
-
 // Define an interface for code blocks
 interface CodeBlock {
     language: string;
@@ -15,22 +6,24 @@ interface CodeBlock {
 
 // Define an interface for sections
 export interface Section {
-    title: string;
-    content: string;
+    sectionTitle: string;
+    content: string[];
     codeBlocks?: CodeBlock[];  // Optional array of code blocks
 }
-
-// Define an interface for the blog preview
-export interface BlogPreview extends BaseArticle { }
+// Define a base interface for common properties
+export interface BlogPreview {
+    previewTitle: string;
+    description: string;
+    date: string;
+    topic: string[];
+    imageUrl: string;
+}
 
 // Define an interface for the full blog article
-export interface FullArticle {
+export interface FullArticle extends BlogPreview {
+    title: string;
     sections: Section[];
     tableOfContents: string[];
 }
 
-export interface Blog extends BlogPreview, FullArticle {
-    titleHeader: string;
-}
-
-export type Magazine = Blog[];
+export type Magazine = FullArticle[];

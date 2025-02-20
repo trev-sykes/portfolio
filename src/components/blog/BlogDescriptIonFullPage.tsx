@@ -45,8 +45,8 @@ const BlogDescriptionFullPage: React.FC = () => {
             console.log("Finding");
             console.log("p.title", p.title);
             console.log("blogName", blogName);
-            if (p.titleHeader == blogName)
-                return encodeURIComponent(p.titleHeader == blogName)
+            if (p.title == blogName)
+                return encodeURIComponent(p.title == blogName)
         }
     );
 
@@ -68,8 +68,8 @@ const BlogDescriptionFullPage: React.FC = () => {
                     </div>
                     <p className={styles.date}>Published on {project.date}</p>
                     {project.sections.map((section: any, index: any) => (
-                        <div key={index} id={section.title.replace(/\s+/g, '-')}>
-                            <h2 className={styles.sectionTitle}>{section.title}</h2>
+                        <div key={index} id={section.sectionTitle.replace(/\s+/g, '-')}>
+                            <h2 className={styles.sectionTitle}>{section.sectionTitle}</h2>
                             {renderSection(section)}
                         </div>
                     ))}
