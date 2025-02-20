@@ -326,9 +326,10 @@ const BlogComponent: React.FC<BlogComponentInterface> = ({ isUsingDescription })
                         <div className={styles.blogContainer}>
                             {magazine.slice().reverse().map((blog, index) => (
                                 <Link
-                                    to={`/${encodeURIComponent(blog.title)}`}
                                     key={index}
-                                    className={`${styles.blogPreview} ${styles.open}`}>
+                                    to={`/blogs/${encodeURIComponent(blog.title)}`}
+                                    className={`${styles.blogPreview} ${styles.open}`}
+                                >
                                     <div ref={(el) => (blogRefs.current[index] = el as HTMLDivElement)}>
                                         <h2 className={styles.title}>{blog.title}</h2>
                                         <p className={styles.description}>
