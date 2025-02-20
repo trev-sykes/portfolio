@@ -1,14 +1,6 @@
 {
     "rewrites": [
         {
-            "source": "/projects/:projectName",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/blogs/:blogName",
-            "destination": "/index.html"
-        },
-        {
             "source": "/projects",
             "destination": "/index.html"
         },
@@ -21,8 +13,10 @@
             "destination": "/index.html"
         },
         {
-            "source": "/(.*)",
+            "source": "/:path(.*)",
             "destination": "/index.html"
         }
-    ]
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
 }
