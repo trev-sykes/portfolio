@@ -3,7 +3,6 @@ import Hero from "../../components/hero/Hero"
 import Navigation from "../../components/navigation/Navigation"
 import HeroTitle from "../../components/heroTitle/HeroTitle";
 import { HomeIntro } from "../../components/homeIntro/HomeIntro"
-import BlogComponent from "../../components/blog/BlogComponent"
 import Footer from "../../components/footer/Footer"
 import { useEffect } from "react"
 import { useWindowScroll } from "../../hooks/useWindowScroll";
@@ -28,7 +27,6 @@ const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
             <Hero section={'home'} />
             <HeroTitle title={'Home'} />
             <HomeIntro />
-            {/* <BlogComponent isUsingDescription={false} /> */}
             <Footer copyrightText="Trevor Sykes - 2025" />
         </>
     )
