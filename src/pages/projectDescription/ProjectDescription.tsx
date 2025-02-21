@@ -7,7 +7,7 @@ import Footer from "../../components/footer/Footer";
 import ProjectLink from "../../components/projectLink/ProjectLink";
 import { useParams } from 'react-router-dom';
 import { useWindowScroll } from "../../hooks/useWindowScroll";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { projects } from "../../components/projects/project";
 
 const ProjectDescription: React.FC = () => {

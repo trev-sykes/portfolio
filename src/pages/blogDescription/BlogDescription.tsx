@@ -1,4 +1,4 @@
-import GithubLink from "../../components/github/GithubLink";
+
 import Navigation from "../../components/navigation/Navigation";
 import Hero from "../../components/hero/Hero";
 import HeroTitle from "../../components/heroTitle/HeroTitle";
