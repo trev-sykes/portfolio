@@ -18,7 +18,6 @@ const BlogDescription: React.FC = () => {
 
     return (
         <>
-            <GithubLink />
             < Navigation subSection={`${blogName}`
             } />
             < Hero section={`${blogName}`} />

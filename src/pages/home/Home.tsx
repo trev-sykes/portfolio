@@ -28,7 +28,7 @@ const Home: React.FC<HomeProps> = ({ handleRouteChange }) => {
             <Hero section={'home'} />
             <HeroTitle title={'Home'} />
             <HomeIntro />
-            <BlogComponent isUsingDescription={false} />
+            {/* <BlogComponent isUsingDescription={false} /> */}
             <Footer copyrightText="Trevor Sykes - 2025" />
         </>
     )

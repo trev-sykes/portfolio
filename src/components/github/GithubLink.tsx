@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useWindowScroll } from '../../hooks/useWindowScroll';
 import styles from './GithubLink.module.css';
-
-export default function GithubLink() {
+interface GithubLinkProps {
+  projectUrl?: string;
+}
+const GithubLink: React.FC<GithubLinkProps> = ({ projectUrl }) => {
   const { scrollPosition } = useWindowScroll();
   const [isHovered, setIsHovered] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -36,7 +38,7 @@ export default function GithubLink() {
       >
         <a
           className={styles.githubLink}
-          href="https://www.github.com/trev-sykes"
+          href={projectUrl ? projectUrl : `https://www.github.com/trev-sykes`}
           target="_blank"
           rel="noreferrer"
         >
@@ -53,3 +55,5 @@ export default function GithubLink() {
     </>
   );
 }
+
+export default GithubLink;

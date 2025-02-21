@@ -4,9 +4,11 @@ import Hero from "../../components/hero/Hero";
 import HeroTitle from "../../components/heroTitle/HeroTitle";
 import ProjectFullPage from "../../components/projects/ProjectsFullPage";
 import Footer from "../../components/footer/Footer";
+import ProjectLink from "../../components/projectLink/ProjectLink";
 import { useParams } from 'react-router-dom';
 import { useWindowScroll } from "../../hooks/useWindowScroll";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { projects } from "../../components/projects/project";
 
 const ProjectDescription: React.FC = () => {
     const { projectName } = useParams<{ projectName: string }>();
@@ -15,10 +17,16 @@ const ProjectDescription: React.FC = () => {
         if (scrollPosition.y > 0)
             resetWindowPosition();
     }, []);
-
+    const project = projects.find(
+        (p) => {
+            if (p.title == projectName)
+                return encodeURIComponent(p.title == projectName)
+        }
+    );
     return (
         <>
-            <GithubLink />
+            <GithubLink projectUrl={project ? project.links[1].url : ''} />
+            <ProjectLink projectUrl={project ? project.links[0].url : ''} />
             <Navigation subSection={`${projectName}`} />
             <Hero section={`${projectName}`} />
             <HeroTitle title={`${projectName}`} />
