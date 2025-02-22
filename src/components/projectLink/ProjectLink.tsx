@@ -32,13 +32,14 @@ const ProjectLink: React.FC<ProjectLinkProps> = ({ projectUrl }) => {
 
     return (
         <>
-            <div
+            <a
                 className={`${styles.container} ${isFixed ? styles.fixed : ''}`}
+                href={projectUrl} target="_blank"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <a href={projectUrl} target="_blank" ><ExternalLink className={styles.externalLink} size={40} style={{ color: isHovered ? 'white' : '' }} /></a>
-            </div>
+                <ExternalLink className={styles.externalLink} size={45} style={{ color: isHovered ? 'white' : '' }} />
+            </a>
         </>
     );
 }
