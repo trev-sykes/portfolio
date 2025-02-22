@@ -1,4 +1,3 @@
-
 // SpaceThemeBanner.tsx
 import { useEffect, useRef, useCallback } from 'react';
 import { useViewportSize } from '../../hooks/useViewportSize';

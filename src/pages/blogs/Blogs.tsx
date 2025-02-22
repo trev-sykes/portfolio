@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import BlogComponent from "../../components/blog/BlogComponent"
 import { useWindowScroll } from "../../hooks/useWindowScroll";
-import GithubLink from "../../components/github/GithubLink";
 import Navigation from "../../components/navigation/Navigation";
 import Hero from "../../components/hero/Hero";
 import HeroTitle from "../../components/heroTitle/HeroTitle";
@@ -14,7 +13,6 @@ const Blogs = () => {
     }, []);
     return (
         <>
-            <GithubLink />
             <Navigation />
             <Hero section={'blogs'} />
             <HeroTitle title={'blogs'} />

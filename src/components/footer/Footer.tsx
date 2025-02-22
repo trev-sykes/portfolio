@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Footer.module.css';
 import logo from "../../assets/logo.png";
+import Contact from "../contact/Contact"
+import { Mail } from 'lucide-react';
 // import { FaLinkedin, FaGithub } from "react-icons/";
 import { LinkedinIcon, Github } from 'lucide-react';
 
@@ -9,6 +11,10 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ copyrightText }) => {
+  const [contactPopupVisible, setContactPopupVisible] = useState(false);
+  const toggleContactPopup = () => {
+    setContactPopupVisible(!contactPopupVisible);
+  };
   return (
     <footer className={styles.container}>
       <div className={styles.card}>
@@ -26,6 +32,8 @@ const Footer: React.FC<FooterProps> = ({ copyrightText }) => {
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <Github className={styles.icon} />
           </a>
+          <Mail onClick={toggleContactPopup} />
+          {contactPopupVisible && <Contact onClose={toggleContactPopup} />}
         </div>
       </div>
 

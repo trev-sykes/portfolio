@@ -59,49 +59,23 @@ export class SpaceAnimationEngine {
 
     private createShootingStar(): ShootingStar | null {
         const probability = this.width < 600 ? 0.005 : 0.01;
+        const x = Math.random() * this.width;
+        const y = Math.random() * this.height;
+        const velocity = Math.random() * 10 + 2;
+        const length = (velocity * 10) + 10;
+        const angle = Math.random() * Math.PI * 2;
+        const color = `rgba(255, 255, 255, ${Math.random()})`;
         if (Math.random() >= probability) return null;
-
+        // Math.random() * 5 + 2
         return {
-            x: Math.random() * this.width,
-            y: Math.random() * this.height,
-            length: Math.random() * 30 + 10,
-            angle: Math.random() * Math.PI * 2,
-            color: `rgba(255, 255, 255, ${Math.random()})`,
-            velocity: Math.random() * 5 + 2,
+            x,
+            y,
+            length,
+            angle,
+            color,
+            velocity,
             trail: true
         };
-    }
-
-    private distanceBetweenPoints(x1: number, y1: number, x2: number, y2: number): number {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
-    private detectCollision(star1: ShootingStar, star2: ShootingStar): boolean {
-        const distance = this.distanceBetweenPoints(star1.x, star1.y, star2.x, star2.y);
-        const minDistance = star1.length / 2 + star2.length / 2;
-        return distance < minDistance;
-    }
-
-    private handleCollision(star1: ShootingStar, star2: ShootingStar) {
-        const currentTime = Date.now();
-        star1.collisionTime = currentTime;
-        star2.collisionTime = currentTime;
-        star1.color = 'rgba(255, 255, 255, .9)';
-        star2.color = 'rgba(255, 255, 255, .9)';
-
-        const tempAngle = star1.angle;
-        star1.angle = star2.angle;
-        star2.angle = tempAngle;
-
-        star1.velocity = Math.random() * 10 + 2;
-        star2.velocity = Math.random() * 10 + 2;
-    }
-
-    private drawExplosion(x: number, y: number) {
-        this.ctx.beginPath();
-        this.ctx.arc(x, y, 20, 0, Math.PI * 2);
-        this.ctx.fillStyle = 'rgba(25, 25, 25, 0.75)';
-        this.ctx.fill();
     }
 
     private updatePositions() {
@@ -112,15 +86,6 @@ export class SpaceAnimationEngine {
                 fragment.x = this.width;
             }
         });
-
-        // Handle shooting star collisions
-        for (let i = 0; i < this.shootingStars.length; i++) {
-            for (let j = i + 1; j < this.shootingStars.length; j++) {
-                if (this.detectCollision(this.shootingStars[i], this.shootingStars[j])) {
-                    this.handleCollision(this.shootingStars[i], this.shootingStars[j]);
-                }
-            }
-        }
 
         // Update shooting stars
         this.shootingStars.forEach(star => {
@@ -164,16 +129,6 @@ export class SpaceAnimationEngine {
                     this.ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
                     this.ctx.lineWidth = 2;
                     this.ctx.stroke();
-                }
-            }
-
-            if (star.collisionTime) {
-                const timeElapsed = Date.now() - star.collisionTime;
-                if (timeElapsed < 1000) {
-                    this.drawExplosion(star.x, star.y);
-                } else {
-                    star.color = 'rgba(255, 255, 255, 0.0)';
-                    star.trail = false;
                 }
             }
         });

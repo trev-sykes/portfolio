@@ -9,13 +9,15 @@ import styles from './Hero.module.css';
 
 interface HeroProps {
     section: string;
+    CustomBanner?: any;
 }
-const Hero: React.FC<HeroProps> = ({ section }) => {
+const Hero: React.FC<HeroProps> = ({ section, CustomBanner }) => {
     return (
         <div className={styles.container} style={{ marginBottom: section == 'about' ? '10px' : '75px' }}>
             <div className={styles.bannerContainer}>
                 <div className={styles.canvasContainer}>
-                    <SpaceThemeBanner />
+                    {!CustomBanner && <SpaceThemeBanner />}
+                    {CustomBanner && <CustomBanner />}
                 </div>
                 <div className={styles.mugshotContainer}>
                     {section == 'home' && (<div className={styles.homePageMugshot} style={{

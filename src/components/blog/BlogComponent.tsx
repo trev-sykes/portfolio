@@ -17,9 +17,6 @@ const BlogComponent: React.FC<BlogComponentInterface> = ({ isUsingDescription })
     const [showAllBlogs, setShowAllBlogs] = useState(false);
     const blogRefs = useRef<HTMLDivElement[]>([]);
     const headingRef = useRef<HTMLDivElement>(null);
-
-
-
     const handleScroll = () => {
         typewriterStarted;
         blogRefs.current.forEach((blog) => {
